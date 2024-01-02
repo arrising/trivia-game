@@ -6,7 +6,7 @@ import { RoundComponent } from './round/round.component';
 import { QuestionComponent } from './question/question.component';
 import { AnswerComponent } from './answer/answer.component';
 import { StoreModule } from '@ngrx/store';
-import * as fromGameStore from './game-store';
+import * as fromGameStore from './game-store/index'; 
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import * as fromGameStore from './game-store';
   imports: [
     CommonModule,
     RouterModule,
-    StoreModule.forFeature('gameBoard', fromGameStore.reducer),
+    StoreModule.forFeature(fromGameStore.featureKey, fromGameStore.reducers),
   ],
   exports: [
     GameBoardComponent,

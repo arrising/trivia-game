@@ -8,6 +8,7 @@ import { GameSelectorComponent } from './game-selector/game-selector.component';
 import { GameService } from './data/game.service';
 import { GameBoardModule } from './game-board/game-board.module';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule,
     AppRoutingModule,
     GameBoardModule,
+    StoreModule.forRoot({}),
     EffectsModule.forRoot([])
   ],
   providers: [
