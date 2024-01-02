@@ -1,0 +1,33 @@
+<ng-container *ngIf="currentGame$ | async as game">
+    <ng-container *ngIf="currentRound$ | async as round">
+        <ng-container *ngIf="round === undefined">
+            Round not selected
+            <div><a routerLink="/games/{{gameId}}">Back</a></div>
+            <div><a routerLink="/selector">Home</a></div>
+        </ng-container>
+
+        <ng-container *ngIf="round !== undefined">
+            <div>round: {{round.type}}</div>
+
+            <ul>
+                <li *ngFor="let category of round.categories">
+                    <div>
+                        <ul>
+                            <li>{{category.name}}</li>
+                            <li *ngFor="let question of category.questions">
+                                <a routerLink="/game/{{game.id}}/round/{{round.id}}/question/{{question.questionId}}">
+                                    {{game.valueSymbol}}{{question.value}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <div>
+                <a routerLink="/game/{{gameId}}">Back</a> | <a routerLink="/games">Games</a> | <a routerLink="/selector">Home</a>
+            </div>
+        </ng-container>
+
+    </ng-container>
+</ng-container>

@@ -1,0 +1,20 @@
+<ng-container *ngIf="currentQuestion$ | async as question">
+    <ng-container *ngIf="question === undefined">
+        Question not selected
+        <div><a routerLink="/game/{{gameId}}/round/{{roundId}}">Back</a></div>
+        <div><a routerLink="/selector">Home</a></div>
+    </ng-container>
+
+    <ng-container *ngIf="question !== undefined">
+        <div>{{question.answer}}</div>
+        
+        <div>&nbsp;</div>
+        <div>
+            <a routerLink="/game/{{gameId}}/round/{{roundId}}">Back</a>
+        </div>
+        <div>&nbsp;</div>
+        <div>
+            <a routerLink="/selector">Home</a>
+        </div>
+    </ng-container>
+</ng-container>
