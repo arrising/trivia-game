@@ -429,14 +429,16 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
+*/.angular/cache
+*/.sass-cache/
+*/connect.lock
+*/libpeerconnection.log
 testem.log
-/typings
 
 # System files
 .DS_Store
 Thumbs.db
+
+# UI Project
+UI/coverage
+UI/typings
