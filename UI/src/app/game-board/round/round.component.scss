@@ -1,8 +1,8 @@
-$game-background: blue;
-$game-text: white;
-$game-border-color: $game-text;
+@import '../game-board-variables.scss';
+
+$game-border-color: $game-text-color;
 $game-border-width: 1px;
-$game-border: 1px solid  $game-text;
+$game-border: 1px solid $game-text-color;
 $category-height: 3em;
 $question-height: 2em;
 
@@ -18,8 +18,8 @@ table.categories {
     empty-cells: show;
     width: 100%;
     height: 100%;
-    background-color: $game-background;
-    color: $game-text;
+    background-color: $game-background-color;
+    color: $game-text-color;
 
     th,
     td {
@@ -41,50 +41,25 @@ table.categories {
 
 table.category {
     width: 100%;
+    height: 100%;
     text-align: center;
     border: 0;
-        border-spacing: 0;
+    border-spacing: 0;
+
     td {
         font-size: 400%;
         border: 0;
         border-spacing: 0;
         padding: .22em;
         border-bottom: $game-border;
+
         a {
-            color: $game-text;
+            color: $game-text-color;
             text-decoration: none;
         }
+
         a:visited {
-            color: $game-text;
+            color: $game-text-color;
         }
     }
 }
-
-/*
-ul.categories {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: blue;
-
-    li {
-        float: left;
-    }
-}
-
-ul.category {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: blue;
-
-    li {
-        color: white;
-        font-weight: bolder;
-        border: 2px solid black;
-        float: none;
-    }
-}
-*/

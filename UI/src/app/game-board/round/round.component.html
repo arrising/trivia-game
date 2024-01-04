@@ -1,18 +1,28 @@
 <ng-container *ngIf="currentGame$ | async as game">
     <ng-container *ngIf="currentRound$ | async as round">
         <ng-container *ngIf="round === undefined">
+
+            <ul class="navigation-bar">
+                <li><a routerLink="/game/{{gameId}}">Back</a></li>
+                <li><a routerLink="/games">Games</a></li>
+                <li><a routerLink="/selector">Exit</a></li>
+            </ul>
+
             Round not selected
-            <div><a routerLink="/games/{{gameId}}">Back</a></div>
-            <div><a routerLink="/selector">Home</a></div>
         </ng-container>
 
         <ng-container *ngIf="round !== undefined">
             <div class="round-container">
                 <ul class="navigation-bar">
-                    <li><div> Round: {{round.type}}</div></li>
-                    <li><a routerLink="/game/{{gameId}}">Back</a></li>
+                    <li>
+                        <div> Round: {{round.type}}</div>
+                    </li>
+                    <li>
+                        <div>&nbsp;</div>
+                    </li>
+                    <li><a routerLink="/game/{{gameId}}">Rounds</a></li>
                     <li><a routerLink="/games">Games</a></li>
-                    <li><a routerLink="/selector">Home</a></li>
+                    <li><a routerLink="/selector">Exit</a></li>
                 </ul>
 
                 <table *ngIf="true" class="categories">

@@ -1,0 +1,16 @@
+@import './game-board-variables.scss';
+
+div.wrapper {
+    height: 100%;
+    background-color: $game-background-color;
+    color: $game-text-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.text {
+    font-size: 400%;
+    text-align: center;
+    padding: 0 2em;
+}
