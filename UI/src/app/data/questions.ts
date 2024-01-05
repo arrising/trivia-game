@@ -58,17 +58,17 @@ export const questions: Array<question> = [
     },
     {
         id: '18609b15-bf2b-4042-b43d-602733620aae',
-        ask: 'This purple stone shouldn`t take the place of a doctor, but it is good for healing',
+        ask: 'This purple stone shouldn\'t take the place of a doctor, but it is good for healing',
         answer: 'Amethyst'
     },
     {
         id: 'bb71a25a-3f99-4bcc-b954-b0660a4a3565',
-        ask: 'You`d have to go “South of the border” for this green healing stone, but it will keep you calm on the rough trip back up',
+        ask: 'You\'d have to go “South of the border” for this green healing stone, but it will keep you calm on the rough trip back up',
         answer: 'Amazonite'
     },
     {
         id: '4f26c3aa-ad75-4fe2-8170-45bb90873dc4',
-        ask: 'This quartz, commonly forest green, strengthens your blood &amp; muscle tissues, helps your libido, and releases fear and anxiety',
+        ask: 'This quartz, commonly forest green, strengthens your blood & muscle tissues, helps your libido, and releases fear and anxiety',
         answer: 'Aventurine'
     },
     {
