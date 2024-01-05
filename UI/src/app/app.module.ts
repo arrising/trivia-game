@@ -9,6 +9,7 @@ import { GameService } from './data/game.service';
 import { GameBoardModule } from './game-board/game-board.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule,
     AppRoutingModule,
     GameBoardModule,
+    LayoutModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([])
   ],

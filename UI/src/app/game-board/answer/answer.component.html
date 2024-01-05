@@ -1,33 +1,30 @@
 <ng-container *ngIf="currentQuestion$ | async as question">
     <ng-container *ngIf="question === undefined">
-
-        <ul class="navigation-bar">
-            <li>
-                <div> &nbsp; </div>
-            </li>
-            <li>
+        <app-navigation-bar>
+            <app-navigation-bar-menu>
                 <a routerLink="/game/{{gameId}}/round/{{roundId}}">Back</a>
-            </li>
-            <li>
-                <a routerLink="/selector">Exit</a>
-            </li>
-        </ul>
+                <ul class="navigation-bar">
+                    <li>
+                        <a routerLink="/selector">Exit</a>
+                    </li>
+                </ul>
+            </app-navigation-bar-menu>
+        </app-navigation-bar>
 
         Question not selected
     </ng-container>
 
     <ng-container *ngIf="question !== undefined">
-        <ul class="navigation-bar">
-            <li>
-                <a routerLink="/game/{{gameId}}/round/{{roundId}}">Back</a>
-            </li>
-            <li>
-                <div> &nbsp; </div>
-            </li>
-            <li>
-                <a routerLink="/selector">Exit</a>
-            </li>
-        </ul>
+        <app-navigation-bar>
+            <a routerLink="/game/{{gameId}}/round/{{roundId}}">Back</a>
+            <app-navigation-bar-menu>
+                <ul class="navigation-bar">
+                    <li>
+                        <a routerLink="/selector">Exit</a>
+                    </li>
+                </ul>
+            </app-navigation-bar-menu>
+        </app-navigation-bar>
 
         <div class="wrapper">
             <div class="text">{{question.answer}}</div>

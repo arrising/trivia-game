@@ -1,0 +1,31 @@
+@import '../../../styles.scss';
+
+div.navigation-bar-wrapper {
+    background-color: $navigation-background-color;
+    color: $navigation-text-color;
+    font-size: 125%;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    a, a:visited  {
+        color: $navigation-text-color;
+        text-decoration: none;
+    }
+}
+
+div.navigation-bar-wrapper a, a:visited  {
+    color: $navigation-text-color;
+    text-decoration: none;
+}
+
+div.navigation-bar-title {
+    padding: $navigation-padding;
+}
+
+div.navigation-bar-content-fill {
+    flex: auto;
+}
+
+div.navigation-bar-menu {
+
+}

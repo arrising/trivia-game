@@ -1,14 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import './variables.scss';
 
+div.navigation-bar-wrapper {
+  a, a:visited  {
+    padding: $navigation-padding;
+      color: $navigation-text-color;
+      text-decoration: none;
+  }
+  a:hover {
+    background-color: $navigation-background-hover-color;
+  }
+}
+
 ul.navigation-bar {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: $navigation-background-color;
-  font-size: 125%;
-  font-weight: bolder;
 
   li {
     float: left;
@@ -16,12 +24,8 @@ ul.navigation-bar {
     color: $navigation-text-color;
     text-align: center;
 
-    div {
-      padding: 16px;
-    }
-
     a {
-      padding: 16px;
+      padding: $navigation-padding;
       display: block;
       color: $navigation-text-color;
       text-align: center;

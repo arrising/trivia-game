@@ -7,6 +7,7 @@ import { QuestionComponent } from './question/question.component';
 import { AnswerComponent } from './answer/answer.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromGameStore from './game-store/index'; 
+import { LayoutModule } from '../layout/layout.module';
 
 const gameBoardRoutes: Routes = [
   { path: 'game/:gameId', component: GameBoardComponent },
@@ -27,6 +28,7 @@ const gameBoardRoutes: Routes = [
     RouterModule,
     RouterModule.forChild(gameBoardRoutes),
     StoreModule.forFeature(fromGameStore.featureKey, fromGameStore.reducers),
+    LayoutModule
   ],
   exports: [
     GameBoardComponent,

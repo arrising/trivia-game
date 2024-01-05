@@ -1,27 +1,23 @@
 <div *ngIf="currentGame$ | async as game">
     <ng-container *ngIf="game === undefined">
-        <ul class="navigation-bar">
-            <li>
-                <div>&nbsp;</div>
-            </li>
-            <li><a routerLink="/selector">Exit</a></li>
-        </ul>
+        <app-navigation-bar>
+            <a routerLink="/selector">Exit</a>
+            <app-navigation-bar-menu></app-navigation-bar-menu>
+        </app-navigation-bar>
 
         Game not selected
     </ng-container>
 
     <ng-container *ngIf="game !== undefined">
-
-        <ul class="navigation-bar">
-            <li>
-                <div>Game: {{game.name}}</div>
-            </li>
-            <li>
-                <div>&nbsp;</div>
-            </li>
-            <li><a routerLink="/games">Games</a></li>
-            <li><a routerLink="/selector">Exit</a></li>
-        </ul>
+        <app-navigation-bar>
+            Game: {{game.name}}
+            <app-navigation-bar-menu>
+                <ul class="navigation-bar">
+                    <li><a routerLink="/games">Games</a></li>
+                    <li><a routerLink="/selector">Exit</a></li>
+                </ul>
+            </app-navigation-bar-menu>
+        </app-navigation-bar>
 
         <ul>
             <li *ngFor="let round of game.rounds">

@@ -1,11 +1,14 @@
 <div *ngIf="allGames | async as games">
-
-    <ul class="navigation-bar">
-        <li>
-            <div> &nbsp; </div>
-        </li>
-        <li><a routerLink="/selector">Exit</a></li>
-    </ul>
+    <app-navigation-bar>
+        <app-navigation-bar-menu>
+            <ul class="navigation-bar">
+                <li>
+                    <div> &nbsp; </div>
+                </li>
+                <li><a routerLink="/selector">Exit</a></li>
+            </ul>
+        </app-navigation-bar-menu>
+    </app-navigation-bar>
 
     <p>Select a game</p>
     <ul>
