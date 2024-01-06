@@ -16,6 +16,11 @@ div.navigation-bar-wrapper {
   }
 }
 
+button {
+  font-size: $navigation-button-font-size;
+  margin: $navigation-button-margin-size;
+}
+
 ul.navigation-bar {
   list-style-type: none;
   margin: 0;

@@ -1,21 +1,21 @@
 @import '../game-board-variables.scss';
 
 $game-border-color: $game-text-color;
-$game-border-width: 1px;
-$game-border: 1px solid $game-text-color;
-$category-height: 3em;
-$question-height: 2em;
+$game-border-width: 2px;
+$game-border: $game-border-width solid $game-text-color;
+$category-height: 4em;
 
 div.question-button {
-    display: inline;
+    display: grid;
     width: 100%;
     height: 100%;
     font-size: 400%;
-    text-align: center;
     color: $game-text-color;
+    align-items: center;
 }
 div.question-button:hover {
     cursor: pointer;
+    background-color: $game-background-color-hover;
 }
 
 div.round-container {
@@ -37,6 +37,7 @@ table.categories {
     td {
         border: $game-border;
         overflow: hidden;
+        max-width: 25%;
     }
 
     th {
