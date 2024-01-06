@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { GameService } from '../data/game.service';
 import { game } from '../models/game';
 import { Observable, of } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as gameStore from './game-store';
 
 @Component({
   selector: 'app-game-board',
@@ -20,6 +22,10 @@ export class GameBoardComponent {
 
   currentGame$: Observable<game | undefined> = of(undefined); 
 
-  constructor(private _service: GameService) {
+  constructor(private _store: Store, private _service: GameService) {
+  }
+  
+  loadRound(gameId: string, roundId: string): void {
+    this._store.dispatch(gameStore.actions.startRound({ gameId, roundId }));
   }
 }

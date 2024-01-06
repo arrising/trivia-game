@@ -19,9 +19,9 @@
             </app-navigation-bar-menu>
         </app-navigation-bar>
 
-        <ul>
+        <ul class="no-bullet">
             <li *ngFor="let round of game.rounds">
-                <div><a routerLink="/game/{{game.id}}/round/{{round.id}}">{{round.type}}</a></div>
+                <button (click)="loadRound(gameId, round.id)">{{round.type}}</button>
             </li>
         </ul>
     </ng-container>

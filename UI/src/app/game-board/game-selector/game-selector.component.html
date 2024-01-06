@@ -1,19 +1,16 @@
 <div *ngIf="allGames | async as games">
     <app-navigation-bar>
+        Select a game
         <app-navigation-bar-menu>
             <ul class="navigation-bar">
-                <li>
-                    <div> &nbsp; </div>
-                </li>
                 <li><a routerLink="/selector">Exit</a></li>
             </ul>
         </app-navigation-bar-menu>
     </app-navigation-bar>
 
-    <p>Select a game</p>
-    <ul>
+    <ul class="no-bullet">
         <li *ngFor="let game of games">
-            <div><a routerLink="/game/{{game.id}}">{{game.name}}</a></div>
+            <button (click)="loadGame(game.id)">{{game.name}}</button>
         </li>
     </ul>
 </div>

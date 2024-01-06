@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import './variables.scss';
 
+ul.no-bullet {
+  list-style-type: none;
+}
+
 div.navigation-bar-wrapper {
   a, a:visited  {
     padding: $navigation-padding;

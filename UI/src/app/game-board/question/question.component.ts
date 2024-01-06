@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { GameService } from 'src/app/data/game.service';
 import { question } from 'src/app/models/question';
+import * as gameStore from '../game-store';
 
 @Component({
   selector: 'app-question',
@@ -10,7 +12,7 @@ import { question } from 'src/app/models/question';
 })
 export class QuestionComponent {
   private _gameId: string = '';
-  @Input() set gameId(value: string){
+  @Input() set gameId(value: string) {
     this._gameId = value;
   }
   get gameId() {
@@ -18,7 +20,7 @@ export class QuestionComponent {
   }
 
   private _roundId: string = '';
-  @Input() set roundId(value: string){
+  @Input() set roundId(value: string) {
     this._roundId = value;
   }
   get roundId() {
@@ -26,7 +28,7 @@ export class QuestionComponent {
   }
 
   private _questionId: string = '';
-  @Input() set questionId(value: string){
+  @Input() set questionId(value: string) {
     this._questionId = value;
     this.currentQuestion$ = this._service.getQuestion(value);
   }
@@ -34,7 +36,14 @@ export class QuestionComponent {
     return this._questionId;
   }
 
-  currentQuestion$: Observable<question | undefined> = of(undefined); 
-  constructor(private _service: GameService) {
+  currentQuestion$: Observable<question | undefined> = of(undefined);
+  constructor(private _store: Store, private _service: GameService) { }
+
+  viewAnswer(gameId: string, roundId: string, questionId: string): void {
+    this._store.dispatch(gameStore.actions.viewAnswer({ gameId, roundId, questionId }))
+  }
+  
+  viewRound(gameId: string, roundId: string): void {
+    this._store.dispatch(gameStore.actions.viewRound({ gameId, roundId }))
   }
 }

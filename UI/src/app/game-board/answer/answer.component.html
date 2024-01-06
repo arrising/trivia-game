@@ -2,7 +2,7 @@
     <ng-container *ngIf="question === undefined">
         <app-navigation-bar>
             <app-navigation-bar-menu>
-                <a routerLink="/game/{{gameId}}/round/{{roundId}}">Back</a>
+                <a (click)="viewRound(gameId, roundId)">Back</a>
                 <ul class="navigation-bar">
                     <li>
                         <a routerLink="/selector">Exit</a>
@@ -16,7 +16,7 @@
 
     <ng-container *ngIf="question !== undefined">
         <app-navigation-bar>
-            <a routerLink="/game/{{gameId}}/round/{{roundId}}">Back</a>
+            <a (click)="viewRound(gameId, roundId)">Back</a>
             <app-navigation-bar-menu>
                 <ul class="navigation-bar">
                     <li>

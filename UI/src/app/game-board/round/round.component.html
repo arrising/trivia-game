@@ -3,7 +3,7 @@
         <ng-container *ngIf="round === undefined">
             <app-navigation-bar>
                 <app-navigation-bar-menu>
-                    <a routerLink="/game/{{gameId}}">Back</a>
+                    <a routerLink="/games/game/{{gameId}}">Back</a>
                     <ul class="navigation-bar">
                         <li><a routerLink="/games">Games</a></li>
                         <li><a routerLink="/selector">Exit</a></li>
@@ -19,7 +19,7 @@
                 Round: {{round.type}}
                 <app-navigation-bar-menu>
                     <ul class="navigation-bar">
-                        <li><a routerLink="/game/{{gameId}}">Rounds</a></li>
+                        <li><a routerLink="/games/game/{{gameId}}">Rounds</a></li>
                         <li><a routerLink="/games">Games</a></li>
                         <li><a routerLink="/selector">Exit</a></li>
                     </ul>
@@ -38,10 +38,10 @@
                             <table *ngIf="true" class="category">
                                 <tr *ngFor="let question of category.questions">
                                     <td>
-                                        <a
-                                            routerLink="/game/{{game.id}}/round/{{round.id}}/question/{{question.questionId}}">
+                                        <div class="question-button"
+                                            (click)="viewQuestion(gameId, round.id, question.questionId)">
                                             {{game.valueSymbol}}{{question.value}}
-                                        </a>
+                                        </div>
                                     </td>
                                 </tr>
                             </table>

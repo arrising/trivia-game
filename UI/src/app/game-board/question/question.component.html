@@ -1,7 +1,7 @@
 <ng-container *ngIf="currentQuestion$ | async as question">
     <ng-container *ngIf="question === undefined">
         <app-navigation-bar>
-            <a routerLink="/game/{{gameId}}/round/{{roundId}}">Back</a>
+            <a (click)="viewRound(gameId, roundId)">Back</a>
             <app-navigation-bar-menu>
                 <ul class="navigation-bar">
                     <li>
@@ -16,11 +16,11 @@
 
     <ng-container *ngIf="question !== undefined">
         <app-navigation-bar>
-            <a routerLink="/game/{{gameId}}/round/{{roundId}}/question/{{questionId}}/answer">Answer</a>
+            <a (click)="viewAnswer(gameId, roundId, questionId)">Answer</a>
             <app-navigation-bar-menu>
                 <ul class="navigation-bar">
                     <li>
-                        <a routerLink="/game/{{gameId}}/round/{{roundId}}">Back</a>
+                        <a (click)="viewRound(gameId, roundId)">Back</a>
                     </li>
                     <li>
                         <a routerLink="/selector">Exit</a>
@@ -32,6 +32,5 @@
         <div class="wrapper">
             <div class="text">{{question.ask}}</div>
         </div>
-
     </ng-container>
 </ng-container>
