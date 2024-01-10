@@ -10,6 +10,7 @@ import { QuestionComponent } from './question/question.component';
 import { AnswerComponent } from './answer/answer.component';
 import { EffectsModule } from '@ngrx/effects';
 import * as gameStore from './game-store/index'; 
+import * as gameSessionStore from './game-session-store';
 
 const gameBoardRoutes: Routes = [
   { path: 'games', component: GameSelectorComponent },
@@ -33,6 +34,8 @@ const gameBoardRoutes: Routes = [
     RouterModule.forChild(gameBoardRoutes),
     StoreModule.forFeature(gameStore.featureKey, gameStore.reducers),
     EffectsModule.forFeature(gameStore.effects),
+    StoreModule.forFeature(gameSessionStore.featureKey, gameSessionStore.reducers),
+    EffectsModule.forFeature(gameSessionStore.effects),
     LayoutModule
   ],
   exports: [
