@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Store } from "@ngrx/store";
 import { GameService } from "src/app/data/game.service";
 import { catchError, map, of, switchMap } from "rxjs";
 import * as gameStore from './index';
-import { Store } from "@ngrx/store";
 
 @Injectable()
 export class GameEffects {

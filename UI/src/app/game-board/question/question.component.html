@@ -4,9 +4,7 @@
             <a (click)="viewRound(gameId, roundId)">Back</a>
             <app-navigation-bar-menu>
                 <ul class="navigation-bar">
-                    <li>
-                        <a routerLink="/selector">Exit</a>
-                    </li>
+                    <li><app-exit-button /></li>
                 </ul>
             </app-navigation-bar-menu>
         </app-navigation-bar>
@@ -22,9 +20,7 @@
                     <li>
                         <a (click)="viewRound(gameId, roundId)">Back</a>
                     </li>
-                    <li>
-                        <a routerLink="/selector">Exit</a>
-                    </li>
+                    <li><app-exit-button /></li>
                 </ul>
             </app-navigation-bar-menu>
         </app-navigation-bar>
