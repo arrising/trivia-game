@@ -1,6 +1,6 @@
-import { category } from "./category";
-import { gameQuestion } from "./game-question";
+import { Category } from "./category";
+import { GameQuestion } from "./game-question";
 
-export interface gameCategory extends category{
-    questions: Array<gameQuestion>;
+export interface GameCategory extends Category{
+    questions: Array<GameQuestion>;
 }

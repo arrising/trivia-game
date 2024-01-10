@@ -1,5 +1,3 @@
-import { gameQuestion } from './game-question';
-
-export interface category{
+export interface Category {
     name: string;
 }

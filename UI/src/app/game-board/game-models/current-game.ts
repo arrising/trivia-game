@@ -1,5 +1,5 @@
-import { game } from "src/app/models/game";
+import { Game } from "src/app/models/game";
 
-export interface currentGame extends game {
+export interface currentGame extends Game {
     currentRound?: string;
 }

@@ -1,8 +1,8 @@
-import { gameCategory } from './game-category';
+import { GameCategory } from './game-category';
 
-export interface gameRound {
+export interface GameRound {
     id: string;
     type: string;
     isCompleted: boolean;
-    categories: Array<gameCategory>
+    categories: Array<GameCategory>
 }

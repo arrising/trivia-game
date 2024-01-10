@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GameService } from '../../data/game.service';
-import { game } from '../../models/game';
+import { Game } from '../../models/game';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as gameStore from '../game-store';
@@ -11,7 +11,7 @@ import * as gameStore from '../game-store';
   styleUrls: ['./game-selector.component.scss']
 })
 export class GameSelectorComponent {
-  allGames: Observable<Array<game>>;
+  allGames: Observable<Array<Game>>;
 
   constructor(private _store: Store, private _service: GameService) {
     this.allGames = this._service.getAllGames();

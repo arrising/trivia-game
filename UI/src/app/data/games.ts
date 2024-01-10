@@ -1,7 +1,7 @@
-import { game } from "../models/game";
-import { gameRound } from "../models/game-round";
+import { Game } from "../models/game";
+import { GameRound } from "../models/game-round";
 
-export const games: Array<game> = [
+export const games: Array<Game> = [
     {
         id: 'd12adfa5-26b5-4a6b-bd65-2dd02768437f',
         name: 'Game One',
@@ -200,7 +200,7 @@ export const games: Array<game> = [
                         ]
                     }
                 ]
-            } as gameRound
+            } as GameRound
         ]
     }
 ];

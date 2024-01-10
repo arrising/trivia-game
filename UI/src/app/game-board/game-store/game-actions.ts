@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { game } from 'src/app/models/game';
+import { Game } from 'src/app/models/game';
 
 export enum GameActionType {
   LoadGame = '[GameBoard Load Game] Load Game',
@@ -12,7 +12,7 @@ export enum GameActionType {
 }
 
 export const loadGame = createAction(GameActionType.LoadGame, props<{ gameId: string; }>());
-export const gameLoaded = createAction(GameActionType.GameLoaded, props<{ game: game; }>());
+export const gameLoaded = createAction(GameActionType.GameLoaded, props<{ game: Game; }>());
 export const gameLoadError = createAction(GameActionType.GameLoadError, props<{ error: any; }>());
 export const startRound = createAction(GameActionType.StartRound, props<{ gameId: string, roundId: string; }>());
 export const viewRound = createAction(GameActionType.ViewRound, props<{ gameId: string, roundId: string; }>());

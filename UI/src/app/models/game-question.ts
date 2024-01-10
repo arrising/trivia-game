@@ -1,4 +1,4 @@
-export interface gameQuestion {
+export interface GameQuestion {
     questionId: string;
     isAnswered: boolean;
     value: number;

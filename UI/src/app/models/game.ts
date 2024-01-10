@@ -1,8 +1,8 @@
-import { gameRound } from "./game-round";
+import { GameRound } from "./game-round";
 
-export interface game {
+export interface Game {
     id: string;
     name: string;
     valueSymbol: string;
-    rounds: Array<gameRound>;
+    rounds: Array<GameRound>;
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { game } from '../models/game';
+import { Game } from '../models/game';
 import { games } from './games';
-import { question } from '../models/question';
+import { Question } from '../models/question';
 import { questions } from './questions';
-import { gameRound } from '../models/game-round';
+import { GameRound } from '../models/game-round';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +13,23 @@ export class GameService {
 
   constructor() { }
 
-  getAllGames(): Observable<Array<game>> {
+  getAllGames(): Observable<Array<Game>> {
     return of(games);
   }
 
-  getGame(gameId: string): Observable<game | undefined> {
+  getGame(gameId: string): Observable<Game | undefined> {
     return of(games.find(x => x.id == gameId));
   }
 
-  getRound(gameId: string, roundId: string): Observable<gameRound | undefined> {
+  getRound(gameId: string, roundId: string): Observable<GameRound | undefined> {
     return of(games.find(x => x.id == gameId)?.rounds.find(round => round.id == roundId));
   }
 
-  getQuestion(questionId: string): Observable<question | undefined> {
-    return of(questions.find(x => x.id == questionId));
+  getQuestion(questionId: string): Observable<Question | undefined> {
+    return of(questions.find(x => x.questionId == questionId));
+  }
+
+  getQuestions(questionIds: Array<string>): Observable<Array<Question> | undefined> {
+    return of(questions.filter(x => questionIds.includes(x.questionId)));
   }
 }

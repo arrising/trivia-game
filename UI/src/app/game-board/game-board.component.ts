@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { GameService } from '../data/game.service';
-import { game } from '../models/game';
+import { Game } from '../models/game';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as gameStore from './game-store';
@@ -20,7 +20,7 @@ export class GameBoardComponent {
     return this._gameId;
   }
 
-  currentGame$: Observable<game | undefined> = of(undefined); 
+  currentGame$: Observable<Game | undefined> = of(undefined); 
 
   constructor(private _store: Store, private _service: GameService) {
   }

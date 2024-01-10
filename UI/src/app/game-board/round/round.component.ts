@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { GameService } from 'src/app/data/game.service';
-import { game } from 'src/app/models/game';
-import { gameRound } from 'src/app/models/game-round';
+import { Game } from 'src/app/models/game';
+import { GameRound } from 'src/app/models/game-round';
 import * as gameStore from '../game-store';
 
 @Component({
@@ -30,8 +30,8 @@ export class RoundComponent {
     return this._roundId;
   }
 
-  currentGame$: Observable<game | undefined> = of(undefined);
-  currentRound$: Observable<gameRound | undefined> = of(undefined);
+  currentGame$: Observable<Game | undefined> = of(undefined);
+  currentRound$: Observable<GameRound | undefined> = of(undefined);
   constructor(private _store: Store, private _service: GameService) { }
 
   viewQuestion(gameId: string, roundId: string, questionId: string): void {
