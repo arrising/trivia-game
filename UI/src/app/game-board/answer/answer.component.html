@@ -1,14 +1,8 @@
 <ng-container *ngIf="currentQuestion$ | async as question">
     <ng-container *ngIf="question === undefined">
         <app-navigation-bar>
-            <app-navigation-bar-menu>
-                <a (click)="viewRound(gameId, roundId)">Back</a>
-                <ul class="navigation-bar">
-                    <li><app-exit-button /></li>
-                </ul>
-            </app-navigation-bar-menu>
+            <app-exit-button />
         </app-navigation-bar>
-
         Question not selected
     </ng-container>
 
@@ -17,6 +11,7 @@
             <a (click)="viewRound(gameId, roundId)">Back</a>
             <app-navigation-bar-menu>
                 <ul class="navigation-bar">
+                    <li><app-game-select-button /></li>
                     <li><app-exit-button /></li>
                 </ul>
             </app-navigation-bar-menu>

@@ -2,15 +2,8 @@
     <ng-container *ngIf="currentRound$ | async as round">
         <ng-container *ngIf="round === undefined">
             <app-navigation-bar>
-                <app-navigation-bar-menu>
-                    <a routerLink="/games/game/{{gameId}}">Back</a>
-                    <ul class="navigation-bar">
-                        <li><a routerLink="/games">Games</a></li>
-                        <li><app-exit-button /></li>
-                    </ul>
-                </app-navigation-bar-menu>
+                <app-exit-button />
             </app-navigation-bar>
-
             Round not selected
         </ng-container>
 
@@ -20,8 +13,8 @@
                 <app-navigation-bar-menu>
                     <ul class="navigation-bar">
                         <li><a routerLink="/games/game/{{gameId}}">Rounds</a></li>
-                        <li><a routerLink="/games">Games</a></li>
-                        <li><a routerLink="/selector">Exit</a></li>
+                        <li><app-game-select-button /></li>
+                        <li><app-exit-button /></li>
                     </ul>
                 </app-navigation-bar-menu>
             </app-navigation-bar>

@@ -1,9 +1,8 @@
 <div *ngIf="currentGame$ | async as game">
     <ng-container *ngIf="game === undefined">
-        <app-navigation-bar><app-exit-button />
-            <app-navigation-bar-menu></app-navigation-bar-menu>
+        <app-navigation-bar>
+            <app-exit-button />
         </app-navigation-bar>
-
         Game not selected
     </ng-container>
 
@@ -12,7 +11,7 @@
             Game: {{game.name}}
             <app-navigation-bar-menu>
                 <ul class="navigation-bar">
-                    <li><a routerLink="/games">Games</a></li>
+                    <li><app-game-select-button /></li>
                     <li><app-exit-button /></li>
                 </ul>
             </app-navigation-bar-menu>
