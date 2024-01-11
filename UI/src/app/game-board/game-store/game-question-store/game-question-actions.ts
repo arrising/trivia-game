@@ -1,6 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { SessionQuestion } from './game-session-state';
 import { Update, EntityMap, EntityMapOne, Predicate } from '@ngrx/entity';
+import { SessionQuestion } from './game-question-state';
 
 export const sessionQuestionActions = createActionGroup({
     source: 'Session Questions',

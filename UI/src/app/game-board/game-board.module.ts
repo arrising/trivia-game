@@ -10,8 +10,7 @@ import { QuestionComponent } from './question/question.component';
 import { AnswerComponent } from './answer/answer.component';
 import { EffectsModule } from '@ngrx/effects';
 import { GameControlsModule } from './game-controls/game-controls.module';
-import * as gameStore from './game-store/index';
-import * as gameSessionStore from './game-session-store';
+import * as gameSessionStore from './game-store';
 
 const gameBoardRoutes: Routes = [
   { path: 'games', component: GameSelectorComponent },
@@ -33,14 +32,12 @@ const gameBoardRoutes: Routes = [
     CommonModule,
     RouterModule,
     RouterModule.forChild(gameBoardRoutes),
-    StoreModule.forFeature(gameStore.featureKey, gameStore.reducers),
-    EffectsModule.forFeature(gameStore.effects),
-    StoreModule.forFeature(gameSessionStore.featureKey, gameSessionStore.reducers),
+    StoreModule.forFeature(gameSessionStore.game.featureKey, gameSessionStore.game.reducers),
+    StoreModule.forFeature(gameSessionStore.questions.featureKey, gameSessionStore.questions.reducers),
     EffectsModule.forFeature([
-      gameSessionStore.effects.questions
-    ]),
-    EffectsModule.forFeature([
-      gameSessionStore.effects.navigation
+      gameSessionStore.game.effects,
+      gameSessionStore.questions.effects,
+      gameSessionStore.navigation.effects
     ]),
     LayoutModule,
     GameControlsModule

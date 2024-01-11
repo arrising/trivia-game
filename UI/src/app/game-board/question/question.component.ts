@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { GameService } from 'src/app/data/game.service';
 import { Question } from 'src/app/models/question';
-import * as gameStore from '../game-store';
+import * as sessionStore from '../game-store';
 
 @Component({
   selector: 'app-question',
@@ -40,10 +40,10 @@ export class QuestionComponent {
   constructor(private _store: Store, private _service: GameService) { }
 
   viewAnswer(gameId: string, roundId: string, questionId: string): void {
-    this._store.dispatch(gameStore.actions.viewAnswer({ gameId, roundId, questionId }))
+    this._store.dispatch(sessionStore.game.actions.showAnswer({ questionId }));
   }
   
   viewRound(gameId: string, roundId: string): void {
-    this._store.dispatch(gameStore.actions.viewRound({ gameId, roundId }))
+    this._store.dispatch( sessionStore.game.actions.showRound({ roundId }));
   }
 }

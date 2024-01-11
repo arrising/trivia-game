@@ -3,7 +3,7 @@ import { GameService } from '../../data/game.service';
 import { Game } from '../../models/game';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as gameStore from '../game-store';
+import * as sessionStore from '../game-store';
 
 @Component({
   selector: 'app-game-selector',
@@ -18,6 +18,6 @@ export class GameSelectorComponent {
   }
 
   loadGame(gameId: string): void {
-    this._store.dispatch(gameStore.actions.loadGame({ gameId }));
+    this._store.dispatch(sessionStore.game.actions.loadGame({ gameId }));
   }
 }

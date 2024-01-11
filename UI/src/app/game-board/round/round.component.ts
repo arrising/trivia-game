@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { GameService } from 'src/app/data/game.service';
 import { Game } from 'src/app/models/game';
 import { GameRound } from 'src/app/models/game-round';
-import * as gameStore from '../game-store';
+import * as sessionStore from '../game-store';
 
 @Component({
   selector: 'app-round',
@@ -35,6 +35,6 @@ export class RoundComponent {
   constructor(private _store: Store, private _service: GameService) { }
 
   viewQuestion(gameId: string, roundId: string, questionId: string): void {
-    this._store.dispatch(gameStore.actions.viewQuestion({ gameId, roundId, questionId }));
+    this._store.dispatch(sessionStore.game.actions.showQuestion({ questionId }));
   }
 }
