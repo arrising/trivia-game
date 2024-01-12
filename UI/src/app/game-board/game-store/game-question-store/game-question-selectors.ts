@@ -1,12 +1,12 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { QuestionState, featureId } from './game-question-state';
+import { QuestionStoreState, featureId } from './game-question-state';
 import * as fromReducers from './game-question-reducers';
 
-export const selectSessionState = createFeatureSelector<QuestionState>(featureId);
+export const selectSessionState = createFeatureSelector<QuestionStoreState>(featureId);
 
 export const selectQuestionState = createSelector(
     selectSessionState,
-    state => state
+    state => state.questions
 );
 
 export const selectQuestionIds = createSelector(

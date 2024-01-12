@@ -7,7 +7,7 @@ import * as sessionStore from '..';
 
 @Injectable()
 export class SessionGameEffects {
-    loadGame$ = createEffect(() => this.actions$.pipe(
+    onLoadGame_setGame$ = createEffect(() => this.actions$.pipe(
         ofType(sessionStore.game.actions.loadGame), switchMap((action) =>
             this.gameService.getGame(action.gameId).pipe(
                 map(game => {
@@ -18,7 +18,7 @@ export class SessionGameEffects {
             ))
     ));
 
-    GameLoaded$ = createEffect(() => {
+    onGameLoaded_navigateToRoundSelectorPage$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(sessionStore.game.actions.setGame),
             switchMap(() => [sessionStore.navigation.actions.viewRoundSelector()])

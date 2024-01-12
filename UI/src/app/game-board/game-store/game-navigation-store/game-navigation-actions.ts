@@ -6,8 +6,8 @@ export const sessionNavigationActions = createActionGroup({
         'Exit Games': emptyProps(),
         'View Game Selector': emptyProps(),
         'View Round Selector': emptyProps(),
-        'View Round': props<{ roundId: string }>(),
+        'View Round': emptyProps(),
         'View Question': props<{ id: string }>(),
-        'View Answer': props<{ id: string }>(),
+        'View Answer': props<{ id: string }>()
     }
 });

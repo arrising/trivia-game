@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
 import { LayoutModule } from '../layout/layout.module';
 import { GameBoardComponent } from './game-board.component';
 import { GameSelectorComponent } from './game-selector/game-selector.component';
 import { RoundComponent } from './round/round.component';
 import { QuestionComponent } from './question/question.component';
 import { AnswerComponent } from './answer/answer.component';
-import { EffectsModule } from '@ngrx/effects';
 import { GameControlsModule } from './game-controls/game-controls.module';
-import * as gameSessionStore from './game-store';
+import { GameStoreModule } from './game-store/game-store.module';
 
 const gameBoardRoutes: Routes = [
   { path: 'games', component: GameSelectorComponent },
@@ -32,16 +30,10 @@ const gameBoardRoutes: Routes = [
     CommonModule,
     RouterModule,
     RouterModule.forChild(gameBoardRoutes),
-    StoreModule.forFeature(gameSessionStore.game.featureKey, gameSessionStore.game.reducers),
-    StoreModule.forFeature(gameSessionStore.questions.featureKey, gameSessionStore.questions.reducers),
-    EffectsModule.forFeature([
-      gameSessionStore.game.effects,
-      gameSessionStore.questions.effects,
-      gameSessionStore.navigation.effects
-    ]),
     LayoutModule,
     GameControlsModule
-  ],
+,
+GameStoreModule  ],
   exports: [
     GameBoardComponent,
     RoundComponent,

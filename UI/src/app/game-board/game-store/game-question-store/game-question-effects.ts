@@ -7,8 +7,8 @@ import * as sessionStore from '..';
 
 @Injectable()
 
-export class GameSessionEffects {
-    GameLoaded$ = createEffect(() => {
+export class SessionGameEffects {
+    onGameLoaded$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(sessionStore.game.actions.setGame),
             switchMap((action) => {
@@ -19,7 +19,6 @@ export class GameSessionEffects {
 
                 return this.gameService.getQuestions(allIds).pipe(
                     map(questions => {
-                        console.log('GameSessionEffects GameLoaded', { game: action.game, questions });
                         return questions ? sessionStore.questions.actions.loadQuestions({ questions })
                             : sessionStore.game.actions.loadGameFailure({ error: { message: "Game not Found", id: 'TBD' } })
                     }),

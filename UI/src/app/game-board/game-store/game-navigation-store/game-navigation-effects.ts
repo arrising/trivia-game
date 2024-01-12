@@ -7,33 +7,36 @@ import * as sessionStore from '..';
 
 @Injectable()
 export class SessionNavigationEffects {
-    ExitGames$ = createEffect(() => {
+    onExitGames$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(sessionStore.navigation.actions.exitGames),
-            switchMap(() => {
-                console.log('exit game play mode');
-                return this.router.navigate(['/']);
-            })
+            switchMap(() => this.router.navigate(['/']))
         );
     }, { dispatch: false });
 
-    ViewGameSelector$ = createEffect(() => {
+    onViewGameSelector$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(sessionStore.navigation.actions.viewGameSelector),
-            switchMap(() => {
-                return this.router.navigate(['/games']);
-            })
+            switchMap((_) => this.router.navigate(['/games']))
         );
     }, { dispatch: false });
 
-    ViewRoundSelector$ = createEffect(() => {
+    onViewRoundSelector$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(sessionStore.navigation.actions.viewRoundSelector),
             withLatestFrom(this.store.select(sessionStore.game.selectors.getSelectedGameId)),
-            switchMap(([action, gameId]) => {
-                console.log('SessionNavigationEffects ViewRoundSelector', { action, gameId});
-                return this.router.navigate(['/games', 'game', gameId]);
-            })
+            switchMap(([_, gameId]) => this.router.navigate(['/games', 'game', gameId]))
+        );
+    }, { dispatch: false });
+
+    onViewRound$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(sessionStore.navigation.actions.viewRound),
+            withLatestFrom(
+                this.store.select(sessionStore.game.selectors.getSelectedGameId),
+                this.store.select(sessionStore.rounds.selectors.getSelectedRoundId)
+            ),
+            switchMap(([_, gameId, roundId]) => this.router.navigate(['/games', 'game', gameId, 'round', roundId]))
         );
     }, { dispatch: false });
 
