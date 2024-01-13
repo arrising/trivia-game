@@ -1,23 +1,23 @@
 <ng-container *ngIf="currentGame$ | async as game">
     <ng-container *ngIf="currentRound$ | async as round">
-        <ng-container *ngIf="round === undefined">
-            <app-navigation-bar>
+        <app-page *ngIf="round === undefined">
+            <app-navigation-bar-title>
                 <app-exit-button />
-            </app-navigation-bar>
+            </app-navigation-bar-title>
             Round not selected
-        </ng-container>
+        </app-page>
 
-        <ng-container *ngIf="round !== undefined">
-            <app-navigation-bar>
+        <app-page *ngIf="round !== undefined">
+            <app-navigation-bar-title>
                 Round: {{round.type}}
-                <app-navigation-bar-menu>
-                    <ul class="navigation-bar">
-                        <li><a routerLink="/games/game/{{gameId}}">Rounds</a></li>
-                        <li><app-game-select-button /></li>
-                        <li><app-exit-button /></li>
-                    </ul>
-                </app-navigation-bar-menu>
-            </app-navigation-bar>
+            </app-navigation-bar-title>
+            <app-navigation-bar-menu>
+                <ul class="navigation-bar">
+                    <li><a routerLink="/games/game/{{gameId}}">Rounds</a></li>
+                    <li><app-game-select-button /></li>
+                    <li><app-exit-button /></li>
+                </ul>
+            </app-navigation-bar-menu>
 
             <div class="round-container">
                 <table *ngIf="true" class="categories">
@@ -31,8 +31,7 @@
                             <table *ngIf="true" class="category">
                                 <tr *ngFor="let question of category.questions">
                                     <td>
-                                        <div class="question-button"
-                                            (click)="viewQuestion(question.questionId)">
+                                        <div class="question-button" (click)="viewQuestion(question.questionId)">
                                             {{game.valueSymbol}}{{question.value}}
                                         </div>
                                     </td>
@@ -42,7 +41,6 @@
                     </tr>
                 </table>
             </div>
-        </ng-container>
-
+        </app-page>
     </ng-container>
 </ng-container>

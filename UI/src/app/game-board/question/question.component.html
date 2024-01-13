@@ -1,27 +1,27 @@
 <ng-container *ngIf="currentQuestion$ | async as question">
-    <ng-container *ngIf="question === undefined">
-        <app-navigation-bar>
+    <app-page *ngIf="question === undefined">
+        <app-navigation-bar-title>
             <app-exit-button />
-        </app-navigation-bar>
+        </app-navigation-bar-title>
         Question not selected
-    </ng-container>
+    </app-page>
 
-    <ng-container *ngIf="question !== undefined">
-        <app-navigation-bar>
+    <app-page *ngIf="question !== undefined">
+        <app-navigation-bar-title>
             <a (click)="viewAnswer()">Answer</a>
-            <app-navigation-bar-menu>
-                <ul class="navigation-bar">
-                    <li>
-                        <a (click)="viewRound()">Back</a>
-                    </li>
-                    <li><app-game-select-button /></li>
-                    <li><app-exit-button /></li>
-                </ul>
-            </app-navigation-bar-menu>
-        </app-navigation-bar>
+        </app-navigation-bar-title>
+        <app-navigation-bar-menu>
+            <ul class="navigation-bar">
+                <li>
+                    <a (click)="viewRound()">Back</a>
+                </li>
+                <li><app-game-select-button /></li>
+                <li><app-exit-button /></li>
+            </ul>
+        </app-navigation-bar-menu>
 
         <div (click)="viewAnswer()" class="wrapper">
             <div class="text">{{question.ask}}</div>
         </div>
-    </ng-container>
+    </app-page>
 </ng-container>
