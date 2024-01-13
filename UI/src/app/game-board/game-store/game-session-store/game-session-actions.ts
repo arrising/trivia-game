@@ -12,10 +12,11 @@ export const sessionGameActions = createActionGroup({
         'Upsert Game': props<{ game: SessionGame }>(),
         'Update Game': props<{ update: Update<SessionGame> }>(),
 
-        'Load Round': props<{ roundId: string }>(),
-        'Show Round': props<{ roundId: string }>(),
-        'Show Question': props<{ questionId: string }>(),
-        'Show Answer': props<{ questionId: string }>(),
+        'Select Round': props<{ roundId: string }>(),
+        'Show Round': emptyProps(),
+        'Select Question': props<{ questionId: string }>(),
+        'Show Question': emptyProps(),
+        'Show Answer': emptyProps(),
 
         'Do Nothing': emptyProps()
     }

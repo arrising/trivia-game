@@ -48,7 +48,11 @@ export const questionReducer = createReducer(
     }),
     on(questionActions.clearQuestions, state => {
         return { ...state, Questions: questionAdapter.removeAll({ ...state, selectedQuestionId: undefined }) };
-    })
+    }),
+    on(questionActions.setSelectedQuestion, (state, { id }) => ({
+      ...state,
+      selectedQuestionId: id
+    }))
   );
    
   export const getSelectedQuestionId = (state: QuestionState) => state.selectedQuestionId;

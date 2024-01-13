@@ -40,6 +40,36 @@ export class SessionNavigationEffects {
         );
     }, { dispatch: false });
 
+    viewQuestion$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(sessionStore.navigation.actions.viewQuestion),
+            withLatestFrom(
+                this.store.select(sessionStore.game.selectors.getSelectedGameId),
+                this.store.select(sessionStore.rounds.selectors.getSelectedRoundId),
+                this.store.select(sessionStore.questions.selectors.selectCurrentQuestionId)
+            ),
+            switchMap(([_, gameId, roundId, questionId]) => {
+                console.log('SessionNavigationEffects viewQuestion', { action: _, gameId, roundId, questionId });
+                return this.router.navigate(['/games', 'game', gameId, 'round', roundId, 'question', questionId]);
+            })
+        );
+    }, { dispatch: false });
+    
+    viewAnswer$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(sessionStore.navigation.actions.viewAnswer),
+            withLatestFrom(
+                this.store.select(sessionStore.game.selectors.getSelectedGameId),
+                this.store.select(sessionStore.rounds.selectors.getSelectedRoundId),
+                this.store.select(sessionStore.questions.selectors.selectCurrentQuestionId)
+            ),
+            switchMap(([_, gameId, roundId, questionId]) => {
+                console.log('SessionNavigationEffects viewQuestion', { action: _, gameId, roundId, questionId });
+                return this.router.navigate(['/games', 'game', gameId, 'round', roundId, 'question', questionId, 'answer']);
+            })
+        );
+    }, { dispatch: false });
+
     constructor(
         private actions$: Actions,
         private store: Store<any>,

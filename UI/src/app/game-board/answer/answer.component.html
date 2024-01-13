@@ -8,7 +8,7 @@
 
     <ng-container *ngIf="question !== undefined">
         <app-navigation-bar>
-            <a (click)="viewRound(gameId, roundId)">Back</a>
+            <a (click)="viewRound()">Back</a>
             <app-navigation-bar-menu>
                 <ul class="navigation-bar">
                     <li><app-game-select-button /></li>
@@ -17,7 +17,7 @@
             </app-navigation-bar-menu>
         </app-navigation-bar>
 
-        <div class="wrapper">
+        <div (click)="viewRound()" class="wrapper">
             <div class="text">{{question.answer}}</div>
         </div>
     </ng-container>

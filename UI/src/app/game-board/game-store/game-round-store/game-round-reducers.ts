@@ -49,20 +49,11 @@ export const roundReducer = createReducer(
   on(roundActions.clearRounds, state => {
     return { ...state, Rounds: roundAdapter.removeAll({ ...state, selectedRoundId: undefined }) };
   }),
-
   on(roundActions.setSelectedRound, (state, { id }) => ({
     ...state,
     selectedRoundId: id
   }))
 );
-
-
-/*
-export const getSelectedRoundId = (state: RoundState) => { 
-  console.log('roundReducer getSelectedRoundId', { state });
-  return state.selectedRoundId;
- };
-*/
 
 // get the selectors
 const {

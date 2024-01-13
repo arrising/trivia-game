@@ -39,7 +39,7 @@ export class AnswerComponent {
   currentQuestion$: Observable<Question | undefined> = of(undefined); 
   constructor(private _store: Store, private _service: GameService) {}
   
-  viewRound(gameId: string, roundId: string): void {
-    this._store.dispatch(sessionStore.game.actions.showRound({ roundId }));
+  viewRound(): void {
+    this._store.dispatch(sessionStore.navigation.actions.viewRound());
   }
 }

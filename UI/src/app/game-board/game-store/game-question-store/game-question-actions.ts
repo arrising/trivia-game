@@ -5,6 +5,8 @@ import { SessionQuestion } from './game-question-state';
 export const sessionQuestionActions = createActionGroup({
     source: 'Session Questions',
     events: {
+        'Set Selected question': props<{ id: string }>(),
+
         'Load Questions': props<{ questions: SessionQuestion[] }>(),
         'Load Questions Failure': (error: Error) => ({ error }),
         'Clear Questions': emptyProps(),

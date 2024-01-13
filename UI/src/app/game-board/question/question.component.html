@@ -8,11 +8,11 @@
 
     <ng-container *ngIf="question !== undefined">
         <app-navigation-bar>
-            <a (click)="viewAnswer(gameId, roundId, questionId)">Answer</a>
+            <a (click)="viewAnswer()">Answer</a>
             <app-navigation-bar-menu>
                 <ul class="navigation-bar">
                     <li>
-                        <a (click)="viewRound(gameId, roundId)">Back</a>
+                        <a (click)="viewRound()">Back</a>
                     </li>
                     <li><app-game-select-button /></li>
                     <li><app-exit-button /></li>
@@ -20,7 +20,7 @@
             </app-navigation-bar-menu>
         </app-navigation-bar>
 
-        <div class="wrapper">
+        <div (click)="viewAnswer()" class="wrapper">
             <div class="text">{{question.ask}}</div>
         </div>
     </ng-container>

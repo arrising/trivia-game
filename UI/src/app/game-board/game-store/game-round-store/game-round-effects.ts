@@ -24,9 +24,9 @@ export class SessionRoundEffects {
         );
     });
     
-    onLoadRound_selectRound$ = createEffect(() => {
+    onSelectRound_setSelectedRound$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(fromStore.game.actions.loadRound),
+            ofType(fromStore.game.actions.selectRound),
             map((action) => action.roundId
             ? fromStore.rounds.actions.setSelectedRound({ id: action.roundId })
             : fromStore.game.actions.doNothing)
@@ -39,6 +39,7 @@ export class SessionRoundEffects {
             map((action) => fromStore.navigation.actions.viewRound())
         );
     });
+    
     constructor(
         private actions$: Actions,
         private store: Store<any>,

@@ -3,14 +3,14 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { GameService } from "src/app/data/game.service";
 import { catchError, map, of, switchMap } from "rxjs";
-import * as sessionStore from '..';
+import * as fromStore from '..';
 
 @Injectable()
 
 export class SessionGameEffects {
     onGameLoaded$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(sessionStore.game.actions.setGame),
+            ofType(fromStore.game.actions.setGame),
             switchMap((action) => {
                 var allIds = action.game.rounds
                     .map(x => x.categories).flat()
@@ -19,14 +19,31 @@ export class SessionGameEffects {
 
                 return this.gameService.getQuestions(allIds).pipe(
                     map(questions => {
-                        return questions ? sessionStore.questions.actions.loadQuestions({ questions })
-                            : sessionStore.game.actions.loadGameFailure({ error: { message: "Game not Found", id: 'TBD' } })
+                        return questions ? fromStore.questions.actions.loadQuestions({ questions })
+                            : fromStore.game.actions.loadGameFailure({ error: { message: "Game not Found", id: 'TBD' } })
                     }),
-                    catchError(error => of(sessionStore.game.actions.loadGameFailure({ error })))
+                    catchError(error => of(fromStore.game.actions.loadGameFailure({ error })))
                 );
             })
         );
     });
+    
+    onSelectQuestion_setSelectedQuestion$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(fromStore.game.actions.selectQuestion),
+            map((action) => action.questionId
+            ? fromStore.questions.actions.setSelectedQuestion({ id: action.questionId })
+            : fromStore.game.actions.doNothing)
+        );
+    });
+
+    onSetSelectedQuestion_navigateToGameQuestionPage$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(fromStore.questions.actions.setSelectedQuestion),
+            map((action) => fromStore.navigation.actions.viewQuestion())
+        );
+    });
+    
 
     constructor(
         private actions$: Actions,

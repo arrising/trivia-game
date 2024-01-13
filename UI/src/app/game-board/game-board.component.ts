@@ -25,6 +25,6 @@ export class GameBoardComponent {
   constructor(private _store: Store, private _service: GameService) { }
 
   loadRound(gameId: string, roundId: string): void {
-    this._store.dispatch(sessionStore.game.actions.loadRound({ roundId }));
+    this._store.dispatch(sessionStore.game.actions.selectRound({ roundId }));
   }
 }

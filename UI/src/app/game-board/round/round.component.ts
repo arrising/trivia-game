@@ -34,7 +34,7 @@ export class RoundComponent {
   currentRound$: Observable<GameRound | undefined> = of(undefined);
   constructor(private _store: Store, private _service: GameService) { }
 
-  viewQuestion(gameId: string, roundId: string, questionId: string): void {
-    this._store.dispatch(sessionStore.game.actions.showQuestion({ questionId }));
+  viewQuestion(questionId: string): void {
+    this._store.dispatch(sessionStore.game.actions.selectQuestion({ questionId }));
   }
 }

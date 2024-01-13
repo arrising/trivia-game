@@ -1,1 +1,6 @@
+@import '../game-board-variables.scss';
 @import '../game-board-styles.scss';
+
+div.wrapper:hover {
+    background-color: $game-background-color-hover;
+}
