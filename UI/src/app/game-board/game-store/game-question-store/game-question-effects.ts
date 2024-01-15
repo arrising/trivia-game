@@ -6,8 +6,7 @@ import { catchError, map, of, switchMap } from "rxjs";
 import * as fromStore from '..';
 
 @Injectable()
-
-export class SessionGameEffects {
+export class SessionQuestionEffects {
     onGameLoaded$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.game.actions.setGame),

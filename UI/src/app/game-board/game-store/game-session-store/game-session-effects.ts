@@ -25,6 +25,20 @@ export class SessionGameEffects {
         );
     });
 
+    onShowRound_navigateToViewRoundPage$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(sessionStore.game.actions.showRound),
+            switchMap(() => [sessionStore.navigation.actions.viewRound()])
+        );
+    });
+    
+    onShowAnswer_navigateToViewAnswerPage$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(sessionStore.game.actions.showAnswer),
+            switchMap(() => [sessionStore.navigation.actions.viewAnswer()])
+        );
+    });
+    
     constructor(
         private actions$: Actions,
         private store: Store<any>,

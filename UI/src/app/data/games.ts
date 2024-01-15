@@ -13,6 +13,7 @@ export const games: Array<Game> = [
                 isCompleted: false,
                 categories: [
                     {
+                        id: 'd6eea9cf-8970-4ad6-bc40-aa08c265656e',
                         name: 'Sabbats',
                         questions: [
                             {
@@ -43,6 +44,7 @@ export const games: Array<Game> = [
                         ]
                     },
                     {
+                        id: '670bfd57-7440-46eb-8693-76b1b8481c0a',
                         name: 'Mythological Monsters',
                         questions: [
                             {
@@ -73,6 +75,7 @@ export const games: Array<Game> = [
                         ]
                     },
                     {
+                        id: '90e3ae37-0b55-42c7-8bda-585b10c9695f',
                         name: '“A” Rolling Stone',
                         questions: [
                             {
@@ -103,6 +106,7 @@ export const games: Array<Game> = [
                         ]
                     },
                     {
+                        id: 'c1164106-b693-4424-8ce9-6cc6cc35cdff',
                         name: 'The Fae',
                         questions: [
                             {
@@ -133,6 +137,7 @@ export const games: Array<Game> = [
                         ]
                     },
                     {
+                        id: '9b5bc7a7-b4b2-46b8-8ac1-f93e5cb89b09',
                         name: 'Ancient Architecture',
                         questions: [
                             {
@@ -170,6 +175,7 @@ export const games: Array<Game> = [
                 isCompleted: false,
                 categories: [
                     {
+                        id: '537e2ef1-64cd-4d99-8e5b-0f54cdb3a5e7',
                         name: 'Making a Splash',
                         questions: [
                             {

@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { QuestionState, initialQuestionState, questionAdapter } from './game-question-state';
 import { sessionQuestionActions as questionActions } from './game-question-actions';
+import { actions as gameActions } from '../game-session-store';
 
 export const questionReducer = createReducer(
     initialQuestionState,
@@ -52,6 +53,11 @@ export const questionReducer = createReducer(
     on(questionActions.setSelectedQuestion, (state, { id }) => ({
       ...state,
       selectedQuestionId: id
+    })),
+
+    on(gameActions.showRound, (state) => ({
+      ...state,
+      selectedQuestionId: undefined
     }))
   );
    

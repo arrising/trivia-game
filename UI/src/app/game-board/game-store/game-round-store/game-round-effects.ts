@@ -8,22 +8,16 @@ import * as fromStore from '..';
 @Injectable()
 
 export class SessionRoundEffects {
-
-    onSetGame_setRounds$ = createEffect(() => {
+    onCategoryLoaded$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.game.actions.setGame),
-            map((action) => fromStore.rounds.actions.setRounds({ rounds: action?.game?.rounds })
-            )
+            map((action) => {
+                var rounds = action.game.rounds;
+                return fromStore.rounds.actions.loadRounds({ rounds });
+            })
         );
     });
 
-    onSetRounds_navigateToRoundSelectorPage$ = createEffect(() => {
-        return this.actions$.pipe(
-            ofType(fromStore.rounds.actions.setRounds),
-            map((action) => fromStore.navigation.actions.viewRoundSelector())
-        );
-    });
-    
     onSelectRound_setSelectedRound$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.game.actions.selectRound),
@@ -36,7 +30,7 @@ export class SessionRoundEffects {
     onSetSelectedRound_navigateToGameRoundPage$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.rounds.actions.setSelectedRound),
-            map((action) => fromStore.navigation.actions.viewRound())
+            map((_) => fromStore.navigation.actions.viewRound())
         );
     });
     

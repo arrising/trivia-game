@@ -8,10 +8,12 @@ import * as gameSessionStore from './';
   declarations: [],
   imports: [
     CommonModule,
+    StoreModule.forFeature(gameSessionStore.category.featureKey, gameSessionStore.category.reducers),
     StoreModule.forFeature(gameSessionStore.game.featureKey, gameSessionStore.game.reducers),
     StoreModule.forFeature(gameSessionStore.questions.featureKey, gameSessionStore.questions.reducers),
     StoreModule.forFeature(gameSessionStore.rounds.featureKey, gameSessionStore.rounds.reducers),
     EffectsModule.forFeature([
+      gameSessionStore.category.effects,
       gameSessionStore.game.effects,
       gameSessionStore.questions.effects,
       gameSessionStore.navigation.effects,

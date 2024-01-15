@@ -40,7 +40,7 @@ export class QuestionComponent {
   constructor(private _store: Store, private _service: GameService) { }
 
   viewAnswer(): void {
-    this._store.dispatch(sessionStore.navigation.actions.viewAnswer());
+    this._store.dispatch(sessionStore.game.actions.showAnswer());
   }
   
   viewRound(): void {

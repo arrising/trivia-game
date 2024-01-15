@@ -14,6 +14,8 @@ export const sessionGameActions = createActionGroup({
 
         'Select Round': props<{ roundId: string }>(),
         'Show Round': emptyProps(),
+        'Select Category': props<{ categoryId: string }>(),
+        'Show Category': emptyProps(),
         'Select Question': props<{ questionId: string }>(),
         'Show Question': emptyProps(),
         'Show Answer': emptyProps(),
