@@ -3,7 +3,9 @@ import { Question } from 'src/app/models/question';
 
 export const featureId = 'game-session-question';
 
-export interface SessionQuestion extends Question { }
+export interface SessionQuestion extends Question {
+    isViewed?: boolean | undefined;
+ }
 
 export interface QuestionState extends EntityState<SessionQuestion> {
     selectedQuestionId: string | undefined;

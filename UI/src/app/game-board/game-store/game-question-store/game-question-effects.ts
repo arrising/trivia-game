@@ -27,23 +27,36 @@ export class SessionGameEffects {
             })
         );
     });
-    
+
     onSelectQuestion_setSelectedQuestion$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.game.actions.selectQuestion),
             map((action) => action.questionId
-            ? fromStore.questions.actions.setSelectedQuestion({ id: action.questionId })
-            : fromStore.game.actions.doNothing)
+                ? fromStore.questions.actions.setSelectedQuestion({ id: action.questionId })
+                : fromStore.game.actions.doNothing())
+        );
+    });
+
+    onSelectQuestion_setSelectedQuestionViewedquestionAs$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(fromStore.game.actions.selectQuestion),
+            map((action) => action.questionId
+                ? fromStore.questions.actions.updateQuestion({
+                    update: {
+                        id: action.questionId, changes: { isViewed: true }
+                    }
+                })
+                : fromStore.game.actions.doNothing())
         );
     });
 
     onSetSelectedQuestion_navigateToGameQuestionPage$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.questions.actions.setSelectedQuestion),
-            map((action) => fromStore.navigation.actions.viewQuestion())
+            map((_) => fromStore.navigation.actions.viewQuestion())
         );
     });
-    
+
 
     constructor(
         private actions$: Actions,

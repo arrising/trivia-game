@@ -29,7 +29,7 @@ export class SessionRoundEffects {
             ofType(fromStore.game.actions.selectRound),
             map((action) => action.roundId
             ? fromStore.rounds.actions.setSelectedRound({ id: action.roundId })
-            : fromStore.game.actions.doNothing)
+            : fromStore.game.actions.doNothing())
         );
     });
 
