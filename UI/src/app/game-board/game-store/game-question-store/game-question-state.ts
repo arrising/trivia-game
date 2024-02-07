@@ -4,6 +4,7 @@ import { Question } from 'src/app/models/question';
 export const featureId = 'game-session-question';
 
 export interface SessionQuestion extends Question {
+    value?: number;
     isViewed?: boolean | undefined;
  }
 
@@ -16,7 +17,7 @@ export interface QuestionStoreState {
 }
 
 export const questionAdapter: EntityAdapter<SessionQuestion> = createEntityAdapter<SessionQuestion>({
-    selectId: (e) => e.questionId
+    selectId: (e) => e.id
 });
 
 export const initialQuestionState: QuestionState = questionAdapter.getInitialState({

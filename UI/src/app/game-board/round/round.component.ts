@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { GameService } from 'src/app/data/game.service';
 import { Game } from 'src/app/models/game';
-import { GameRound } from 'src/app/models/game-round';
+import { SessionRound } from '../game-store/game-round-store/game-round-state';
 import * as sessionStore from '../game-store';
 
 @Component({
@@ -12,27 +11,16 @@ import * as sessionStore from '../game-store';
   styleUrls: ['./round.component.scss']
 })
 export class RoundComponent {
-  private _gameId: string = '';
-  @Input() set gameId(value: string) {
-    this._gameId = value;
-    this.currentGame$ = this._service.getGame(value);
-  }
-  get gameId() {
-    return this._gameId;
-  }
-
-  private _roundId: string = '';
-  @Input() set roundId(value: string) {
-    this._roundId = value;
-    this.currentRound$ = this._service.getRound(this._gameId, value);
-  }
-  get roundId() {
-    return this._roundId;
-  }
-
   currentGame$: Observable<Game | undefined> = of(undefined);
-  currentRound$: Observable<GameRound | undefined> = of(undefined);
-  constructor(private _store: Store, private _service: GameService) { }
+  currentRound$: Observable<SessionRound | undefined> = of(undefined);
+  
+  constructor(private _store: Store) { 
+  }
+
+  ngOnInit(): void {
+    this.currentGame$ = this._store.select(sessionStore.game.selectors.getSelectedGame);
+    this.currentRound$ = this._store.select(sessionStore.rounds.selectors.getSelectedRound);
+  }
 
   viewQuestion(questionId: string): void {
     this._store.dispatch(sessionStore.game.actions.selectQuestion({ questionId }));

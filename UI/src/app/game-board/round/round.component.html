@@ -13,14 +13,14 @@
             </app-navigation-bar-title>
             <app-navigation-bar-menu>
                 <ul class="navigation-bar">
-                    <li><a routerLink="/games/game/{{gameId}}">Rounds</a></li>
+                    <li><a routerLink="/games/game/{{game.id}}">Rounds</a></li>
                     <li><app-game-select-button /></li>
                     <li><app-exit-button /></li>
                 </ul>
             </app-navigation-bar-menu>
 
             <div class="round-container">
-                <table *ngIf="true" class="categories">
+                <table class="categories">
                     <tr>
                         <th *ngFor="let category of round.categories">
                             {{category.name}}
@@ -31,9 +31,7 @@
                             <table *ngIf="true" class="category">
                                 <tr *ngFor="let question of category.questions">
                                     <td>
-                                        <div class="question-button" (click)="viewQuestion(question.questionId)">
-                                            {{game.valueSymbol}}{{question.value}}
-                                        </div>
+                                        <app-question-button [questionId]="question.questionId"></app-question-button>
                                     </td>
                                 </tr>
                             </table>

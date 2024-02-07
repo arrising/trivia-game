@@ -32,8 +32,8 @@ export const getSelectedRoundId = createSelector(
     (state) => state?.selectedRoundId
 );
 
-export const getCurrentRound = createSelector(
+export const getSelectedRound = createSelector(
     selectRoundEntities,
     getSelectedRoundId,
-    (questionEntities, userId) => userId && questionEntities[userId]
+    (questionEntities, id) => id && id !== '' ? questionEntities[id] : undefined
 );

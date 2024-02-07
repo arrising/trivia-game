@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { GameService } from 'src/app/data/game.service';
-import { Question } from 'src/app/models/question';
 import * as sessionStore from '../game-store';
+import { SessionQuestion } from '../game-store/game-question-store/game-question-state';
 
 @Component({
   selector: 'app-question',
@@ -11,33 +11,13 @@ import * as sessionStore from '../game-store';
   styleUrls: ['./question.component.scss']
 })
 export class QuestionComponent {
-  private _gameId: string = '';
-  @Input() set gameId(value: string) {
-    this._gameId = value;
-  }
-  get gameId() {
-    return this._gameId;
-  }
+  currentQuestion$: Observable<SessionQuestion | undefined> = of(undefined);
 
-  private _roundId: string = '';
-  @Input() set roundId(value: string) {
-    this._roundId = value;
-  }
-  get roundId() {
-    return this._roundId;
-  }
-
-  private _questionId: string = '';
-  @Input() set questionId(value: string) {
-    this._questionId = value;
-    this.currentQuestion$ = this._service.getQuestion(value);
-  }
-  get questionId() {
-    return this._questionId;
-  }
-
-  currentQuestion$: Observable<Question | undefined> = of(undefined);
   constructor(private _store: Store, private _service: GameService) { }
+
+  ngOnInit(): void {
+    this.currentQuestion$ = this._store.select(sessionStore.questions.selectors.getSelectedQuestion);
+  }
 
   viewAnswer(): void {
     this._store.dispatch(sessionStore.game.actions.showAnswer());

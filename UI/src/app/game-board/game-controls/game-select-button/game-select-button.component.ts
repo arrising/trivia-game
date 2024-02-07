@@ -12,6 +12,6 @@ export class GameSelectButtonComponent {
   constructor(private _store: Store) { }
 
   onCLick(): void {
-    this._store.dispatch(sessionStore.navigation.actions.viewRoundSelector());
+    this._store.dispatch(sessionStore.navigation.actions.viewGameSelector());
   }
 }

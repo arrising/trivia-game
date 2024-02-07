@@ -13,7 +13,7 @@ export const getSelectedGameId = createSelector(
     state => state?.selectedGameId
 );
 
-export const selectCurrentGame = createSelector(
+export const getSelectedGame = createSelector(
     selectGameState,
     (state: GameState | undefined) => state?.selectedGame ?? undefined
 );

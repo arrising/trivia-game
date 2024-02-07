@@ -1,5 +1,5 @@
 export interface Question {
-    questionId: string;
+    id: string;
     ask: string;
     answer: string;
     alternatives?: Array<string>;

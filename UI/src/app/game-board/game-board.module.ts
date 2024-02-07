@@ -9,6 +9,7 @@ import { QuestionComponent } from './question/question.component';
 import { AnswerComponent } from './answer/answer.component';
 import { GameControlsModule } from './game-controls/game-controls.module';
 import { GameStoreModule } from './game-store/game-store.module';
+import { QuestionButtonComponent } from './question-button/question-button.component';
 
 const gameBoardRoutes: Routes = [
   { path: 'games', component: GameSelectorComponent },
@@ -24,7 +25,8 @@ const gameBoardRoutes: Routes = [
     GameSelectorComponent,
     RoundComponent,
     QuestionComponent,
-    AnswerComponent
+    AnswerComponent,
+    QuestionButtonComponent
   ],
   imports: [
     CommonModule,

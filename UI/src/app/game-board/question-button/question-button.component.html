@@ -1,0 +1,13 @@
+<ng-container *ngIf="{ 
+    game: currentGame$ | async,
+    question: currentQuestion$ | async
+    } as data">
+    
+    <div *ngIf="data.question?.isViewed" class="question-button inactive">
+        &nbsp;
+    </div>
+
+    <div *ngIf="!data.question?.isViewed" class="question-button active" (click)="viewQuestion(questionId)">
+        {{data.game?.valueSymbol}}{{data.question?.value}}
+    </div>
+</ng-container>

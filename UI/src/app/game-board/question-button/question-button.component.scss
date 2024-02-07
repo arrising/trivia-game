@@ -1,0 +1,14 @@
+@import '../game-board-variables.scss';
+
+div.question-button {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    font-size: 400%;
+    color: $game-text-color;
+    align-items: center;
+}
+div.question-button.active:hover {
+    cursor: pointer;
+    background-color: $game-background-color-hover;
+}

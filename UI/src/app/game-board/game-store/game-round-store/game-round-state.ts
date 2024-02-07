@@ -4,7 +4,7 @@ import { GameRound } from 'src/app/models/game-round';
 export const featureId = 'game-session-rounds';
 
 export interface SessionRound extends GameRound { 
-    isCompleted: boolean;
+    isCompleted?: boolean;
 }
 
 export interface RoundState extends EntityState<SessionRound> {

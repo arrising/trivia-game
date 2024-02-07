@@ -61,8 +61,6 @@ export const questionReducer = createReducer(
     }))
   );
    
-  export const getSelectedQuestionId = (state: QuestionState) => state.selectedQuestionId;
-   
   // get the selectors
   const {
     selectIds,

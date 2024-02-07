@@ -8,12 +8,6 @@ export const selectQuestionState = createSelector(
     selectSessionState,
     state => state.questions
 );
-
-export const selectQuestionIds = createSelector(
-    selectQuestionState,
-    fromReducers.selectQuestionIds // shorthand for usersState => sessionReducers.selectQuestionIds(usersState)
-);
-
 export const selectQuestionEntities = createSelector(
     selectQuestionState,
     fromReducers.selectQuestionEntities
@@ -26,13 +20,18 @@ export const selectQuestionTotal = createSelector(
     selectQuestionState,
     fromReducers.selectQuestionTotal
 );
-export const selectCurrentQuestionId = createSelector(
+export const getSelectedQuestionId = createSelector(
     selectQuestionState,
-    fromReducers.getSelectedQuestionId
+    (state) => state?.selectedQuestionId
 );
 
-export const selectCurrentQuestion = createSelector(
+export const getSelectedQuestion = createSelector(
     selectQuestionEntities,
-    selectCurrentQuestionId,
-    (questionEntities, userId) => userId && questionEntities[userId]
+    getSelectedQuestionId,
+    (questionEntities, id) => id && id !== '' ? questionEntities[id] : undefined
 );
+
+export const getQuestion = (props: { id: string }) =>
+  createSelector(selectQuestionEntities, (questionEntities) => {
+    return  props && props.id ? questionEntities[props.id] : undefined;
+  });

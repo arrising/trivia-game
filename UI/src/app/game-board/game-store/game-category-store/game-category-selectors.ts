@@ -34,5 +34,5 @@ export const selectCurrentCategoryId = createSelector(
 export const selectCurrentCategory = createSelector(
     selectCategoryEntities,
     selectCurrentCategoryId,
-    (categoryEntities, userId) => userId && categoryEntities[userId]
+    (categoryEntities, id) => id && categoryEntities[id]
 );

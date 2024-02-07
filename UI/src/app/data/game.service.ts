@@ -26,10 +26,10 @@ export class GameService {
   }
 
   getQuestion(questionId: string): Observable<Question | undefined> {
-    return of(questions.find(x => x.questionId == questionId));
+    return of(questions.find(x => x.id == questionId));
   }
 
   getQuestions(questionIds: Array<string>): Observable<Array<Question> | undefined> {
-    return of(questions.filter(x => questionIds.includes(x.questionId)));
+    return of(questions.filter(x => questionIds.includes(x.id)));
   }
 }

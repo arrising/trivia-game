@@ -46,7 +46,7 @@ export class SessionNavigationEffects {
             withLatestFrom(
                 this.store.select(sessionStore.game.selectors.getSelectedGameId),
                 this.store.select(sessionStore.rounds.selectors.getSelectedRoundId),
-                this.store.select(sessionStore.questions.selectors.selectCurrentQuestionId)
+                this.store.select(sessionStore.questions.selectors.getSelectedQuestionId)
             ),
             switchMap(([_, gameId, roundId, questionId]) => {
                 console.log('SessionNavigationEffects viewQuestion', { action: _, gameId, roundId, questionId });
@@ -61,7 +61,7 @@ export class SessionNavigationEffects {
             withLatestFrom(
                 this.store.select(sessionStore.game.selectors.getSelectedGameId),
                 this.store.select(sessionStore.rounds.selectors.getSelectedRoundId),
-                this.store.select(sessionStore.questions.selectors.selectCurrentQuestionId)
+                this.store.select(sessionStore.questions.selectors.getSelectedQuestionId)
             ),
             switchMap(([_, gameId, roundId, questionId]) => {
                 console.log('SessionNavigationEffects viewQuestion', { action: _, gameId, roundId, questionId });

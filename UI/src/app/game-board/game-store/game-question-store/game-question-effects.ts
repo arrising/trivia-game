@@ -4,6 +4,7 @@ import { Store } from "@ngrx/store";
 import { GameService } from "src/app/data/game.service";
 import { catchError, map, of, switchMap } from "rxjs";
 import * as fromStore from '..';
+import { SessionQuestion } from "./game-question-state";
 
 @Injectable()
 export class SessionQuestionEffects {
@@ -11,13 +12,18 @@ export class SessionQuestionEffects {
         return this.actions$.pipe(
             ofType(fromStore.game.actions.setGame),
             switchMap((action) => {
-                var allIds = action.game.rounds
+                var allQuestions = action.game.rounds
                     .map(x => x.categories).flat()
-                    .map(x => x.questions).flat()
-                    .map(x => x.questionId);
+                    .map(x => x.questions).flat();
+                var allIds = allQuestions.map(x => x.questionId);
 
                 return this.gameService.getQuestions(allIds).pipe(
-                    map(questions => {
+                    map(results => {
+                        var questions = results?.map(x => ({
+                            ...x,
+                            value: allQuestions.find(q => q.questionId === x.id)?.value,
+                            isViewed: false
+                        } as SessionQuestion));
                         return questions ? fromStore.questions.actions.loadQuestions({ questions })
                             : fromStore.game.actions.loadGameFailure({ error: { message: "Game not Found", id: 'TBD' } })
                     }),
