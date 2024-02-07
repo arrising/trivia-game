@@ -172,6 +172,110 @@ export const games: Array<Game> = [
                                 value: 1000
                             }
                         ]
+                    },
+                    {
+                        id: '181a6157-1c47-4e57-823f-d547ad7bd18c',
+                        name: 'A Match Made in Heaven',
+                        questions: [
+                            {
+                                questionId: 'e8ea9b0c-2dd0-4516-b094-4040edc38603',
+                                value: 200
+                            },
+                            {
+                                questionId: '7f61249a-8e75-411a-af82-f15a010563c9',
+                                value: 400
+                            },
+                            {
+                                questionId: '230d654b-1c51-46f8-a26d-16acf473bfa7',
+                                value: 600
+                            },
+                            {
+                                questionId: '12d5fa9c-3175-448b-9ad1-ee5f34499b04',
+                                value: 800
+                            },
+                            {
+                                questionId: '5970129b-de08-432c-8b27-abb18e9e27d7',
+                                value: 1000
+                            }
+                        ]
+                    },
+                    {
+                        id: '52b12ccb-62dd-4463-98b3-e782e4c3f842',
+                        name: 'Rising Stars',
+                        questions: [
+                            {
+                                questionId: '0ddf0d94-73a0-4b42-b95c-0be488ed937f',
+                                value: 200
+                            },
+                            {
+                                questionId: '38b76464-bae9-4293-9879-83c813fdc298',
+                                value: 400
+                            },
+                            {
+                                questionId: 'bb0991a7-e4db-4b41-8283-2f69ced18de5',
+                                value: 600
+                            },
+                            {
+                                questionId: '4e1941ca-d413-453d-8f95-07f1b84a12a1',
+                                value: 800
+                            },
+                            {
+                                questionId: '2ca7c778-6739-4ab7-a4a0-34392f509c89',
+                                value: 1000
+                            }
+                        ]
+                    },
+                    {
+                        id: '12606096-9cb4-4cae-ac6b-b58296e62152',
+                        name: 'Lost Cities',
+                        questions: [
+                            {
+                                questionId: 'b4c97560-d291-4c4d-a987-bf9922103ad6',
+                                value: 200
+                            },
+                            {
+                                questionId: 'b9cd8345-9793-463b-b3e1-f6b71799849b',
+                                value: 400
+                            },
+                            {
+                                questionId: '488588d4-e3bb-4dda-a644-8758b4aaa287',
+                                value: 600
+                            },
+                            {
+                                questionId: '474255a4-a160-4dfc-9fcc-a495e5e1167b',
+                                value: 800
+                            },
+                            {
+                                questionId: '9d50f70f-a4e4-4d81-92d7-2c1825d3ff28',
+                                value: 1000
+                            }
+                        ]
+                    },
+                    {
+                        id: 'e0989a35-a762-469d-a351-bcedb98a67f4',
+                        name: 'Clash of the Titans',
+                        questions: [
+                            {
+                                questionId: '5499d4be-156b-4e5a-91ce-9a4c5871e5dd',
+                                value: 200
+                            },
+                            {
+                                questionId: '2e52e3ea-3451-4c76-a1a4-ad8cdc27b83f',
+                                value: 400
+                            },
+                            {
+                                questionId: '3651d56d-0059-447e-ad08-8c2f72295b27',
+                                value: 600
+                            },
+                            {
+                                questionId: '00937294-311d-4aa1-affd-0d961540659b',
+                                value: 800
+                            },
+                            {
+                                questionId: '4b647e8d-66e4-4e7e-8dfd-8f83aeba1f33',
+                                value: 1000
+                            }
+                        ]
                     }
                 ]
             }
