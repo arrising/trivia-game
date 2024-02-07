@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { Game } from 'src/app/models/game';
-import * as sessionStore from '../game-store';
 import { SessionQuestion } from '../game-store/game-question-store/game-question-state';
+import * as sessionStore from '../game-store';
 
 @Component({
   selector: 'app-question-button',

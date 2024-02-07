@@ -1,0 +1,51 @@
+@import '../game-board-variables.scss';
+
+$game-border-color: $game-text-color;
+$game-border-width: 2px;
+$game-border: $game-border-width solid $game-text-color;
+$category-height: 4em;
+
+table.categories {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    width: 100%;
+    height: 100%;
+    background-color: $game-background-color;
+    color: $game-text-color;
+    text-align: center;
+
+    th,
+    td {
+        border: $game-border;
+        overflow: hidden;
+        max-width: 25%;
+    }
+
+    th {
+        font-size: 200%;
+        height: $category-height;
+    }
+
+    td {
+        border-left: $game-border;
+        border-right: $game-border;
+        padding-left: 0;
+    }
+}
+
+table.category {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 0;
+    border-spacing: 0;
+
+    td {
+        border: 0;
+        border-spacing: 0;
+        padding: .22em;
+        border-bottom: $game-border;
+    }
+}

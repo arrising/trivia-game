@@ -36,3 +36,8 @@ export const selectCurrentCategory = createSelector(
     selectCurrentCategoryId,
     (categoryEntities, id) => id && categoryEntities[id]
 );
+
+export const getCategory = (props: { id: string }) =>
+  createSelector(selectCategoryEntities, (categoryEntities) => {
+    return  props && props.id ? categoryEntities[props.id] : undefined;
+  });

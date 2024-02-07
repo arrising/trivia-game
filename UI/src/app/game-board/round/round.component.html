@@ -20,21 +20,10 @@
             </app-navigation-bar-menu>
 
             <div class="round-container">
-                <table class="categories">
+                <table class="round-table">
                     <tr>
-                        <th *ngFor="let category of round.categories">
-                            {{category.name}}
-                        </th>
-                    </tr>
-                    <tr>
-                        <td *ngFor="let category of round.categories">
-                            <table *ngIf="true" class="category">
-                                <tr *ngFor="let question of category.questions">
-                                    <td>
-                                        <app-question-button [questionId]="question.questionId"></app-question-button>
-                                    </td>
-                                </tr>
-                            </table>
+                        <td *ngFor="let categoryId of round.categoryIds">
+                            <app-category-column [categoryId]="categoryId"></app-category-column>
                         </td>
                     </tr>
                 </table>

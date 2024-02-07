@@ -10,10 +10,9 @@ import { SessionQuestion } from "./game-question-state";
 export class SessionQuestionEffects {
     onGameLoaded$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(fromStore.game.actions.setGame),
+            ofType(fromStore.category.actions.loadCategories),
             switchMap((action) => {
-                var allQuestions = action.game.rounds
-                    .map(x => x.categories).flat()
+                var allQuestions = action.categories
                     .map(x => x.questions).flat();
                 var allIds = allQuestions.map(x => x.questionId);
 
@@ -32,7 +31,7 @@ export class SessionQuestionEffects {
             })
         );
     });
-
+    
     onSelectQuestion_setSelectedQuestion$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.game.actions.selectQuestion),

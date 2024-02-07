@@ -1,9 +1,10 @@
 import { EntityAdapter, EntityState, createEntityAdapter } from '@ngrx/entity';
 import { Category } from 'src/app/models/category';
+import { GameCategory } from 'src/app/models/game-category';
 
 export const featureId = 'game-session-category';
 
-export interface SessionCategory extends Category {
+export interface SessionCategory extends GameCategory {
     isComplete?: boolean | undefined;
  }
 

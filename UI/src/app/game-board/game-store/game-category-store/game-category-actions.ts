@@ -1,13 +1,14 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { Update, EntityMap, EntityMapOne, Predicate } from '@ngrx/entity';
 import { SessionCategory } from './game-category-state';
+import { GameCategory } from 'src/app/models/game-category';
 
 export const sessionCategoryActions = createActionGroup({
     source: 'Session Categories',
     events: {
         'Set Selected category': props<{ id: string }>(),
 
-        'Load Categories': props<{ categories: SessionCategory[] }>(),
+        'Load Categories': props<{ categories: GameCategory[] }>(),
         'Load Categories Failure': (error: Error) => ({ error }),
         'Clear Categories': emptyProps(),
         'Set Category': props<{ category: SessionCategory }>(),

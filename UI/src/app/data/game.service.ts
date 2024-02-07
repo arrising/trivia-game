@@ -4,7 +4,9 @@ import { Game } from '../models/game';
 import { games } from './games';
 import { Question } from '../models/question';
 import { questions } from './questions';
+import { categories } from './categories';
 import { GameRound } from '../models/game-round';
+import { GameCategory } from '../models/game-category';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,10 @@ export class GameService {
 
   getGame(gameId: string): Observable<Game | undefined> {
     return of(games.find(x => x.id == gameId));
+  }
+
+  getCategories(catrgoryIds: Array<string>): Observable<Array<GameCategory> | undefined> {
+    return of(categories.filter(x => catrgoryIds.includes(x.id)));
   }
 
   getRound(gameId: string, roundId: string): Observable<GameRound | undefined> {

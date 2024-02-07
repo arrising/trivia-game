@@ -25,7 +25,8 @@ export const questions: Array<Question> = [
        id: 'b24f3d67-9126-4639-b9fa-e6eb0412734d',
         ask: 'Catholics celebrate the feast  of St. Blaise at this fire Sabbat',
         answer: 'Imbolc'
-    }, {
+    },
+    {
        id: 'bc05d953-1f39-4056-875b-a0d5d5733cc4',
         ask: 'This mythological guardian ate any who answered her riddles incorrectly',
         answer: 'The Sphynx'
@@ -160,7 +161,6 @@ export const questions: Array<Question> = [
         ask: 'Goddess of the sea & its creatures, she was sought by shamans for the release of seals for hunting',
         answer: 'Sedna'
     },
-    
     {
        id: 'e8ea9b0c-2dd0-4516-b094-4040edc38603',
         ask: 'From forth the fatal loins of these two foes, a pair of star-crossed lovers take their life',
