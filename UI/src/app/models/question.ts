@@ -5,3 +5,17 @@ export interface Question {
     alternatives?: Array<string>;
     note?: string;
 }
+export interface QuestionData extends Question {
+    value: number;
+}
+
+export interface QuestionPointer {
+    questionId: string;
+    value: number;
+}
+
+// TODO:  Depricate
+export interface GameQuestion {
+    questionId: string;
+    value: number;
+}

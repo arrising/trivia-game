@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { RoundState, initialRoundState, roundAdapter } from './game-round-state';
+import { initialRoundState, roundAdapter } from './game-round-state';
 import { sessionRoundActions as roundActions } from './game-round-actions';
 
 export const roundReducer = createReducer(

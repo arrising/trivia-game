@@ -1,8 +1,15 @@
-import { GameRound } from "./game-round";
+import { RoundData } from "./round";
 
 export interface Game {
     id: string;
     name: string;
     valueSymbol: string;
-    rounds: Array<GameRound>;
+}
+
+export interface GameInstance extends Game {
+    roundIds: Array<string>;
+}
+
+export interface GameData extends Game {
+    rounds: Array<RoundData>;
 }

@@ -1,5 +1,5 @@
 import { EntityAdapter, EntityState, createEntityAdapter } from '@ngrx/entity';
-import { GameRound } from 'src/app/models/game-round';
+import { GameRound } from 'src/app/models/round';
 
 export const featureId = 'game-session-rounds';
 

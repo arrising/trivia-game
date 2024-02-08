@@ -2,22 +2,27 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { GameService } from "src/app/data/game.service";
-import { map } from "rxjs";
+import { catchError, map, of, switchMap } from "rxjs";
 import * as fromStore from '..';
 
 @Injectable()
-
 export class SessionRoundEffects {
-    onCategoryLoaded$ = createEffect(() => {
+    onSetGame_LoadRounds$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.game.actions.setGame),
-            map((action) => {
-                var rounds = action.game.rounds;
-                return fromStore.rounds.actions.loadRounds({ rounds });
+            switchMap((action) => {
+                var allIds = action.game.roundIds;
+                return this.gameService.getRounds(allIds).pipe(
+                    map(rounds => {
+                        return rounds ? fromStore.rounds.actions.loadRounds({ rounds })
+                            : fromStore.rounds.actions.loadRoundsFailure({ error: { message: "Round not Found", id: 'TBD' } })
+                    }),
+                    catchError(error => of(fromStore.game.actions.loadGameFailure({ error })))
+                );
             })
         );
     });
-
+    
     onSelectRound_setSelectedRound$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.game.actions.selectRound),

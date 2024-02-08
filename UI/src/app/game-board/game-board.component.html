@@ -1,14 +1,14 @@
-<ng-container *ngIf="currentGame$ | async as game">
-    <app-page *ngIf="game === undefined">
+<ng-container *ngIf="{game: currentGame$ | async, rounds: gameRounds$ | async } as data">
+    <app-page *ngIf="data.game === undefined">
         <app-navigation-bar-title>
             <app-exit-button />
         </app-navigation-bar-title>
         Game not selected
     </app-page>
 
-    <app-page *ngIf="game !== undefined">
+    <app-page *ngIf="data.game !== undefined">
         <app-navigation-bar-title>
-            Game: {{game.name}}
+            Game: {{data.game?.name}}
         </app-navigation-bar-title>
         <app-navigation-bar-menu>
             <ul class="navigation-bar">
@@ -18,8 +18,8 @@
         </app-navigation-bar-menu>
 
         <ul class="no-bullet">
-            <li *ngFor="let round of game.rounds">
-                <button (click)="loadRound(gameId, round.id)">{{round.type}}</button>
+            <li *ngFor="let round of data.rounds">
+                <button (click)="loadRound(round.id)">{{round.type}}</button>
             </li>
         </ul>
     </app-page>

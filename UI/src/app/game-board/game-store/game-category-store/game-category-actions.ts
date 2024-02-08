@@ -1,7 +1,7 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { Update, EntityMap, EntityMapOne, Predicate } from '@ngrx/entity';
 import { SessionCategory } from './game-category-state';
-import { GameCategory } from 'src/app/models/game-category';
+import { GameCategory } from 'src/app/models/category';
 
 export const sessionCategoryActions = createActionGroup({
     source: 'Session Categories',

@@ -7,11 +7,11 @@ import * as fromStore from '..';
 
 @Injectable()
 export class SessionCategoryEffects {
-    onGameLoaded$ = createEffect(() => {
+    onloadRounds_LoadCategories$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(fromStore.game.actions.setGame),
+            ofType(fromStore.rounds.actions.loadRounds),
             switchMap((action) => {
-                var allIds = action.game.rounds.map(x => x.categoryIds).flat();
+                var allIds = action.rounds.map(x => x.categoryIds).flat();
 
                 return this.gameService.getCategories(allIds).pipe(
                     map(categories => {

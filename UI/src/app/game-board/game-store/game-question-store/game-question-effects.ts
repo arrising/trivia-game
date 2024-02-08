@@ -8,7 +8,7 @@ import { SessionQuestion } from "./game-question-state";
 
 @Injectable()
 export class SessionQuestionEffects {
-    onGameLoaded$ = createEffect(() => {
+    onloadCategories_loadQuestions$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.category.actions.loadCategories),
             switchMap((action) => {
@@ -60,7 +60,6 @@ export class SessionQuestionEffects {
             map((_) => fromStore.navigation.actions.viewQuestion())
         );
     });
-
 
     constructor(
         private actions$: Actions,

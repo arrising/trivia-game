@@ -49,7 +49,6 @@ export class SessionNavigationEffects {
                 this.store.select(sessionStore.questions.selectors.getSelectedQuestionId)
             ),
             switchMap(([_, gameId, roundId, questionId]) => {
-                console.log('SessionNavigationEffects viewQuestion', { action: _, gameId, roundId, questionId });
                 return this.router.navigate(['/games', 'game', gameId, 'round', roundId, 'question', questionId]);
             })
         );
@@ -64,7 +63,6 @@ export class SessionNavigationEffects {
                 this.store.select(sessionStore.questions.selectors.getSelectedQuestionId)
             ),
             switchMap(([_, gameId, roundId, questionId]) => {
-                console.log('SessionNavigationEffects viewQuestion', { action: _, gameId, roundId, questionId });
                 return this.router.navigate(['/games', 'game', gameId, 'round', roundId, 'question', questionId, 'answer']);
             })
         );

@@ -8,7 +8,7 @@ export const sessionRoundActions = createActionGroup({
         'Set Selected Round': props<{ id: string }>(),
 
         'Load Rounds': props<{ rounds: SessionRound[] }>(),
-        'Load Rounds Failure': (error: Error) => ({ error }),
+        'Load Rounds Failure': (error: any | Error) => ({ error }),
         'Clear Rounds': emptyProps(),
         'Set Round': props<{ round: SessionRound }>(),
         'Set Rounds': props<{ rounds: SessionRound[] }>(),
