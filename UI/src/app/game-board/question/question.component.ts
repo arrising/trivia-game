@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { GameService } from 'src/app/data/game.service';
-import * as sessionStore from '../game-store';
 import { SessionQuestion } from '../game-store/game-question-store/game-question-state';
+import * as sessionStore from '../game-store';
 
 @Component({
   selector: 'app-question',
@@ -13,7 +12,7 @@ import { SessionQuestion } from '../game-store/game-question-store/game-question
 export class QuestionComponent {
   currentQuestion$: Observable<SessionQuestion | undefined> = of(undefined);
 
-  constructor(private _store: Store, private _service: GameService) { }
+  constructor(private _store: Store) { }
 
   ngOnInit(): void {
     this.currentQuestion$ = this._store.select(sessionStore.questions.selectors.getSelectedQuestion);
