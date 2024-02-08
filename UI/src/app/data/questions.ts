@@ -264,5 +264,275 @@ export const questions: Array<Question> = [
         ask: 'Mother of the Fates, she personified law & order',
         answer: 'Who is Themis',
         alternatives: ['Ananke', 'Nyx']
+    },
+    {
+        id: 'd5e43069-85f5-4a0c-99ac-55242c0c5a91',
+        ask: 'This ancient structure is the only manmade object that can be seen from space',
+        answer: 'The Great Wall of China'
+    },
+    {
+        id: '59e3df4d-27cb-4bd7-813b-ecb2a5766887',
+        ask: 'According to some myths, this ancient structure was the birth place of all the world`s languages',
+        answer: 'The Tower of Babel'
+    },
+    {
+        id: 'e3b401a9-c740-41f3-89cf-2afe0f2a44dd',
+        ask: 'The Statue of Liberty has three references to this ancient statue',
+        answer: 'The Colossus of Rhodes',
+        note: 'The Statue of Liberty is the same height, has solar rays on her head, and the poem she carries refers to the Colossus'
+    },
+    {
+        id: 'd8360e08-a242-4c89-9dcb-4ba8cee7091f',
+        ask: 'The Great Pyramid at Giza points directly at this constellation',
+        answer: 'Orion'
+    },
+    {
+        id: 'bc4c0e71-917e-42a2-aae2-59b0342d41cd',
+        ask: 'The shadow of a serpent crawls up it every equinox',
+        answer: 'The Temple of Kukulcan',
+        alternatives: ['El Castillo'],
+        note: 'The Feathered shadow of Kukulcan, or Quetzalcoatl can be seen at the rising and setting of the sun along the side of the North staircase'
+    },
+    {
+        id: '5631911e-6287-4642-8f33-902e5b2aeb52',
+        ask: 'This Horn of Plenty, filled with the bounty of the season is associated with Mabon',
+        answer: 'The Cornucopia'
+    },
+    {
+        id: 'c4257b7d-0190-47d2-9257-92dc0b4b9c4e',
+        ask: 'This fire festival marks the mid point between winter and summer',
+        answer: 'Imbolc',
+        alternatives: ['Candlemas']
+    },
+    {
+        id: '395094c4-7451-46a7-9e86-7750f60c7f57',
+        ask: 'This Sabbat occurs at the same time of year as the Roman festival of Floralia',
+        answer: 'Beltane'
+    },
+    {
+        id: '10b11cb6-de29-47f9-83cd-eb58d60d82f5',
+        ask: 'This Sabbat is named after the Celtic deity who by legend established it in honor of his foster mother',
+        answer: 'Lughnassadh',
+        alternatives: ['Lammas']
+    },
+    {
+        id: '288ef5a9-9a81-430a-8645-9efe9a021b5a',
+        ask: 'In 1643 the British Parliament abolished this heathen holiday',
+        answer: 'Yule'
+    },
+    {
+        id: '6b06d73a-3c7c-4ffc-bbb1-c3f5dda000f9',
+        ask: 'This underworld goddess was returned to the land of the living due to the extremity of her mother`s mourning',
+        answer: 'Persephone',
+        alternatives: ['Proserpina']
+    },
+    {
+        id: 'b63f3364-aad4-43b2-accb-305e34938153',
+        ask: 'He was also a god of crops, minerals and prosperity as well as the Underworld',
+        answer: 'Hades',
+        alternatives: ['Pluto']
+    },
+    {
+        id: '2c0abb23-432b-4f62-aa05-60a289a6929e',
+        ask: 'If your heart weighs as evil, Anubis would feed it to her',
+        answer: 'Ammit'
+    },
+    {
+        id: 'b01e9fa0-5da7-4ea2-8a88-ca89e5f92c67',
+        ask: 'These 10 Chinese underworld rulers judge the fate of a soul after death',
+        answer: 'The Yama-Kings'
+    },
+    {
+        id: 'dbbdc392-beaa-4b1c-a8f2-5ca0f8c2e92a',
+        ask: 'Inanna was forced to strip naked in order to visit her realm',
+        answer: 'Erishkigal'
+    },
+    {
+        id: '885df359-f7f7-4151-a543-43b475987f9e',
+        ask: 'This mythical utopia is rumored to be hidden in the Kunlun Mountains',
+        answer: 'Shangri-La'
+    },
+    {
+        id: '401a5a0a-5f08-4ced-be2e-7b9df6d5a27a',
+        ask: 'Juan Ponce de León died in his quest to discover this',
+        answer: 'The Fountain of Youth'
+    },
+    {
+        id: '979eb4f7-4597-4585-92c4-57a913c3492e',
+        ask: 'This place was believed to lie on the floor of the Indian Ocean',
+        answer: 'Lemuria'
+    },
+    {
+        id: '5cc04ecc-ce0a-4da9-9a17-ec154991bffb',
+        ask: 'This Mystical Isle was also known for its apples',
+        answer: 'Avalon'
+    },
+    {
+        id: '820039ef-7ae5-416d-af6f-59a3c131ad2d',
+        ask: 'Some scholars believe that references to this mythical city actually were a reference to a person instead of a place',
+        answer: 'El Dorado'
+    },
+    {
+        id: '3ec622a8-0c5c-48ba-9952-83247729bc85',
+        ask: 'This brew is made from fermented honey',
+        answer: 'Mead'
+    },
+    {
+        id: 'eda8bcbd-60f6-4001-b1b3-90f009a4e696',
+        ask: 'This Olympian brew was reputed to grant immortality',
+        answer: 'Ambrosia'
+    },
+    {
+        id: '11b334b7-4e3d-4030-b665-1fe9c1cb624a',
+        ask: 'Egypt was spared when Sekhmet was tricked into drinking this',
+        answer: 'Beer colored red with ochre',
+        alternatives: ['Beer dyed red']
+    },
+    {
+        id: '5ea68428-b24f-42e1-9915-079e0b0d1bbf',
+        ask: 'He was the first recorded in the Old Testament to make alcohol',
+        answer: 'Noah'
+    },
+    {
+        id: '1194b5d0-fda5-4310-8870-ca17b785c1fe',
+        ask: 'This ancient Babylonian law code included laws regulating beer and beer parlors',
+        answer: 'The Code of Hammurabi'
+    },
+    {
+        id: '2e410fde-7e2a-4750-b67c-26088a098d69',
+        ask: 'This 15th tome was used to identify a witch',
+        answer: 'Malleus Maleficarum',
+        alternatives: ['Hammer of the Witches']
+    },
+    {
+        id: 'c1a74e5a-8914-4724-8aae-b09764bdb067',
+        ask: 'This French woman was executed for crimes including Witchcraft, Heresy, and dressing in the manner of a man',
+        answer: 'Joan of Arc'
+    },
+    {
+        id: '06417b68-adb8-4f67-9105-f574951e7ed1',
+        ask: 'This Salem man\'s last words were reputed to be "More Weight"',
+        answer: 'Giles Corey'
+    },
+    {
+        id: 'e19dfb71-5091-4f17-83bd-3f64b6891605',
+        ask: 'He issued the Papal Bull disbanding the prosecuted Order of the Knights Templar',
+        answer: 'Pope Clement V'
+    },
+    {
+        id: '074d5fda-e91c-438e-9ff6-5893a72d80c2',
+        ask: 'In 1573 he was executed for witchcraft, lycanthropy, and "eating meat on a Friday"',
+        answer: 'Gilles Garnier',
+        alternatives: ['the Werewolf of Dole', 'The Hermit of St Bonnot']
+    },
+    {
+        id: '421ee45f-a485-4938-939e-1958050d14ba',
+        ask: 'Though not associated with healing, his symbol has been associated with doctors',
+        answer: 'Mercury',
+        note: 'This category is looking for the Roman name, not the Greek'
+    },
+    {
+        id: 'b5ccb629-3d2b-45e9-911c-5eec6233ee99',
+        ask: 'She is the Roman Goddess of Nature, Fertility, and Childbirth',
+        answer: 'Diana',
+        note: 'This category is looking for the Roman name, not the Greek'
+    },
+    {
+        id: 'f07f937a-6e6f-41ca-9153-cede909478e3',
+        ask: 'Some say he was born from a silver egg and had two types of arrows',
+        answer: 'Cupid',
+        note: 'This category is looking for the Roman name, not the Greek'
+    },
+    {
+        id: '7fcd29ee-e441-4b86-b98d-33930ebf7de8',
+        ask: 'The sun of Somnus, he was the God of Dreams',
+        answer: 'Morheus',
+        note: 'This category is looking for the Roman name, not the Greek'
+    },
+    {
+        id: 'ea706abd-f20b-401e-b659-516439001158',
+        ask: 'They were the personification of charm and beauty in nature and in human life',
+        answer: 'Gratiae',
+        note: 'This category is looking for the Roman name, not the Greek'
+    },
+    {
+        id: '32a91629-d9e6-4f0a-8d39-044e6a4b0784',
+        ask: 'This method merely requires any deck of cards',
+        answer: 'Cartomancy',
+        note: 'Tarot is the most common form of Cartomancy'
+    },
+    {
+        id: 'b0d4eb75-04b6-463e-a471-a51f930be488',
+        ask: 'This method always requires a campfire, candle, or some other form of flame',
+        answer: 'Pyromancy'
+    },
+    {
+        id: '947d23c4-9b34-4691-bac1-99706814b6a9',
+        ask: 'Using sticks, stones and bones to cast lots can be used to tell the future with this',
+        answer: 'Cleromancy'
+    },
+    {
+        id: '74241308-ecd7-46ab-b2a5-c6cff7d57c6f',
+        ask: 'This method of divination involves reading the outcome from tossed arrows',
+        answer: 'Belomancy'
+    },
+    {
+        id: 'a8182174-552c-4b3f-a773-5c0ba3463920',
+        ask: 'This method revolves around the reading of tea leaves',
+        answer: ' Tasseomancy',
+        alternatives: ['Tasseography']
+    },
+    {
+        id: '31073564-5cdd-4d35-826a-bf3d65f69863',
+        ask: 'Heracles wear the skin of this creature',
+        answer: 'The Nemean Lion'
+    },
+    {
+        id: '8e620b60-8d95-49e4-a670-db43981048fe',
+        ask: 'Its blood is prophesied to be the poison that will kill Thor',
+        answer: 'Jörmungandr',
+        alternatives: ['The Midgard Serpent']
+    },
+    {
+        id: '6ca1f1aa-42d9-4946-8633-e10f1bcf5521',
+        ask: 'Every nine years seven of Athens` finest youths and fairest maidens were delivered to him',
+        answer: 'The Minotaur'
+    },
+    {
+        id: '409e9f8f-cc3f-4801-8273-83decb4979de',
+        ask: 'He was responsible for eclipses when he managed to swallow Ra`s Sun Boat',
+        answer: 'Who is Apophis',
+        alternatives: ['Apep']
+    },
+    {
+        id: 'c452636c-ea65-49b3-a379-58f291bfac4f',
+        ask: 'This Japanese demon\'s most distinguishing feature is a circular depression on top of its head that must remain filled with water lest he die',
+        answer: 'Kappa'
+    },
+
+    {
+        id: 'b12c1495-4cf3-476e-8032-bb895e5eefcf',
+        ask: 'This is the first Sunday after the full moon after the spring equinox',
+        answer: 'When is Easter'
+    },
+    {
+        id: 'a15c9b60-7633-4406-8af5-7a10fa80d7fa',
+        ask: 'What three signs of the Zodiac are associated with water',
+        answer: 'Cancer, Scorpio, and Pisces'
+    },
+    {
+        id: 'ced42b0a-1cd8-4d4b-9930-52d857c3a727',
+        ask: 'In Tarot, this energy is at the beginning of the cycle of three',
+        answer: 'Cardinal'
+    },
+    {
+        id: 'a33696e2-78dd-45fc-aee1-8c5a77e8ca51',
+        ask: 'This one of the seven magical tools is used to incite Astral Projection',
+        answer: 'Scourge'
+    },
+    {
+        id: '54c52c32-ee79-48ba-989a-eb5a6a70a5cb',
+        ask: 'The tenth Sephirah of the Tree of Life, it receives influences from the others',
+        answer: 'Malkuth'
     }
 ];

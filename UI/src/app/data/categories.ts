@@ -260,5 +260,266 @@ export const categories: Array<GameCategory> = [
                 value: 1000
             }
         ]
+    },
+
+    {
+        id: '8ed12b92-a93d-4dba-bc31-822b3de90e88',
+        name: 'Ancient Architecture',
+        questions: [
+            {
+                questionId: 'd5e43069-85f5-4a0c-99ac-55242c0c5a91',
+                value: 100
+            },
+            {
+                questionId: '59e3df4d-27cb-4bd7-813b-ecb2a5766887',
+                value: 200
+            },
+            {
+                questionId: 'e3b401a9-c740-41f3-89cf-2afe0f2a44dd',
+                value: 300
+            },
+            {
+                questionId: 'd8360e08-a242-4c89-9dcb-4ba8cee7091f',
+                value: 400
+            },
+            {
+                questionId: 'bc4c0e71-917e-42a2-aae2-59b0342d41cd',
+                value: 500
+            }
+        ]
+    },
+    {
+        id: 'f8d170ab-d06a-4b0b-bdb0-ea1760a62252',
+        name: 'Sabbats',
+        questions: [
+            {
+                questionId: '5631911e-6287-4642-8f33-902e5b2aeb52',
+                value: 100
+            },
+            {
+                questionId: 'c4257b7d-0190-47d2-9257-92dc0b4b9c4e',
+                value: 200
+            },
+            {
+                questionId: '395094c4-7451-46a7-9e86-7750f60c7f57',
+                value: 300
+            },
+            {
+                questionId: '10b11cb6-de29-47f9-83cd-eb58d60d82f5',
+                value: 400
+            },
+            {
+                questionId: '288ef5a9-9a81-430a-8645-9efe9a021b5a',
+                value: 500
+            }
+        ]
+    },
+    {
+        id: 'e27039c1-b06e-4e98-ae59-c859e1f1a1e6',
+        name: 'Underworld Deities',
+        questions: [
+            {
+                questionId: '6b06d73a-3c7c-4ffc-bbb1-c3f5dda000f9',
+                value: 100
+            },
+            {
+                questionId: 'b63f3364-aad4-43b2-accb-305e34938153',
+                value: 200
+            },
+            {
+                questionId: '2c0abb23-432b-4f62-aa05-60a289a6929e',
+                value: 300
+            },
+            {
+                questionId: 'b01e9fa0-5da7-4ea2-8a88-ca89e5f92c67',
+                value: 400
+            },
+            {
+                questionId: 'dbbdc392-beaa-4b1c-a8f2-5ca0f8c2e92a',
+                value: 500
+            }
+        ]
+    },
+    {
+        id: '418abaa2-3922-4d60-9f03-44f01f08a09d',
+        name: 'Mythical Places',
+        questions: [
+            {
+                questionId: '885df359-f7f7-4151-a543-43b475987f9e',
+                value: 100
+            },
+            {
+                questionId: '401a5a0a-5f08-4ced-be2e-7b9df6d5a27a',
+                value: 200
+            },
+            {
+                questionId: '979eb4f7-4597-4585-92c4-57a913c3492e',
+                value: 300
+            },
+            {
+                questionId: '5cc04ecc-ce0a-4da9-9a17-ec154991bffb',
+                value: 400
+            },
+            {
+                questionId: '820039ef-7ae5-416d-af6f-59a3c131ad2d',
+                value: 500
+            }
+        ]
+    },
+    {
+        id: 'de109484-dbd4-4c18-a5f7-e4185b678d03',
+        name: 'Carpe Cerevisi',
+        questions: [
+            {
+                questionId: '3ec622a8-0c5c-48ba-9952-83247729bc85',
+                value: 100
+            },
+            {
+                questionId: 'eda8bcbd-60f6-4001-b1b3-90f009a4e696',
+                value: 200
+            },
+            {
+                questionId: '11b334b7-4e3d-4030-b665-1fe9c1cb624a',
+                value: 300
+            },
+            {
+                questionId: '5ea68428-b24f-42e1-9915-079e0b0d1bbf',
+                value: 400
+            },
+            {
+                questionId: '1194b5d0-fda5-4310-8870-ca17b785c1fe',
+                value: 500
+            }
+        ]
+    },
+    {
+        id: 'f7d76093-b499-42ec-8213-d4b4651c38d1',
+        name: 'Burning Times',
+        questions: [
+            {
+                questionId: '2e410fde-7e2a-4750-b67c-26088a098d69',
+                value: 200
+            },
+            {
+                questionId: 'c1a74e5a-8914-4724-8aae-b09764bdb067',
+                value: 400
+            },
+            {
+                questionId: '06417b68-adb8-4f67-9105-f574951e7ed1',
+                value: 600
+            },
+            {
+                questionId: 'e19dfb71-5091-4f17-83bd-3f64b6891605',
+                value: 800
+            },
+            {
+                questionId: '074d5fda-e91c-438e-9ff6-5893a72d80c2',
+                value: 1000
+            }
+        ]
+    },
+    {
+        id: '073b3bd9-fbf3-4e0a-b232-3ac061c01510',
+        name: 'Wherever I May "Rome"',
+        questions: [
+            {
+                questionId: '421ee45f-a485-4938-939e-1958050d14ba',
+                value: 200
+            },
+            {
+                questionId: 'b5ccb629-3d2b-45e9-911c-5eec6233ee99',
+                value: 400
+            },
+            {
+                questionId: 'f07f937a-6e6f-41ca-9153-cede909478e3',
+                value: 600
+            },
+            {
+                questionId: '7fcd29ee-e441-4b86-b98d-33930ebf7de8',
+                value: 800
+            },
+            {
+                questionId: 'ea706abd-f20b-401e-b659-516439001158',
+                value: 1000
+            }
+        ]
+    },
+    {
+        id: 'f0de5d11-7c85-461c-881a-fcd5c6e72634',
+        name: 'Divinational Forms',
+        questions: [
+            {
+                questionId: '32a91629-d9e6-4f0a-8d39-044e6a4b0784',
+                value: 200
+            },
+            {
+                questionId: 'b0d4eb75-04b6-463e-a471-a51f930be488',
+                value: 400
+            },
+            {
+                questionId: '947d23c4-9b34-4691-bac1-99706814b6a9',
+                value: 600
+            },
+            {
+                questionId: '74241308-ecd7-46ab-b2a5-c6cff7d57c6f',
+                value: 800
+            },
+            {
+                questionId: 'a8182174-552c-4b3f-a773-5c0ba3463920',
+                value: 1000
+            }
+        ]
+    },
+    {
+        id: 'e6b81ed5-d089-4793-93ac-a1df5b2cd881',
+        name: 'Mythological Monsters',
+        questions: [
+            {
+                questionId: '31073564-5cdd-4d35-826a-bf3d65f69863',
+                value: 200
+            },
+            {
+                questionId: '8e620b60-8d95-49e4-a670-db43981048fe',
+                value: 400
+            },
+            {
+                questionId: '6ca1f1aa-42d9-4946-8633-e10f1bcf5521',
+                value: 600
+            },
+            {
+                questionId: '409e9f8f-cc3f-4801-8273-83decb4979de',
+                value: 800
+            },
+            {
+                questionId: 'c452636c-ea65-49b3-a379-58f291bfac4f',
+                value: 1000
+            }
+        ]
+    },
+    {
+        id: 'eddc2c16-a422-4c93-ae31-7cd9fd605e9a',
+        name: 'Potpourri',
+        questions: [
+            {
+                questionId: 'b12c1495-4cf3-476e-8032-bb895e5eefcf',
+                value: 200
+            },
+            {
+                questionId: 'a15c9b60-7633-4406-8af5-7a10fa80d7fa',
+                value: 400
+            },
+            {
+                questionId: 'ced42b0a-1cd8-4d4b-9930-52d857c3a727',
+                value: 600
+            },
+            {
+                questionId: 'a33696e2-78dd-45fc-aee1-8c5a77e8ca51',
+                value: 800
+            },
+            {
+                questionId: '54c52c32-ee79-48ba-989a-eb5a6a70a5cb',
+                value: 1000
+            }
+        ]
     }
 ];
