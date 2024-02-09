@@ -10,11 +10,9 @@ import * as sessionStore from '../game-store';
   styleUrls: ['./question.component.scss']
 })
 export class QuestionComponent {
-  currentQuestion$: Observable<SessionQuestion | undefined> = of(undefined);
+  currentQuestion$: Observable<SessionQuestion | undefined>;
 
-  constructor(private _store: Store) { }
-
-  ngOnInit(): void {
+  constructor(private _store: Store) { 
     this.currentQuestion$ = this._store.select(sessionStore.questions.selectors.getSelectedQuestion);
   }
 

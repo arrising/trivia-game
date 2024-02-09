@@ -16,7 +16,7 @@
                 <li><app-exit-button /></li>
             </ul>
         </app-navigation-bar-menu>
-
+        
         <ul class="no-bullet">
             <li *ngFor="let round of data.rounds">
                 <button (click)="loadRound(round.id)">{{round.type}}</button>

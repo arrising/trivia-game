@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModeSelectorComponent } from './mode-selector/mode-selector.component';
-import { GameSelectorComponent } from './game-board/game-selector/game-selector.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/selector', pathMatch: 'full' },

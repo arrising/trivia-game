@@ -13,21 +13,19 @@
             </app-navigation-bar-title>
             <app-navigation-bar-menu>
                 <ul class="navigation-bar">
-                    <li><a routerLink="/games/game/{{game.id}}">Rounds</a></li>
+                    <li><app-round-select-button /></li>
                     <li><app-game-select-button /></li>
                     <li><app-exit-button /></li>
                 </ul>
             </app-navigation-bar-menu>
-
-            <div class="round-container">
-                <table class="round-table">
-                    <tr>
-                        <td *ngFor="let categoryId of round.categoryIds">
-                            <app-category-column [categoryId]="categoryId"></app-category-column>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+            
+            <table class="round-table">
+                <tr>
+                    <td *ngFor="let categoryId of round.categoryIds">
+                        <app-category-column [categoryId]="categoryId"></app-category-column>
+                    </td>
+                </tr>
+            </table>
         </app-page>
     </ng-container>
 </ng-container>
