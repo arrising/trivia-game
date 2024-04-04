@@ -50,12 +50,12 @@ public class GameControllerTests : IClassFixture<ApplicationFixture>
     {
         // Arrange
         var url = $"{_testUrl}/d12adfa5-26b5-4a6b-bd65-2dd02768437f";
-        var expected = new Game()
-            {
-                Id = "d12adfa5-26b5-4a6b-bd65-2dd02768437f",
-                Name = "Game One",
-                ValueSymbol = "$"
-            };
+        var expected = new Game
+        {
+            Id = "d12adfa5-26b5-4a6b-bd65-2dd02768437f",
+            Name = "Game One",
+            ValueSymbol = "$"
+        };
 
         // Act
         var response = await _fixture.Client.GetAsync(url);
