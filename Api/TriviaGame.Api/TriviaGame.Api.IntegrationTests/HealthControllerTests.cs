@@ -1,25 +1,21 @@
-﻿using FluentAssertions;
-using Microsoft.AspNetCore.Mvc.Testing;
+﻿namespace TriviaGame.Api.IntegrationTests;
 
-namespace TriviaGame.Api.IntegrationTests;
-
-public class HealthControllerTests : IClassFixture<WebApplicationFactory<Program>>
+[Collection("IntegrationTests")]
+public class HealthControllerTests : IClassFixture<ApplicationFixture>
 {
-    private readonly WebApplicationFactory<Program> _factory;
+    private readonly ApplicationFixture _fixture;
+    private readonly string _testUrl = "api/health";
 
-    public HealthControllerTests(WebApplicationFactory<Program> factory)
+    public HealthControllerTests(ApplicationFixture fixture)
     {
-        _factory = factory;
+        _fixture = fixture;
     }
 
     [Fact]
-    public async Task Get_Health()
+    public async Task HealthController_GetHealth_Ok()
     {
-        // Arrange
-        var client = _factory.CreateClient();
-
         // Act
-        var response = await client.GetAsync("api/health");
+        var response = await _fixture.Client.GetAsync(_testUrl);
 
         // Assert
         response.Should().BeSuccessful();

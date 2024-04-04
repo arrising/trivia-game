@@ -1,4 +1,7 @@
 using Microsoft.OpenApi.Models;
+using TriviaGame.Api.Data.InMemoryDb.Configuration;
+using TriviaGame.Api.Middleware.Configuration;
+using TriviaGame.Api.Services.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,9 @@ builder.Services.AddSwaggerGen(options =>
         Title = "Trivia Game API"
     });
 });
+builder.Services
+    .UseInMemoryDatabase()
+    .UseApplicationServices();
 
 var app = builder.Build();
 
@@ -30,6 +36,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseApplicationMiddleware();
 
 app.Run();
 
