@@ -1,5 +1,6 @@
 ﻿namespace TriviaGame.Api.IntegrationTests;
 
+// Required to assure shard ApplicationFixture is only created once
 [Collection("IntegrationTests")]
 public class HealthControllerTests : IClassFixture<ApplicationFixture>
 {

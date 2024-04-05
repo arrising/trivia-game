@@ -4,7 +4,7 @@ using TriviaGame.Api.Services.Interfaces;
 namespace TriviaGame.Api.Controllers;
 
 [ApiController]
-[Route("api/game")]
+[Route("api/games")]
 public class GameController : Controller
 {
     private readonly IGameService _gameService;

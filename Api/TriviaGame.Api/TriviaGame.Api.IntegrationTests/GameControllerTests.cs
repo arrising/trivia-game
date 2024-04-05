@@ -3,11 +3,12 @@ using TriviaGame.Api.Models;
 
 namespace TriviaGame.Api.IntegrationTests;
 
+// Required to assure shard ApplicationFixture is only created once
 [Collection("IntegrationTests")]
 public class GameControllerTests : IClassFixture<ApplicationFixture>
 {
     private readonly ApplicationFixture _fixture;
-    private readonly string _testUrl = "api/game";
+    private readonly string _testUrl = "api/games";
 
     public GameControllerTests(ApplicationFixture fixture)
     {

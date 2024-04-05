@@ -3,22 +3,22 @@ using TriviaGame.Api.Models;
 using TriviaGame.Api.Services.Interfaces;
 using TriviaGame.Api.UnitTests.TestHelpers;
 
-namespace TriviaGame.Api.UnitTests.Services.GameServiceTests;
+namespace TriviaGame.Api.UnitTests.Services.RoundServiceTests;
 
-public class GetById : IClassFixture<GameServiceFixture>
+public class GetById : IClassFixture<RoundServiceFixture>
 {
-    private readonly GameServiceFixture _fixture;
-    private readonly IGameService _service;
-    private readonly string _idName = "gameId";
+    private readonly RoundServiceFixture _fixture;
+    private readonly IRoundService _service;
+    private readonly string _idName = "roundId";
 
-    public GetById(GameServiceFixture fixture)
+    public GetById(RoundServiceFixture fixture)
     {
         _fixture = fixture;
         _service = _fixture.CreateInstance();
     }
 
     [Fact]
-    public void GameService_GetById_HasValidationError_Throws()
+    public void RoundService_GetById_HasValidationError_Throws()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -33,32 +33,32 @@ public class GetById : IClassFixture<GameServiceFixture>
     }
 
     [Fact]
-    public void GameService_GetById_IdDoesNotExist_Throws()
+    public void RoundService_GetById_IdDoesNotExist_Throws()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
 
         _fixture.IdValidator.ReturnsAsValid(id, _idName);
-        _fixture.GameRepository.Setup(x => x.GetById(id))
-            .Returns((Game)null!);
+        _fixture.RoundRepository.Setup(x => x.GetById(id))
+            .Returns((Round)null!);
 
         // Act
         Action action = () => _service.GetById(id);
 
         // Assert
         action.Should().Throw<NotFoundException>()
-            .WithMessage($"GameId '{id}' was not found");
+            .WithMessage($"RoundId '{id}' was not found");
     }
 
     [Fact]
-    public void GameService_GetById_IdExists_Good()
+    public void RoundService_GetById_IdExists_Good()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
-        var expected = _fixture.AutoFixture.Create<Game>();
+        var expected = _fixture.AutoFixture.Create<Round>();
 
         _fixture.IdValidator.ReturnsAsValid(id, _idName);
-        _fixture.GameRepository.Setup(x => x.GetById(id))
+        _fixture.RoundRepository.Setup(x => x.GetById(id))
             .Returns(expected);
 
         // Act

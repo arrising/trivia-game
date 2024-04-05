@@ -12,7 +12,10 @@ public class GameRepository : IRepository<Game>
         _context = context;
     }
 
-    public Game GetById(string gameId) => _context.Games.SingleOrDefault(x => x.Id == gameId)!;
-
+    public Game GetById(string id) => _context.Games.SingleOrDefault(x => x.Id == id)!;
     public IEnumerable<Game> GetAll() => _context.Games;
+
+    // Game should never have a parent object
+    public IEnumerable<Game> GetByParentId(string id) =>
+        throw new NotImplementedException("Game should never have a parent object");
 }

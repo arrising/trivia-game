@@ -8,5 +8,6 @@ public static class ServicesServiceExtensions
 {
     public static IServiceCollection UseApplicationServices(this IServiceCollection services) =>
         services
-            .AddScoped<IGameService, GameService>();
+            .AddScoped<IGameService, GameService>()
+            .AddScoped<IRoundService, RoundService>();
 }

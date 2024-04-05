@@ -2,6 +2,7 @@ using Microsoft.OpenApi.Models;
 using TriviaGame.Api.Data.InMemoryDb.Configuration;
 using TriviaGame.Api.Middleware.Configuration;
 using TriviaGame.Api.Services.Configuration;
+using TriviaGame.Api.Validators.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,8 @@ builder.Services.AddSwaggerGen(options =>
 });
 builder.Services
     .UseInMemoryDatabase()
-    .UseApplicationServices();
+    .UseApplicationServices()
+    .UseApplicationValidators();
 
 var app = builder.Build();
 

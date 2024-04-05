@@ -12,6 +12,7 @@ public static class InMemoryDbServiceExtensions
     {
         services
             .AddScoped<IRepository<Game>, GameRepository>()
+            .AddScoped<IRepository<Round>, RoundRepository>()
             .AddDbContext<TriviaGameDbContext>(options => { options.UseInMemoryDatabase(InMemoryDbConstants.DbName); });
 
         SeedInMemoryDb().Wait();

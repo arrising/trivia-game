@@ -2,23 +2,26 @@
 using TriviaGame.Api.Exceptions;
 using TriviaGame.Api.Models;
 using TriviaGame.Api.Services.Interfaces;
+using TriviaGame.Api.Validators.Interfaces;
 
 namespace TriviaGame.Api.Services;
 
 public class GameService : IGameService
 {
     private readonly IRepository<Game> _repository;
+    private readonly IIdValidator _validator;
 
-    public GameService(IRepository<Game> repository)
+    public GameService(IRepository<Game> repository, IIdValidator validator)
     {
         _repository = repository;
+        _validator = validator;
     }
 
     public Game GetById(string gameId)
     {
-        if (string.IsNullOrWhiteSpace(gameId))
+        if (_validator.TryGetValidationException(gameId, nameof(gameId), out var exception))
         {
-            throw new ArgumentException("game id must have a value", nameof(gameId));
+            throw exception;
         }
 
         return _repository.GetById(gameId) 
