@@ -22,6 +22,7 @@ public class InMemoryDbSeeder : IDbSeeder
             var data = LoadGames();
             _context.Games.AddRange(data.Games);
             _context.Rounds.AddRange(data.Rounds);
+            _context.Categories.AddRange(data.Categories);
 
             await _context.SaveChangesAsync();
         }
@@ -43,17 +44,25 @@ public class InMemoryDbSeeder : IDbSeeder
         var games = JsonSerializer.Deserialize<List<Game>>(fileStream, options) ?? new List<Game>();
 
         var rounds = new List<Round>();
+        var categories = new List<Category>();
+
         foreach (var game in games)
         {
             foreach (var round in game.Rounds)
             {
                 round.GameId = game.Id;
+                foreach (var category in round.Categories)
+                {
+                    category.RoundId = round.Id;
+                    categories.Add(category);
+                }
                 rounds.Add(round);
             }
         }
 
         return new SeedData
         {
+            Categories = categories,
             Games = games,
             Rounds = rounds
         };
@@ -62,6 +71,7 @@ public class InMemoryDbSeeder : IDbSeeder
 
 public class SeedData
 {
+    public List<Category> Categories { get; set; }
     public List<Game> Games { get; set; }
     public List<Round> Rounds { get; set; }
 }

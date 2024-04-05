@@ -13,7 +13,7 @@ public class HealthControllerTests : IClassFixture<ApplicationFixture>
     }
 
     [Fact]
-    public async Task HealthController_GetHealth_Ok()
+    public async Task GetHealth_Returns_Ok()
     {
         // Act
         var response = await _fixture.Client.GetAsync(_testUrl);

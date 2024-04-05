@@ -7,7 +7,7 @@
       {
         "id": "43955bc2-06ca-4402-b52a-2ca27bb3bebc",
         "type": "Single",
-        "categoryies": [
+        "categories": [
           {
             "id": "d6eea9cf-8970-4ad6-bc40-aa08c265656e",
             "name": "Game One Single Category One",
@@ -198,7 +198,7 @@
       {
         "id": "ea1d0e97-88ed-4244-9eb3-ea6ee73577d1",
         "type": "Double",
-        "categoryies": [
+        "categories": [
           {
             "id": "537e2ef1-64cd-4d99-8e5b-0f54cdb3a5e7",
             "name": "Game One Double Category One",
@@ -392,7 +392,7 @@
       {
         "id": "0e50f6f6-b82c-4742-8c49-835fee00d65b",
         "type": "Single",
-        "categoryies": [
+        "categories": [
           {
             "id": "8ed12b92-a93d-4dba-bc31-822b3de90e88",
             "name": "Ancient Architecture",
@@ -588,7 +588,7 @@
       {
         "id": "3207272f-aa1c-4e3c-b90b-502cad03db79",
         "type": "Double",
-        "categoryies": [
+        "categories": [
           {
             "id": "073b3bd9-fbf3-4e0a-b232-3ac061c01510",
             "name": "Wherever I May \"Rome\"",

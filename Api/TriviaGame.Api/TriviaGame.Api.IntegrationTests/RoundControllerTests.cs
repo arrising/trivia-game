@@ -16,7 +16,7 @@ public class RoundControllerTests : IClassFixture<ApplicationFixture>
     }
 
     [Fact]
-    public async Task RoundController_GetRoundById_GameExists_Ok()
+    public async Task GetRoundById_Exists_Returns_Ok()
     {
         // Arrange
         var url = $"{_testUrl}/{TestIds.Game1_Round1}";
@@ -39,7 +39,7 @@ public class RoundControllerTests : IClassFixture<ApplicationFixture>
     }
 
     [Fact]
-    public async Task RoundController_GetRoundById_GameDoesNotExist_Returns_NotFound()
+    public async Task GetRoundById_DoesNotExist_Returns_NotFound()
     {
         // Arrange
         var url = $"{_testUrl}/Not_A_Real_Id";
@@ -52,7 +52,7 @@ public class RoundControllerTests : IClassFixture<ApplicationFixture>
     }
 
     [Fact]
-    public async Task RoundController_GetRoundByGameId_GameExists_Ok()
+    public async Task GetRoundsByGameId_Exists_Returns_Ok()
     {
         // Arrange
         var url = $"{_testUrl}/byGameId/{TestIds.Game1}";
@@ -84,7 +84,7 @@ public class RoundControllerTests : IClassFixture<ApplicationFixture>
     }
 
     [Fact]
-    public async Task RoundController_GetRoundByGameId_GameDoesNotExist_Returns_NotFound()
+    public async Task GetRoundsByGameId_DoesNotExist_Returns_NotFound()
     {
         // Arrange
         var url = $"{_testUrl}/ByGameId/Not_A_Real_Id";

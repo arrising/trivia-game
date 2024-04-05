@@ -1,11 +1,12 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Mediators;
+using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models;
 using TriviaGame.Api.Validators.Interfaces;
 
 namespace TriviaGame.Api.UnitTests.Mediators.RoundMediatorTests;
 
-public class RoundMediatorFixture : BaseTestFixture<RoundMediator>
+public class RoundMediatorFixture : BaseTestFixture<IRoundMediator>
 {
     public Mock<IRepository<Round>> RoundRepository;
     public Mock<IIdValidator> IdValidator;
@@ -16,5 +17,6 @@ public class RoundMediatorFixture : BaseTestFixture<RoundMediator>
         IdValidator = Repository.Create<IIdValidator>();
     }
 
-    public override RoundMediator CreateInstance() => new(RoundRepository.Object, IdValidator.Object);
+    public override IRoundMediator CreateInstance() =>
+        new RoundMediator(RoundRepository.Object, IdValidator.Object);
 }

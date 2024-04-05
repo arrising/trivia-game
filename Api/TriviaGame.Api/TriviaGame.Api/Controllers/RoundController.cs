@@ -7,24 +7,24 @@ namespace TriviaGame.Api.Controllers;
 [Route("api/rounds")]
 public class RoundController : Controller
 {
-    private readonly IRoundMediator _roundMediator;
+    private readonly IRoundMediator _mediator;
 
-    public RoundController(IRoundMediator roundMediator)
+    public RoundController(IRoundMediator mediator)
     {
-        _roundMediator = roundMediator;
+        _mediator = mediator;
     }
 
     [HttpGet("{roundId}", Name = "getRoundById")]
     public IActionResult GetById(string roundId)
     {
-        var game = _roundMediator.GetById(roundId);
-        return Ok(game);
+        var round = _mediator.GetById(roundId);
+        return Ok(round);
     }
 
-    [HttpGet("byGameId/{gameId}", Name = "getRoundByGameId")]
+    [HttpGet("byGameId/{gameId}", Name = "getRoundsByGameId")]
     public IActionResult GetByGameId(string gameId)
     {
-        var game = _roundMediator.GetByGameId(gameId);
-        return Ok(game);
+        var rounds = _mediator.GetByGameId(gameId);
+        return Ok(rounds);
     }
 }

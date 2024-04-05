@@ -16,7 +16,7 @@ public class GameControllerTests : IClassFixture<ApplicationFixture>
     }
 
     [Fact]
-    public async Task GameController_GetAllGames_Returns_Ok()
+    public async Task GetAllGames_Returns_Ok()
     {
         // Arrange
         var expected = new List<Game>
@@ -47,13 +47,13 @@ public class GameControllerTests : IClassFixture<ApplicationFixture>
     }
 
     [Fact]
-    public async Task GameController_GetGameById_GameExists_Ok()
+    public async Task GetGameById_Exists_Returns_Ok()
     {
         // Arrange
-        var url = $"{_testUrl}/d12adfa5-26b5-4a6b-bd65-2dd02768437f";
+        var url = $"{_testUrl}/{TestIds.Game1}";
         var expected = new Game
         {
-            Id = "d12adfa5-26b5-4a6b-bd65-2dd02768437f",
+            Id = TestIds.Game1,
             Name = "Game One",
             ValueSymbol = "$"
         };
@@ -70,7 +70,7 @@ public class GameControllerTests : IClassFixture<ApplicationFixture>
     }
 
     [Fact]
-    public async Task GameController_GetGameById_GameDoesNotExist_Returns_NotFound()
+    public async Task GetGameById_DoesNotExist_Returns_NotFound()
     {
         // Arrange
         var url = $"{_testUrl}/Not_A_Real_Id";
