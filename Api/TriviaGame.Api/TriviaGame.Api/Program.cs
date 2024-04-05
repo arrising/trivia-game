@@ -1,7 +1,7 @@
 using Microsoft.OpenApi.Models;
 using TriviaGame.Api.Data.InMemoryDb.Configuration;
+using TriviaGame.Api.Mediators.Configuration;
 using TriviaGame.Api.Middleware.Configuration;
-using TriviaGame.Api.Services.Configuration;
 using TriviaGame.Api.Validators.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);

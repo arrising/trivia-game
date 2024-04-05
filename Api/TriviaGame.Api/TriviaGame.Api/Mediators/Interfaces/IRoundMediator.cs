@@ -1,8 +1,8 @@
 ﻿using TriviaGame.Api.Models;
 
-namespace TriviaGame.Api.Services.Interfaces;
+namespace TriviaGame.Api.Mediators.Interfaces;
 
-public interface IRoundService
+public interface IRoundMediator
 {
     Round GetById(string roundId);
     IEnumerable<Round> GetByGameId(string gameId);

@@ -1,24 +1,24 @@
 ﻿using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models;
-using TriviaGame.Api.Services.Interfaces;
 using TriviaGame.Api.UnitTests.TestHelpers;
 
-namespace TriviaGame.Api.UnitTests.Services.GameServiceTests;
+namespace TriviaGame.Api.UnitTests.Mediators.GameMediatorTests;
 
-public class GetById : IClassFixture<GameServiceFixture>
+public class GetById : IClassFixture<GameMediatorFixture>
 {
-    private readonly GameServiceFixture _fixture;
-    private readonly IGameService _service;
+    private readonly GameMediatorFixture _fixture;
+    private readonly IGameMediator _mediator;
     private readonly string _idName = "gameId";
 
-    public GetById(GameServiceFixture fixture)
+    public GetById(GameMediatorFixture fixture)
     {
         _fixture = fixture;
-        _service = _fixture.CreateInstance();
+        _mediator = _fixture.CreateInstance();
     }
 
     [Fact]
-    public void GameService_GetById_HasValidationError_Throws()
+    public void GameMediator_GetById_HasValidationError_Throws()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -26,14 +26,14 @@ public class GetById : IClassFixture<GameServiceFixture>
         _fixture.IdValidator.ReturnsWithException(id, _idName);
 
         // Act
-        Action action = () => _service.GetById(id);
+        Action action = () => _mediator.GetById(id);
 
         // Assert
         action.Should().Throw<TestException>();
     }
 
     [Fact]
-    public void GameService_GetById_IdDoesNotExist_Throws()
+    public void GameMediator_GetById_IdDoesNotExist_Throws()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -43,7 +43,7 @@ public class GetById : IClassFixture<GameServiceFixture>
             .Returns((Game)null!);
 
         // Act
-        Action action = () => _service.GetById(id);
+        Action action = () => _mediator.GetById(id);
 
         // Assert
         action.Should().Throw<NotFoundException>()
@@ -51,7 +51,7 @@ public class GetById : IClassFixture<GameServiceFixture>
     }
 
     [Fact]
-    public void GameService_GetById_IdExists_Good()
+    public void GameMediator_GetById_IdExists_Good()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -62,7 +62,7 @@ public class GetById : IClassFixture<GameServiceFixture>
             .Returns(expected);
 
         // Act
-        var actual = _service.GetById(id);
+        var actual = _mediator.GetById(id);
 
         // Assert
         actual.Should().BeEquivalentTo(expected);

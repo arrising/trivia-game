@@ -1,24 +1,24 @@
 ﻿using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models;
-using TriviaGame.Api.Services.Interfaces;
 using TriviaGame.Api.UnitTests.TestHelpers;
 
-namespace TriviaGame.Api.UnitTests.Services.RoundServiceTests;
+namespace TriviaGame.Api.UnitTests.Mediators.RoundMediatorTests;
 
-public class GetByGameId : IClassFixture<RoundServiceFixture>
+public class GetByGameId : IClassFixture<RoundMediatorFixture>
 {
-    private readonly RoundServiceFixture _fixture;
-    private readonly IRoundService _service;
+    private readonly RoundMediatorFixture _fixture;
+    private readonly IRoundMediator _mediator;
     private readonly string _idName = "gameId";
 
-    public GetByGameId(RoundServiceFixture fixture)
+    public GetByGameId(RoundMediatorFixture fixture)
     {
         _fixture = fixture;
-        _service = _fixture.CreateInstance();
+        _mediator = _fixture.CreateInstance();
     }
 
     [Fact]
-    public void RoundService_GetByGameId_HasValidationError_Throws()
+    public void RoundMediator_GetByGameId_HasValidationError_Throws()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -26,7 +26,7 @@ public class GetByGameId : IClassFixture<RoundServiceFixture>
         _fixture.IdValidator.ReturnsWithException(id, _idName);
 
         // Act
-        Action action = () => _service.GetByGameId(id);
+        Action action = () => _mediator.GetByGameId(id);
 
         // Assert
         action.Should().Throw<TestException>();
@@ -40,7 +40,7 @@ public class GetByGameId : IClassFixture<RoundServiceFixture>
 
     [Theory]
     [MemberData(nameof(MissingRoundsData))]
-    public void RoundService_GetByGameId_IdDoesNotExist_Throws(IEnumerable<Round>? data)
+    public void RoundMediator_GetByGameId_IdDoesNotExist_Throws(IEnumerable<Round>? data)
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -50,7 +50,7 @@ public class GetByGameId : IClassFixture<RoundServiceFixture>
             .Returns(data);
 
         // Act
-        Action action = () => _service.GetByGameId(id);
+        Action action = () => _mediator.GetByGameId(id);
 
         // Assert
         action.Should().Throw<NotFoundException>()
@@ -58,7 +58,7 @@ public class GetByGameId : IClassFixture<RoundServiceFixture>
     }
 
     [Fact]
-    public void RoundService_GetByGameId_IdExists_Good()
+    public void RoundMediator_GetByGameId_IdExists_Good()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -69,7 +69,7 @@ public class GetByGameId : IClassFixture<RoundServiceFixture>
             .Returns(expected);
 
         // Act
-        var actual = _service.GetByGameId(id);
+        var actual = _mediator.GetByGameId(id);
 
         // Assert
         actual.Should().BeEquivalentTo(expected);

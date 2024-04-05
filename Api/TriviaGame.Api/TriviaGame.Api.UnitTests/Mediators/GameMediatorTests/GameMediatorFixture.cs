@@ -1,20 +1,20 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
+using TriviaGame.Api.Mediators;
 using TriviaGame.Api.Models;
-using TriviaGame.Api.Services;
 using TriviaGame.Api.Validators.Interfaces;
 
-namespace TriviaGame.Api.UnitTests.Services.GameServiceTests;
+namespace TriviaGame.Api.UnitTests.Mediators.GameMediatorTests;
 
-public class GameServiceFixture : BaseTestFixture<GameService>
+public class GameMediatorFixture : BaseTestFixture<GameMediator>
 {
     public Mock<IRepository<Game>> GameRepository;
     public Mock<IIdValidator> IdValidator;
 
-    public GameServiceFixture()
+    public GameMediatorFixture()
     {
         GameRepository = Repository.Create<IRepository<Game>>();
         IdValidator = Repository.Create<IIdValidator>();
     }
 
-    public override GameService CreateInstance() => new(GameRepository.Object, IdValidator.Object);
+    public override GameMediator CreateInstance() => new(GameRepository.Object, IdValidator.Object);
 }

@@ -1,17 +1,20 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models;
-using TriviaGame.Api.Services.Interfaces;
 using TriviaGame.Api.Validators.Interfaces;
 
-namespace TriviaGame.Api.Services;
+namespace TriviaGame.Api.Mediators;
 
-public class RoundService : IRoundService
+/// <summary>
+///     Handles business logic regarding Round data
+/// </summary>
+public class RoundMediator : IRoundMediator
 {
     private readonly IRepository<Round> _repository;
     private readonly IIdValidator _validator;
 
-    public RoundService(IRepository<Round> repository, IIdValidator validator)
+    public RoundMediator(IRepository<Round> repository, IIdValidator validator)
     {
         _repository = repository;
         _validator = validator;

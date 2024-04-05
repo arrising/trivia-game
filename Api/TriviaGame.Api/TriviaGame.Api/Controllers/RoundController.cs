@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TriviaGame.Api.Services.Interfaces;
+using TriviaGame.Api.Mediators.Interfaces;
 
 namespace TriviaGame.Api.Controllers;
 
@@ -7,24 +7,24 @@ namespace TriviaGame.Api.Controllers;
 [Route("api/rounds")]
 public class RoundController : Controller
 {
-    private readonly IRoundService _roundService;
+    private readonly IRoundMediator _roundMediator;
 
-    public RoundController(IRoundService roundService)
+    public RoundController(IRoundMediator roundMediator)
     {
-        _roundService = roundService;
+        _roundMediator = roundMediator;
     }
 
     [HttpGet("{roundId}", Name = "getRoundById")]
     public IActionResult GetById(string roundId)
     {
-        var game = _roundService.GetById(roundId);
+        var game = _roundMediator.GetById(roundId);
         return Ok(game);
     }
 
     [HttpGet("byGameId/{gameId}", Name = "getRoundByGameId")]
     public IActionResult GetByGameId(string gameId)
     {
-        var game = _roundService.GetByGameId(gameId);
+        var game = _roundMediator.GetByGameId(gameId);
         return Ok(game);
     }
 }
