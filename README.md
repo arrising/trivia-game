@@ -1,7 +1,7 @@
 # trivia-game
 
 ## Trivia Game Api
-See [API Readme](/Api/TriviaGame.Api/README.md)
+See [API Project](/Api/TriviaGame.Api)
 
 ## Trivia Game UI
-See [API Readme](/UI/README.md)
+See [UI Project](/UI)
