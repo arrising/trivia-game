@@ -10,6 +10,6 @@ public class QuestionPointerDto
         Value = question.Value;
     }
 
-    public string Id { get; set; }
+    public string Id { get; set; } = null!;
     public int Value { get; set; }
 }
