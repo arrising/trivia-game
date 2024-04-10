@@ -9,4 +9,5 @@ public class TriviaGameDbContext : DbContext
     public DbSet<Category> Categories { get; set; }
     public DbSet<Game> Games { get; set; }
     public DbSet<Round> Rounds { get; set; }
+    public DbSet<Question> Questions { get; set; }
 }

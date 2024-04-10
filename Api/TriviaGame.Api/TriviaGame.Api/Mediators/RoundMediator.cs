@@ -42,6 +42,6 @@ public class RoundMediator : IRoundMediator
 
         return result?.Any() == true
             ? result
-            : throw new NotFoundException($"Rounds for gameId '{gameId}' were not found");
+            : throw new NotFoundException($"Rounds for {nameof(gameId)} '{gameId}' were not found");
     }
 }

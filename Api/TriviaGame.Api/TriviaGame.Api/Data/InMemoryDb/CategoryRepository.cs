@@ -13,7 +13,7 @@ public class CategoryRepository : IRepository<Category>
     }
 
     public Category? GetById(string id) =>
-        _context.Categories.SingleOrDefault(x => x.Id == id);
+        _context.Categories.FirstOrDefault(x => x.Id == id);
 
     public IEnumerable<Category> GetByParentId(string id) =>
         _context.Categories.Where(x => x.RoundId == id);

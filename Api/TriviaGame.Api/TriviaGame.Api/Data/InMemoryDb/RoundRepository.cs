@@ -13,7 +13,7 @@ public class RoundRepository : IRepository<Round>
     }
 
     public Round? GetById(string id) =>
-        _context.Rounds.SingleOrDefault(x => x.Id == id);
+        _context.Rounds.FirstOrDefault(x => x.Id == id);
 
     public IEnumerable<Round> GetByParentId(string gameId) =>
         _context.Rounds.Where(x => x.GameId == gameId);

@@ -18,7 +18,7 @@ public class GetByRoundId : IClassFixture<CategoryMediatorFixture>
     }
 
     [Fact]
-    public void CategoryMediator_GetByCategoryId_HasValidationError_Throws()
+    public void CategoryMediator_GetByRoundId_HasValidationError_Throws()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -40,7 +40,7 @@ public class GetByRoundId : IClassFixture<CategoryMediatorFixture>
 
     [Theory]
     [MemberData(nameof(MissingCategoriesData))]
-    public void CategoryMediator_GetByCategoryId_IdDoesNotExist_Throws(IEnumerable<Category>? data)
+    public void CategoryMediator_GetByRoundId_IdDoesNotExist_Throws(IEnumerable<Category>? data)
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -58,7 +58,7 @@ public class GetByRoundId : IClassFixture<CategoryMediatorFixture>
     }
 
     [Fact]
-    public void CategoryMediator_GetByCategoryId_IdExists_Good()
+    public void CategoryMediator_GetByRoundId_IdExists_Good()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();

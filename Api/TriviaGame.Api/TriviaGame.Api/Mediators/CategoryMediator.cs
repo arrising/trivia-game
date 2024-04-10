@@ -39,6 +39,6 @@ public class CategoryMediator : ICategoryMediator
 
         return result?.Any() == true
             ? result
-            : throw new NotFoundException($"Categories for roundId '{roundId}' were not found");
+            : throw new NotFoundException($"Categories for {nameof(roundId)} '{roundId}' were not found");
     }
 }

@@ -8,7 +8,17 @@ internal static class TestIds
     public static string Game1 = "d12adfa5-26b5-4a6b-bd65-2dd02768437f";
     public static string Game1_Round1 = "43955bc2-06ca-4402-b52a-2ca27bb3bebc";
     public static string Game1_Round1_Cat1 = "d6eea9cf-8970-4ad6-bc40-aa08c265656e";
+    public static string Game1_Round1_Cat1_Q1 = "58484667-2208-46f4-ba96-0cd2b166a39d";
+    public static string Game1_Round1_Cat1_Q2 = "20c9cc0d-317f-4658-811d-986c9dc9c4c0";
+    public static string Game1_Round1_Cat1_Q3 = "3171a860-b594-4f75-8ccb-153b8b653650";
+    public static string Game1_Round1_Cat1_Q4 = "f17cd298-c728-4540-8b5f-7b383e243dad";
+    public static string Game1_Round1_Cat1_Q5 = "b24f3d67-9126-4639-b9fa-e6eb0412734d";
     public static string Game1_Round1_Cat2 = "670bfd57-7440-46eb-8693-76b1b8481c0a";
+    public static string Game1_Round1_Cat2_Q1 = "bc05d953-1f39-4056-875b-a0d5d5733cc4";
+    public static string Game1_Round1_Cat2_Q2 = "689fbc5f-88fd-471f-b37a-61bcc17dc9a0";
+    public static string Game1_Round1_Cat2_Q3 = "37ad49ed-bf4e-4c11-8ee5-14685acbd3d2";
+    public static string Game1_Round1_Cat2_Q4 = "e4f87f91-c33e-4986-be38-c58312ace22f";
+    public static string Game1_Round1_Cat2_Q5= "f7cc9963-f60c-4a66-8f1d-0238b4443383";
     public static string Game1_Round1_Cat3 = "90e3ae37-0b55-42c7-8bda-585b10c9695f";
     public static string Game1_Round1_Cat4 = "c1164106-b693-4424-8ce9-6cc6cc35cdff";
     public static string Game1_Round1_Cat5 = "9b5bc7a7-b4b2-46b8-8ac1-f93e5cb89b09";

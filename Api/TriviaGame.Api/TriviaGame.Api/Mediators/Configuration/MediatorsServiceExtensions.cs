@@ -10,5 +10,6 @@ public static class MediatorsServiceExtensions
         services
             .AddScoped<ICategoryMediator, CategoryMediator>()
             .AddScoped<IGameMediator, GameMediator>()
+            .AddScoped<IQuestionMediator, QuestionMediator>()
             .AddScoped<IRoundMediator, RoundMediator>();
 }

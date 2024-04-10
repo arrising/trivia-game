@@ -65,7 +65,7 @@
                 "value": 300,
                 "ask": "Though its gaze can turn victims to stone, it finds the crow of a rooster fatal",
                 "answer": "Basilisk",
-                "alternatives": [ "Cockatrice" ]
+                "alternatives": "Cockatrice"
               },
               {
                 "id": "e4f87f91-c33e-4986-be38-c58312ace22f",
@@ -139,7 +139,7 @@
                 "value": 300,
                 "ask": "This Celtic shape-shifter is able to shed her seal-skin and walk in the guise of a human",
                 "answer": "Selkie",
-                "alternatives": [ "Roane" ],
+                "alternatives": "Roane",
                 "note": "It`s called a selkie in the Orkney and Shetland Islands, and a roane in Ireland"
               },
               {
@@ -191,7 +191,7 @@
                 "value": 500,
                 "ask": "The shadow of a serpent crawls up it every equinox",
                 "answer": "the Temple of Kukulcan",
-                "alternatives": [ "Temple of Quetzalcoatl", "El Castillo" ],
+                "alternatives": "Temple of Quetzalcoatl|El Castillo",
                 "note": "The Feathered shadow of Kukulcan, or Quetzalcoatl can be seen at the rising and setting of the sun along the side of the North staircase"
               }
             ]
@@ -211,14 +211,14 @@
                 "value": 200,
                 "ask": "The alluring voices of these beauties have been known to be the cause of many Sailors’ deaths",
                 "answer": "Sirens",
-                "alternatives": [ "Mermaids" ]
+                "alternatives": "Mermaids"
               },
               {
                 "id": "8e2bd8ee-fb73-45a9-ba24-c9bf6d228257",
                 "value": 400,
                 "ask": "Oddly enough, I'm also the Greek God of Horses",
                 "answer": "Poseidon",
-                "alternatives": [ "Neptune" ],
+                "alternatives": "Neptune",
                 "note": "Neptune is the Roman name, not Greek"
               },
               {
@@ -250,7 +250,7 @@
                 "value": 200,
                 "ask": "From forth the fatal loins of these two foes, a pair of star-crossed lovers take their life",
                 "answer": "Who are Romeo and Juliet",
-                "alternatives": [ "Capulet and Montague" ]
+                "alternatives": "Capulet and Montague"
               },
               {
                 "id": "7f61249a-8e75-411a-af82-f15a010563c9",
@@ -385,7 +385,7 @@
                 "value": 1000,
                 "ask": "Mother of the Fates, she personified law & order",
                 "answer": "Who is Themis",
-                "alternatives": [ "Ananke", "Nyx" ]
+                "alternatives": "Ananke|Nyx"
               }
             ]
           }
@@ -436,7 +436,7 @@
                 "value": 500,
                 "ask": "The shadow of a serpent crawls up it every equinox",
                 "answer": "The Temple of Kukulcan",
-                "alternatives": [ "El Castillo" ],
+                "alternatives": "El Castillo",
                 "note": "The Feathered shadow of Kukulcan, or Quetzalcoatl can be seen at the rising and setting of the sun along the side of the North staircase"
               }
             ]
@@ -450,14 +450,14 @@
                 "value": 100,
                 "ask": "This underworld goddess was returned to the land of the living due to the extremity of her mother`s mourning",
                 "answer": "Persephone",
-                "alternatives": [ "Proserpina" ]
+                "alternatives": "Proserpina"
               },
               {
                 "id": "b63f3364-aad4-43b2-accb-305e34938153",
                 "value": 200,
                 "ask": "He was also a god of crops, minerals and prosperity as well as the Underworld",
                 "answer": "Hades",
-                "alternatives": [ "Pluto" ]
+                "alternatives": "Pluto" 
               },
               {
                 "id": "2c0abb23-432b-4f62-aa05-60a289a6929e",
@@ -532,7 +532,7 @@
                 "value": 200,
                 "ask": "This fire festival marks the mid point between winter and summer",
                 "answer": "Imbolc",
-                "alternatives": [ "Candlemas" ]
+                "alternatives": "Candlemas"
               },
               {
                 "id": "395094c4-7451-46a7-9e86-7750f60c7f57",
@@ -545,7 +545,7 @@
                 "value": 400,
                 "ask": "This Sabbat is named after the Celtic deity who by legend established it in honor of his foster mother",
                 "answer": "Lughnassadh",
-                "alternatives": [ "Lammas" ]
+                "alternatives": "Lammas"
               },
               {
                 "id": "288ef5a9-9a81-430a-8645-9efe9a021b5a",
@@ -576,7 +576,7 @@
                 "value": 300,
                 "ask": "Egypt was spared when Sekhmet was tricked into drinking this",
                 "answer": "Beer colored red with ochre",
-                "alternatives": [ "Beer dyed red" ]
+                "alternatives": "Beer dyed red"
               },
               {
                 "id": "5ea68428-b24f-42e1-9915-079e0b0d1bbf",
@@ -674,7 +674,7 @@
                 "value": 1000,
                 "ask": "This method revolves around the reading of tea leaves",
                 "answer": " Tasseomancy",
-                "alternatives": [ "Tasseography" ]
+                "alternatives": "Tasseography"
               }
             ]
           },
@@ -693,7 +693,7 @@
                 "value": 400,
                 "ask": "Its blood is prophesied to be the poison that will kill Thor",
                 "answer": "Jörmungandr",
-                "alternatives": [ "The Midgard Serpent" ]
+                "alternatives": "The Midgard Serpent"
               },
               {
                 "id": "6ca1f1aa-42d9-4946-8633-e10f1bcf5521",
@@ -706,7 +706,7 @@
                 "value": 800,
                 "ask": "He was responsible for eclipses when he managed to swallow Ra`s Sun Boat",
                 "answer": "Who is Apophis",
-                "alternatives": [ "Apep" ]
+                "alternatives": "Apep"
               },
               {
                 "id": "c452636c-ea65-49b3-a379-58f291bfac4f",
@@ -725,7 +725,7 @@
                 "value": 200,
                 "ask": "This 15th tome was used to identify a witch",
                 "answer": "Malleus Maleficarum",
-                "alternatives": [ "Hammer of the Witches" ]
+                "alternatives": "Hammer of the Witches"
               },
               {
                 "id": "c1a74e5a-8914-4724-8aae-b09764bdb067",
@@ -750,7 +750,7 @@
                 "value": 1000,
                 "ask": "In 1573 he was executed for witchcraft, lycanthropy, and \"eating meat on a Friday\"",
                 "answer": "Gilles Garnier",
-                "alternatives": [ "the Werewolf of Dole", "The Hermit of St Bonnot" ]
+                "alternatives": "The Werewolf of Dole|The Hermit of St Bonnot"
               }
             ]
           },

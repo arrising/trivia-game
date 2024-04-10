@@ -20,9 +20,11 @@ public class InMemoryDbSeeder : IDbSeeder
         if (!_context.Games.Any())
         {
             var data = LoadGames();
+
             _context.Games.AddRange(data.Games);
             _context.Rounds.AddRange(data.Rounds);
             _context.Categories.AddRange(data.Categories);
+            _context.Questions.AddRange(data.Questions);
 
             await _context.SaveChangesAsync();
         }
@@ -43,35 +45,58 @@ public class InMemoryDbSeeder : IDbSeeder
         };
         var games = JsonSerializer.Deserialize<List<Game>>(fileStream, options) ?? new List<Game>();
 
-        var rounds = new List<Round>();
-        var categories = new List<Category>();
+        var seedData = ExtractSeedData(games);
+
+        return seedData;
+    }
+
+    public SeedData ExtractSeedData(List<Game> games)
+    {
+        var seedData = new SeedData();
 
         foreach (var game in games)
         {
-            foreach (var round in game.Rounds)
-            {
-                round.GameId = game.Id;
-                foreach (var category in round.Categories)
-                {
-                    category.RoundId = round.Id;
-                    categories.Add(category);
-                }
-                rounds.Add(round);
-            }
+            ExtractRounds(game, seedData);
+            seedData.Games.Add(game);
         }
 
-        return new SeedData
+        return seedData;
+    }
+
+    public void ExtractRounds(Game game, SeedData seedData)
+    {
+        foreach (var round in game.Rounds)
         {
-            Categories = categories,
-            Games = games,
-            Rounds = rounds
-        };
+            round.GameId = game.Id;
+            ExtractCategories(round, seedData);
+            seedData.Rounds.Add(round);
+        }
+    }
+
+    public void ExtractCategories(Round round, SeedData seedData)
+    {
+        foreach (var category in round.Categories)
+        {
+            category.RoundId = round.Id;
+            ExtractQuestions(category, seedData);
+            seedData.Categories.Add(category);
+        }
+    }
+
+    public void ExtractQuestions(Category category, SeedData seedData)
+    {
+        foreach (var question in category.Questions)
+        {
+            question.CategoryId = category.Id;
+            seedData.Questions.Add(question);
+        }
     }
 }
 
 public class SeedData
 {
-    public List<Category> Categories { get; set; }
-    public List<Game> Games { get; set; }
-    public List<Round> Rounds { get; set; }
+    public List<Category> Categories { get; set; } = new();
+    public List<Game> Games { get; set; } = new();
+    public List<Round> Rounds { get; set; } = new();
+    public List<Question> Questions { get; set; } = new();
 }
