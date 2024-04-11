@@ -42,13 +42,26 @@ public class RoundControllerTests : IClassFixture<ApplicationFixture>
     public async Task GetRoundById_DoesNotExist_Returns_NotFound()
     {
         // Arrange
-        var url = $"{_testUrl}/Not_A_Real_Id";
+        var url = $"{_testUrl}/{Guid.NewGuid()}";
 
         // Act
         var response = await _fixture.Client.GetAsync(url);
 
         // Assert
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    public async Task GetRoundById_IdIsNotGUID_Returns_BadRequest()
+    {
+        // Arrange
+        var url = $"{_testUrl}/Not_A_Real_Id";
+
+        // Act
+        var response = await _fixture.Client.GetAsync(url);
+
+        // Assert
+        response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
     }
 
     [Fact]
@@ -87,12 +100,25 @@ public class RoundControllerTests : IClassFixture<ApplicationFixture>
     public async Task GetRoundsByGameId_DoesNotExist_Returns_NotFound()
     {
         // Arrange
-        var url = $"{_testUrl}/ByGameId/Not_A_Real_Id";
+        var url = $"{_testUrl}/ByGameId/{Guid.NewGuid()}";
 
         // Act
         var response = await _fixture.Client.GetAsync(url);
 
         // Assert
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    public async Task GetRoundsByGameId_IdIsNotGUID_Returns_BadRequest()
+    {
+        // Arrange
+        var url = $"{_testUrl}/ByGameId/Not_A_Real_Id";
+
+        // Act
+        var response = await _fixture.Client.GetAsync(url);
+
+        // Assert
+        response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
     }
 }

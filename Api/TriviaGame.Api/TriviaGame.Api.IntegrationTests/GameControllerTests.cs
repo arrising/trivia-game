@@ -73,12 +73,25 @@ public class GameControllerTests : IClassFixture<ApplicationFixture>
     public async Task GetGameById_DoesNotExist_Returns_NotFound()
     {
         // Arrange
-        var url = $"{_testUrl}/Not_A_Real_Id";
+        var url = $"{_testUrl}/{Guid.NewGuid()}";
 
         // Act
         var response = await _fixture.Client.GetAsync(url);
 
         // Assert
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    public async Task GetGameByIdIdIsNotGUId_Returns_BadRequest()
+    {
+        // Arrange
+        var url = $"{_testUrl}/Not_A_Real_Id";
+
+        // Act
+        var response = await _fixture.Client.GetAsync(url);
+
+        // Assert
+        response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
     }
 }

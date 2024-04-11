@@ -113,7 +113,7 @@ public class QuestionControllerTests
     public async Task GetQuestionById_DoesNotExist_Returns_NotFound()
     {
         // Arrange
-        var url = $"{_testUrl}/Not_A_Real_Id";
+        var url = $"{_testUrl}/{Guid.NewGuid()}";
 
         // Act
         var response = await _fixture.Client.GetAsync(url);
@@ -121,6 +121,20 @@ public class QuestionControllerTests
         // Assert
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
     }
+
+    [Fact]
+    public async Task GetQuestionById_IdIsNotGuid_Returns_BadRequest()
+    {
+        // Arrange
+        var url = $"{_testUrl}/Not_A_Real_Id";
+
+        // Act
+        var response = await _fixture.Client.GetAsync(url);
+
+        // Assert
+        response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
+    }
+
 
     [Fact]
     public async Task GetQuestionsByCategoryId_Exists_Returns_Ok()
@@ -181,12 +195,25 @@ public class QuestionControllerTests
     public async Task GetQuestionsByCategoryId_DoesNotExist_Returns_NotFound()
     {
         // Arrange
-        var url = $"{_testUrl}/byCategoryId/Not_A_Real_Id";
+        var url = $"{_testUrl}/byCategoryId/{Guid.NewGuid()}";
 
         // Act
         var response = await _fixture.Client.GetAsync(url);
 
         // Assert
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    public async Task GetQuestionsByCategoryId_IdIsNotGUID_Returns_BadRequest()
+    {
+        // Arrange
+        var url = $"{_testUrl}/byCategoryId/Not_A_Real_Id";
+
+        // Act
+        var response = await _fixture.Client.GetAsync(url);
+
+        // Assert
+        response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
     }
 }

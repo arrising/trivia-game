@@ -69,7 +69,7 @@ public class CategoryControllerTests
     public async Task GetCategoryById_DoesNotExist_Returns_NotFound()
     {
         // Arrange
-        var url = $"{_testUrl}/Not_A_Real_Id";
+        var url = $"{_testUrl}/{Guid.NewGuid()}";
 
         // Act
         var response = await _fixture.Client.GetAsync(url);
@@ -77,6 +77,20 @@ public class CategoryControllerTests
         // Assert
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
     }
+
+    [Fact]
+    public async Task GetCategoryById_IdIsNotGUID_Returns_BadRequest()
+    {
+        // Arrange
+        var url = $"{_testUrl}/Not_A_Real_Id";
+
+        // Act
+        var response = await _fixture.Client.GetAsync(url);
+
+        // Assert
+        response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
+    }
+
 
     [Fact]
     public async Task GetCategoriesByRoundId_Exists_Returns_Ok()
@@ -267,12 +281,25 @@ public class CategoryControllerTests
     public async Task GetCategoryByRoundId_DoesNotExist_Returns_NotFound()
     {
         // Arrange
-        var url = $"{_testUrl}/byRoundId/Not_A_Real_Id";
+        var url = $"{_testUrl}/byRoundId/{Guid.NewGuid()}";
 
         // Act
         var response = await _fixture.Client.GetAsync(url);
 
         // Assert
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    public async Task GetCategoryByRoundId_IdIsNotGuid_Returns_BadRequest()
+    {
+        // Arrange
+        var url = $"{_testUrl}/byRoundId/Not_A_Real_Id";
+
+        // Act
+        var response = await _fixture.Client.GetAsync(url);
+
+        // Assert
+        response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
     }
 }

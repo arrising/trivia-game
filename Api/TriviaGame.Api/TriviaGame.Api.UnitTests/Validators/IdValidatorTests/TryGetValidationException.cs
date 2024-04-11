@@ -33,6 +33,23 @@ public class TryGetValidationException : IClassFixture<IdValidatorFixture>
     }
 
     [Fact]
+    public void InputValidator_TryGetValidationException_ValueIsNotGUid_False()
+    {
+        // Arrange
+        var value = "Not_A_GUID";
+        var parameterName = _fixture.AutoFixture.Create<string>();
+        var expectedMessage = $"'{value}' at {parameterName} is not a valid GUID (Parameter '{parameterName}')";
+
+        // Act
+        var actual = _instance.TryGetValidationException(value, parameterName, out var exception);
+
+        // Assert
+        actual.Should().BeTrue();
+        exception.Should().BeOfType<ArgumentException>();
+        exception?.Message.Should().NotBeNull().And.Be(expectedMessage);
+    }
+
+    [Fact]
     public void InputValidator_TryGetValidationException_HasValidValue_False()
     {
         // Arrange

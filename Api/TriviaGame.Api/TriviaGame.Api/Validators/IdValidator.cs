@@ -12,6 +12,12 @@ public class IdValidator : IIdValidator
             return true;
         }
 
+        if (!Guid.TryParse(input, out _))
+        {
+            exception = new ArgumentException($"'{input}' at {parameterName} is not a valid GUID", parameterName);
+            return true;
+        }
+
         exception = null!;
         return false;
     }
