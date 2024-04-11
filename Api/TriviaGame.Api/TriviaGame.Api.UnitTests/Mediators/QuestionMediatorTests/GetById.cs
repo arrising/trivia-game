@@ -1,14 +1,12 @@
 ﻿using TriviaGame.Api.Exceptions;
 using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models;
-using TriviaGame.Api.UnitTests.TestHelpers;
 
 namespace TriviaGame.Api.UnitTests.Mediators.QuestionMediatorTests;
 
 public class GetById : IClassFixture<QuestionMediatorFixture>
 {
     private readonly QuestionMediatorFixture _fixture;
-    private readonly string _idName = "questionId";
     private readonly IQuestionMediator _mediator;
 
     public GetById(QuestionMediatorFixture fixture)
@@ -18,27 +16,11 @@ public class GetById : IClassFixture<QuestionMediatorFixture>
     }
 
     [Fact]
-    public void QuestionMediator_GetById_HasValidationError_Throws()
-    {
-        // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
-
-        _fixture.IdValidator.ReturnsWithException(id, _idName);
-
-        // Act
-        Action action = () => _mediator.GetById(id);
-
-        // Assert
-        action.Should().Throw<TestException>();
-    }
-
-    [Fact]
     public void QuestionMediator_GetById_IdDoesNotExist_Throws()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
 
-        _fixture.IdValidator.ReturnsAsValid(id, _idName);
         _fixture.QuestionRepository.Setup(x => x.GetById(id))
             .Returns((Question)null!);
 
@@ -57,7 +39,6 @@ public class GetById : IClassFixture<QuestionMediatorFixture>
         var id = _fixture.AutoFixture.Create<string>();
         var expected = _fixture.AutoFixture.Create<Question>();
 
-        _fixture.IdValidator.ReturnsAsValid(id, _idName);
         _fixture.QuestionRepository.Setup(x => x.GetById(id))
             .Returns(expected);
 

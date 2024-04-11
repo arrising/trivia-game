@@ -1,5 +1,7 @@
-﻿using System.Net;
+﻿using Newtonsoft.Json;
+using System.Net;
 using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Models;
 
 namespace TriviaGame.Api.Middleware;
 
@@ -40,7 +42,7 @@ public class ExceptionHandlerMiddleware
         }
     }
 
-    public (HttpStatusCode code, string message) GetResponse(Exception exception)
+    public (HttpStatusCode code, string response) GetResponse(Exception exception)
     {
         var code = exception switch
         {
@@ -49,6 +51,8 @@ public class ExceptionHandlerMiddleware
             _ => HttpStatusCode.InternalServerError
         };
 
-        return (code, message: exception.Message);
+        var response = JsonConvert.SerializeObject(new SimpleErrorDto(exception));
+
+        return (code, response);
     }
 }
