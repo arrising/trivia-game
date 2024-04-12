@@ -28,7 +28,7 @@ public class CategoryController : Controller
     }
 
     [HttpGet("byRoundId/{roundId}", Name = "getCategoriesByRoundId")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CategoryDto))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CategoryDto[]))]
     [ValidateId("roundId")]
     public IActionResult GetByRoundId(string roundId)
     {

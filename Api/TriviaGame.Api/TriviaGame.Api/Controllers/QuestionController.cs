@@ -29,7 +29,7 @@ public class QuestionController : Controller
     }
 
     [HttpGet("byCategoryId/{categoryId}", Name = "getQuestionsByCategoryId")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(QuestionDto))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(QuestionDto[]))]
     [ValidateId("categoryId")]
     public IActionResult GetByRoundId(string categoryId)
     {
