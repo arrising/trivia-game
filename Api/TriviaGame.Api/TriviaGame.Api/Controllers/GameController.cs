@@ -22,7 +22,8 @@ public class GameController : Controller
     public IActionResult GetAllGames()
     {
         var games = _mediator.GetGames();
-        return Ok(games);
+        var result = games?.Select(x => new GameDto(x)) ?? Enumerable.Empty<GameDto>();
+        return Ok(result);
     }
 
     [HttpGet("{gameId}", Name = "getGameById")]
@@ -31,6 +32,7 @@ public class GameController : Controller
     public IActionResult GetById(string gameId)
     {
         var game = _mediator.GetById(gameId);
-        return Ok(game);
+        var result = new GameDto(game);
+        return Ok(result);
     }
 }

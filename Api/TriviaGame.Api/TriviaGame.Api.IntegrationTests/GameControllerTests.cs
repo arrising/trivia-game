@@ -19,19 +19,29 @@ public class GameControllerTests : IClassFixture<ApplicationFixture>
     public async Task GetAllGames_Returns_Ok()
     {
         // Arrange
-        var expected = new List<Game>
+        var expected = new List<GameDto>
         {
             new()
             {
                 Id = "d12adfa5-26b5-4a6b-bd65-2dd02768437f",
                 Name = "Game One",
-                ValueSymbol = "$"
+                ValueSymbol = "$",
+                RoundIds = new List<string>
+                {
+                    TestIds.Game1_Round1,
+                    TestIds.Game1_Round2
+                }
             },
             new()
             {
                 Id = "71807a01-8dc2-40b9-ac9c-6977c3371357",
                 Name = "Game Two",
-                ValueSymbol = "$"
+                ValueSymbol = "$",
+                RoundIds = new List<string>
+                {
+                    TestIds.Game2_Round1,
+                    TestIds.Game2_Round2
+                }
             }
         };
 
@@ -41,7 +51,7 @@ public class GameControllerTests : IClassFixture<ApplicationFixture>
         // Assert
         response.Should().BeSuccessful();
 
-        var result = await response.DeserializeContentAsync<IEnumerable<Game>>();
+        var result = await response.DeserializeContentAsync<IEnumerable<GameDto>>();
 
         result.Should().BeEquivalentTo(expected);
     }
@@ -51,11 +61,16 @@ public class GameControllerTests : IClassFixture<ApplicationFixture>
     {
         // Arrange
         var url = $"{_testUrl}/{TestIds.Game1}";
-        var expected = new Game
+        var expected = new GameDto
         {
             Id = TestIds.Game1,
             Name = "Game One",
-            ValueSymbol = "$"
+            ValueSymbol = "$",
+            RoundIds = new List<string>
+            {
+                TestIds.Game1_Round1,
+                TestIds.Game1_Round2
+            }
         };
 
         // Act
@@ -64,7 +79,7 @@ public class GameControllerTests : IClassFixture<ApplicationFixture>
         // Assert
         response.Should().BeSuccessful();
 
-        var result = await response.DeserializeContentAsync<Game>();
+        var result = await response.DeserializeContentAsync<GameDto>();
 
         result.Should().BeEquivalentTo(expected);
     }

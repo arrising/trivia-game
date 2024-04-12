@@ -1,4 +1,5 @@
-﻿using TriviaGame.Api.Data.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Models;
 
 namespace TriviaGame.Api.Data.InMemoryDb;
@@ -12,8 +13,11 @@ public class GameRepository : IRepository<Game>
         _context = context;
     }
 
-    public Game? GetById(string id) => _context.Games.FirstOrDefault(x => x.Id == id);
-    public IEnumerable<Game> GetAll() => _context.Games;
+    public Game? GetById(string id) => _context.Games
+        .Include(x => x.Rounds)
+        .FirstOrDefault(x => x.Id == id);
+
+    public IEnumerable<Game> GetAll() => _context.Games.Include(x => x.Rounds);
 
     // Game should never have a parent object
     public IEnumerable<Game> GetByParentId(string id) =>
