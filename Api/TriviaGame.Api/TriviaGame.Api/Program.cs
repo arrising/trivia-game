@@ -4,11 +4,22 @@ using TriviaGame.Api.Mediators.Configuration;
 using TriviaGame.Api.Middleware.Configuration;
 using TriviaGame.Api.Validators.Configuration;
 
+const string applicationCorsPolicy = "_applicationCorsPolicy";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers(options => options.UseApplicationActionFilters());
+
+// Enable CORS for local host
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: applicationCorsPolicy,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200");
+        });
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -37,6 +48,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(applicationCorsPolicy);
 
 app.MapControllers();
 
