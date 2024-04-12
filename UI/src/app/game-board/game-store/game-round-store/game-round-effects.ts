@@ -11,8 +11,8 @@ export class SessionRoundEffects {
         return this.actions$.pipe(
             ofType(fromStore.game.actions.setGame),
             switchMap((action) => {
-                var allIds = action.game.roundIds;
-                return this.gameService.getRounds(allIds).pipe(
+                var gameId = action.game.id;
+                return this.gameService.getRounds(gameId).pipe(
                     map(rounds => {
                         return rounds ? fromStore.rounds.actions.loadRounds({ rounds })
                             : fromStore.rounds.actions.loadRoundsFailure({ error: { message: "Round not Found", id: 'TBD' } })

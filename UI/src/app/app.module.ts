@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
@@ -18,6 +19,7 @@ import { ModeSelectorComponent } from './mode-selector/mode-selector.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     GameBoardModule,
     LayoutModule,
     StoreModule.forRoot({}),
