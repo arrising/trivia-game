@@ -18,7 +18,7 @@ public class GameController : Controller
     }
 
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Game))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GameDto[]))]
     public IActionResult GetAllGames()
     {
         var games = _mediator.GetGames();
@@ -28,7 +28,7 @@ public class GameController : Controller
 
     [HttpGet("{gameId}", Name = "getGameById")]
     [ValidateId("gameId")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Game))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GameDto))]
     public IActionResult GetById(string gameId)
     {
         var game = _mediator.GetById(gameId);

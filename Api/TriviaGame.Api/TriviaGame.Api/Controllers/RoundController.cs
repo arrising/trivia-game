@@ -18,20 +18,23 @@ public class RoundController : Controller
     }
 
     [HttpGet("{roundId}", Name = "getRoundById")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Round))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RoundDto))]
     [ValidateId("roundId")]
     public IActionResult GetById(string roundId)
     {
         var round = _mediator.GetById(roundId);
-        return Ok(round);
+        var result = new RoundDto(round);
+        return Ok(result);
     }
 
     [HttpGet("byGameId/{gameId}", Name = "getRoundsByGameId")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Round))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RoundDto[]))]
+
     [ValidateId("gameId")]
     public IActionResult GetByGameId(string gameId)
     {
         var rounds = _mediator.GetByGameId(gameId);
-        return Ok(rounds);
+        var result = rounds?.Select(x => new RoundDto(x)) ?? Enumerable.Empty<RoundDto>();
+        return Ok(result);
     }
 }

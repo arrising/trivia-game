@@ -13,5 +13,5 @@ public class RoundDto
 
     public string Id { get; set; }
     public string Type { get; set; }
-    public IEnumerable<string> CategoryIds { get; set; }
+    public IEnumerable<string> CategoryIds { get; set; } = new List<string>();
 }

@@ -20,11 +20,18 @@ public class RoundControllerTests : IClassFixture<ApplicationFixture>
     {
         // Arrange
         var url = $"{_testUrl}/{TestIds.Game1_Round1}";
-        var expected = new Round
+        var expected = new RoundDto
         {
-            GameId = TestIds.Game1,
             Id = TestIds.Game1_Round1,
-            Type = "Single"
+            Type = "Single",
+            CategoryIds = new List<string>
+            {
+                TestIds.Game1_Round1_Cat1,
+                TestIds.Game1_Round1_Cat2,
+                TestIds.Game1_Round1_Cat3,
+                TestIds.Game1_Round1_Cat4,
+                TestIds.Game1_Round1_Cat5
+            }
         };
 
         // Act
@@ -33,7 +40,7 @@ public class RoundControllerTests : IClassFixture<ApplicationFixture>
         // Assert
         response.Should().BeSuccessful();
 
-        var result = await response.DeserializeContentAsync<Round>();
+        var result = await response.DeserializeContentAsync<RoundDto>();
 
         result.Should().BeEquivalentTo(expected);
     }
@@ -69,19 +76,33 @@ public class RoundControllerTests : IClassFixture<ApplicationFixture>
     {
         // Arrange
         var url = $"{_testUrl}/byGameId/{TestIds.Game1}";
-        var expected = new List<Round>
+        var expected = new List<RoundDto>
         {
             new()
             {
-                GameId = TestIds.Game1,
                 Id = TestIds.Game1_Round1,
-                Type = "Single"
+                Type = "Single",
+                CategoryIds = new List<string>
+                {
+                    TestIds.Game1_Round1_Cat1,
+                    TestIds.Game1_Round1_Cat2,
+                    TestIds.Game1_Round1_Cat3,
+                    TestIds.Game1_Round1_Cat4,
+                    TestIds.Game1_Round1_Cat5
+                }
             },
             new()
             {
-                GameId = TestIds.Game1,
                 Id = TestIds.Game1_Round2,
-                Type = "Double"
+                Type = "Double",
+                CategoryIds = new List<string>
+                {
+                    TestIds.Game1_Round2_Cat1,
+                    TestIds.Game1_Round2_Cat2,
+                    TestIds.Game1_Round2_Cat3,
+                    TestIds.Game1_Round2_Cat4,
+                    TestIds.Game1_Round2_Cat5
+                }
             }
         };
             
@@ -91,7 +112,7 @@ public class RoundControllerTests : IClassFixture<ApplicationFixture>
         // Assert
         response.Should().BeSuccessful();
 
-        var result = await response.DeserializeContentAsync<IEnumerable<Round>>();
+        var result = await response.DeserializeContentAsync<IEnumerable<RoundDto>>();
 
         result.Should().BeEquivalentTo(expected);
     }
