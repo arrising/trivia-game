@@ -41,9 +41,12 @@ export const questionReducer = createReducer(
     on(questionActions.deleteQuestionsByPredicate, (state, { predicate }) => {
       return questionAdapter.removeMany(predicate, state);
     }),
+    /*
+    // Use SetQuestions instead
     on(questionActions.loadQuestions, (state, { questions }) => {
       return questionAdapter.setAll(questions, state);
     }),
+    */
     on(questionActions.setQuestions, (state, { questions }) => {
       return questionAdapter.setMany(questions, state);
     }),

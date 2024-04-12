@@ -25,7 +25,7 @@ export class SessionRoundEffects {
     
     onSelectRound_setSelectedRound$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(fromStore.game.actions.selectRound),
+            ofType(fromStore.rounds.actions.selectRound),
             map((action) => action.roundId
             ? fromStore.rounds.actions.setSelectedRound({ id: action.roundId })
             : fromStore.game.actions.doNothing())

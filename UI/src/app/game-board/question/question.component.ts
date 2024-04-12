@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SessionQuestion } from '../game-store/game-question-store/game-question-state';
 import * as sessionStore from '../game-store';
 

@@ -6,7 +6,7 @@
             </th>
         </tr>
         <tr *ngFor="let question of category.questions">
-            <td><app-question-button [questionId]="question.questionId"></app-question-button></td>
+            <td><app-question-button [questionId]="question.id"></app-question-button></td>
         </tr>
     </table>
 </ng-container>

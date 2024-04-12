@@ -7,26 +7,22 @@ import * as fromStore from '..';
 
 @Injectable()
 export class SessionCategoryEffects {
-    onloadRounds_LoadCategories$ = createEffect(() => {
+    onselectRound_loadCategories$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(fromStore.rounds.actions.loadRounds),
+            ofType(fromStore.rounds.actions.selectRound),
             switchMap((action) => {
-                // TODO:  Need to reassess when/how categories are loaded
-                // Categories should be loaded when round is selected, not before
-                // as was the case with the static inline data
-                var allIds = action.rounds.map(x => x.categoryIds).flat();
-
-                return this.gameService.getCategories(allIds).pipe(
+                var roundId = action.roundId;
+                return this.gameService.getCategories(roundId).pipe(
                     map(categories => {
                         return categories ? fromStore.category.actions.loadCategories({ categories })
-                            : fromStore.game.actions.loadGameFailure({ error: { message: "Game not Found", id: 'TBD' } })
+                            : fromStore.category.actions.loadCategoriesFailure({ error: { message: "Categories not found for Round", id: roundId } })
                     }),
                     catchError(error => of(fromStore.game.actions.loadGameFailure({ error })))
                 );
             })
         );
     });
-
+    
     constructor(
         private actions$: Actions,
         private store: Store<any>,

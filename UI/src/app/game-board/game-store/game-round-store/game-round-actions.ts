@@ -5,12 +5,17 @@ import { SessionRound } from './game-round-state';
 export const sessionRoundActions = createActionGroup({
     source: 'Session Rounds',
     events: {
+        'Load Round': props<{ roundId: string }>(),
+        'Load Round Failure': (error: any | Error) => ({ error }),
+        'Set Round': props<{ round: SessionRound }>(),
+        
+        'Select Round': props<{ roundId: string }>(),
+        
         'Set Selected Round': props<{ id: string }>(),
 
         'Load Rounds': props<{ rounds: SessionRound[] }>(),
         'Load Rounds Failure': (error: any | Error) => ({ error }),
         'Clear Rounds': emptyProps(),
-        'Set Round': props<{ round: SessionRound }>(),
         'Set Rounds': props<{ rounds: SessionRound[] }>(),
         'Add Round': props<{ round: SessionRound }>(),
         'Upsert Round': props<{ round: SessionRound }>(),

@@ -10,7 +10,7 @@ export interface QuestionData extends Question {
 }
 
 export interface QuestionPointer {
-    questionId: string;
+    id: string;
     value: number;
 }
 

@@ -8,6 +8,38 @@ import { SessionQuestion } from "./game-question-state";
 
 @Injectable()
 export class SessionQuestionEffects {
+    // TODO: this version only returns questions for a single category (the last)
+    // Need to find a better way
+    onLoadCategories_loadQuestions$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(fromStore.category.actions.loadCategories),
+            switchMap((action) => {
+                var categoryIds = action.categories.map(x => x.id).flat();
+                var events = categoryIds.map(x => fromStore.questions.actions.loadQuestions({ categoryId: x }))
+                return events;
+            })
+        );
+    });
+
+    onLoadQuestions_addQuestions$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(fromStore.questions.actions.loadQuestions),
+            switchMap((action) => {
+                var categoryId = action.categoryId;
+                console.log('get questions by category', { categoryId });
+                return this.gameService.getQuestions(categoryId).pipe(
+                    map(questions => {
+                        console.log('got questions', { categoryId, questions })
+                        return questions ? fromStore.questions.actions.addQuestions({ questions })
+                            : fromStore.questions.actions.loadQuestionsFailure({ error: { message: "Questions not found for Category", id: categoryId } })
+                    }),
+                    catchError(error => of(fromStore.game.actions.loadGameFailure({ error })))
+                );
+            })
+        );
+    });
+
+/*
     onloadCategories_loadQuestions$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.category.actions.loadCategories),
@@ -31,7 +63,8 @@ export class SessionQuestionEffects {
             })
         );
     });
-    
+*/
+
     onSelectQuestion_setSelectedQuestion$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(fromStore.game.actions.selectQuestion),

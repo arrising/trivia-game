@@ -22,7 +22,6 @@ export class RoundSelectorComponent {
   }
 
   loadRound(roundId: string): void {
-    // TODO: Update to Load Round event with ID
-    this._store.dispatch(sessionStore.game.actions.selectRound({ roundId }));
+    this._store.dispatch(sessionStore.rounds.actions.selectRound({ roundId }));
   }
 }
