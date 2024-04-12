@@ -1,21 +1,20 @@
-import { Component, Input } from '@angular/core';
-import { GameService } from '../data/game.service';
-import { Game } from '../models/game';
+import { Component } from '@angular/core';
+import { Game } from '../../models/game';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as sessionStore from './game-store';
-import { SessionRound } from './game-store/game-round-store/game-round-state';
+import * as sessionStore from '../game-store';
+import { SessionRound } from '../game-store/game-round-store/game-round-state';
 
 @Component({
-  selector: 'app-game-board',
-  templateUrl: './game-board.component.html',
-  styleUrls: ['./game-board.component.scss']
+  selector: 'app-round-selector',
+  templateUrl: './round-selector.component.html',
+  styleUrls: ['./round-selector.component.scss']
 })
-export class GameBoardComponent {
+export class RoundSelectorComponent {
   currentGame$: Observable<Game | undefined> = of(undefined);
   gameRounds$: Observable< Array<SessionRound> | undefined> = of(undefined);
 
-  constructor(private _store: Store, private _service: GameService) { }
+  constructor(private _store: Store) { }
 
   ngOnInit(): void {
     this.currentGame$ = this._store.select(sessionStore.game.selectors.getSelectedGame);
@@ -23,6 +22,7 @@ export class GameBoardComponent {
   }
 
   loadRound(roundId: string): void {
+    // TODO: Update to Load Round event with ID
     this._store.dispatch(sessionStore.game.actions.selectRound({ roundId }));
   }
 }

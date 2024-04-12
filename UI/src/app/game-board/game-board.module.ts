@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutModule } from '../layout/layout.module';
-import { GameBoardComponent } from './game-board.component';
 import { GameSelectorComponent } from './game-selector/game-selector.component';
 import { RoundComponent } from './round/round.component';
+import { RoundSelectorComponent } from './round-selector/round-selector.component';
 import { QuestionComponent } from './question/question.component';
 import { AnswerComponent } from './answer/answer.component';
 import { GameControlsModule } from './game-controls/game-controls.module';
@@ -17,7 +17,7 @@ const gameBoardRoutes: Routes = [
   { path: 'games', component: GameSelectorComponent },
   {
     path: 'games/game/:gameId',
-    component: GameBoardComponent,
+    component: RoundSelectorComponent,
     canActivate: [gameLoadedGuard]
   },
   {
@@ -39,9 +39,9 @@ const gameBoardRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    GameBoardComponent,
     GameSelectorComponent,
     RoundComponent,
+    RoundSelectorComponent,
     QuestionComponent,
     AnswerComponent,
     QuestionButtonComponent,
@@ -56,8 +56,8 @@ const gameBoardRoutes: Routes = [
     GameStoreModule
   ],
   exports: [
-    GameBoardComponent,
     RoundComponent,
+    RoundSelectorComponent,
     QuestionComponent,
     AnswerComponent
   ]

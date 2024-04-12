@@ -14,6 +14,8 @@ export class GameSelectorComponent {
   allGames: Observable<Array<Game>>;
 
   constructor(private _store: Store, private _service: GameService) {
+    // TODO:  Move this state change into Store
+    this._store.dispatch(sessionStore.game.actions.clearGames());
     this.allGames = this._service.getAllGames();
   }
 

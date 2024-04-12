@@ -11,6 +11,9 @@ export class SessionCategoryEffects {
         return this.actions$.pipe(
             ofType(fromStore.rounds.actions.loadRounds),
             switchMap((action) => {
+                // TODO:  Need to reassess when/how categories are loaded
+                // Categories should be loaded when round is selected, not before
+                // as was the case with the static inline data
                 var allIds = action.rounds.map(x => x.categoryIds).flat();
 
                 return this.gameService.getCategories(allIds).pipe(
