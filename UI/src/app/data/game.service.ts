@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { GameInstance } from '../models/game';
-import { Question } from '../models/question';
 import { RoundInstance } from '../models/round';
 import { CategoryInstance } from '../models/category';
 import { environment } from 'src/environments/environment';
+import { SessionQuestion } from '../game-board/game-store/game-question-store/game-question-state';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +45,11 @@ export class GameService {
     return this._http.get<Array<RoundInstance>>(`${this._roundUrl}/byGameId/${gameId}`);
   }
 
-  getQuestions(categoryId: string): Observable<Array<Question> | undefined> {
-    return this._http.get<Array<Question>>(`${this._questionUrl}/byCategoryId/${categoryId}`);
+  getQuestion(questionId: string): Observable<SessionQuestion | undefined> {
+    return this._http.get<SessionQuestion>(`${this._questionUrl}/${questionId}`);
+  }
+
+  getQuestions(categoryId: string): Observable<Array<SessionQuestion> | undefined> {
+    return this._http.get<Array<SessionQuestion>>(`${this._questionUrl}/byCategoryId/${categoryId}`);
   }
 }
