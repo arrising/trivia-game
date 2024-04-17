@@ -1,9 +1,9 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Data.InMemoryDb.Configuration;
 
-public class QuestionRepository : IRepository<Question>
+public class QuestionRepository : IRepository<QuestionEntity>
 {
     private readonly TriviaGameDbContext _context;
 
@@ -12,11 +12,11 @@ public class QuestionRepository : IRepository<Question>
         _context = context;
     }
 
-    public Question? GetById(string id) =>
+    public QuestionEntity? GetById(string id) =>
         _context.Questions.FirstOrDefault(x => x.Id == id);
 
-    public IEnumerable<Question> GetByParentId(string id) =>
+    public IEnumerable<QuestionEntity> GetByParentId(string id) =>
         _context.Questions.Where(x => x.CategoryId == id);
 
-    public IEnumerable<Question> GetAll() => _context.Questions;
+    public IEnumerable<QuestionEntity> GetAll() => _context.Questions;
 }

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using TriviaGame.Api.Data.InMemoryDb.Configuration;
 using TriviaGame.Api.Data.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace TriviaGame.Api.Data.InMemoryDb;
@@ -43,14 +43,14 @@ public class InMemoryDbSeeder : IDbSeeder
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
-        var games = JsonSerializer.Deserialize<List<Game>>(fileStream, options) ?? new List<Game>();
+        var games = JsonSerializer.Deserialize<List<GameEntity>>(fileStream, options) ?? new List<GameEntity>();
 
         var seedData = ExtractSeedData(games);
 
         return seedData;
     }
 
-    public SeedData ExtractSeedData(List<Game> games)
+    public SeedData ExtractSeedData(List<GameEntity> games)
     {
         var seedData = new SeedData();
 
@@ -63,7 +63,7 @@ public class InMemoryDbSeeder : IDbSeeder
         return seedData;
     }
 
-    public void ExtractRounds(Game game, SeedData seedData)
+    public void ExtractRounds(GameEntity game, SeedData seedData)
     {
         foreach (var round in game.Rounds)
         {
@@ -73,7 +73,7 @@ public class InMemoryDbSeeder : IDbSeeder
         }
     }
 
-    public void ExtractCategories(Round round, SeedData seedData)
+    public void ExtractCategories(RoundEntity round, SeedData seedData)
     {
         foreach (var category in round.Categories)
         {
@@ -83,7 +83,7 @@ public class InMemoryDbSeeder : IDbSeeder
         }
     }
 
-    public void ExtractQuestions(Category category, SeedData seedData)
+    public void ExtractQuestions(CategoryEntity category, SeedData seedData)
     {
         foreach (var question in category.Questions)
         {
@@ -95,8 +95,8 @@ public class InMemoryDbSeeder : IDbSeeder
 
 public class SeedData
 {
-    public List<Category> Categories { get; set; } = new();
-    public List<Game> Games { get; set; } = new();
-    public List<Round> Rounds { get; set; } = new();
-    public List<Question> Questions { get; set; } = new();
+    public List<CategoryEntity> Categories { get; set; } = new();
+    public List<GameEntity> Games { get; set; } = new();
+    public List<RoundEntity> Rounds { get; set; } = new();
+    public List<QuestionEntity> Questions { get; set; } = new();
 }

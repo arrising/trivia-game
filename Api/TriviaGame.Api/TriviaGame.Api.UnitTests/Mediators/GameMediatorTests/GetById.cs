@@ -1,6 +1,6 @@
 ﻿using TriviaGame.Api.Exceptions;
 using TriviaGame.Api.Mediators.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.UnitTests.Mediators.GameMediatorTests;
 
@@ -22,7 +22,7 @@ public class GetById : IClassFixture<GameMediatorFixture>
         var id = _fixture.AutoFixture.Create<string>();
 
         _fixture.GameRepository.Setup(x => x.GetById(id))
-            .Returns((Game)null!);
+            .Returns((GameEntity)null!);
 
         // Act
         Action action = () => _mediator.GetById(id);
@@ -37,7 +37,7 @@ public class GetById : IClassFixture<GameMediatorFixture>
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
-        var expected = _fixture.AutoFixture.Create<Game>();
+        var expected = _fixture.AutoFixture.Create<GameEntity>();
 
         _fixture.GameRepository.Setup(x => x.GetById(id))
             .Returns(expected);

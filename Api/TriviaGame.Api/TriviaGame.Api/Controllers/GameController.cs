@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Middleware;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Dtos;
 
 namespace TriviaGame.Api.Controllers;
 

@@ -1,17 +1,17 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Mediators;
 using TriviaGame.Api.Mediators.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.UnitTests.Mediators.CategoryMediatorTests;
 
 public class CategoryMediatorFixture : BaseTestFixture<ICategoryMediator>
 {
-    public Mock<IRepository<Category>> CategoryRepository;
+    public Mock<IRepository<CategoryEntity>> CategoryRepository;
 
     public CategoryMediatorFixture()
     {
-        CategoryRepository = Repository.Create<IRepository<Category>>();
+        CategoryRepository = Repository.Create<IRepository<CategoryEntity>>();
     }
 
     public override ICategoryMediator CreateInstance() =>

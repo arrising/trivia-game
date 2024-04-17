@@ -1,5 +1,5 @@
 ﻿using TriviaGame.Api.Mediators.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.UnitTests.Mediators.GameMediatorTests;
 
@@ -18,7 +18,7 @@ public class GetGamesTests : IClassFixture<GameMediatorFixture>
     public void GameMediator_GetGames_Good()
     {
         // Arrange
-        var expected = _fixture.AutoFixture.CreateMany<Game>();
+        var expected = _fixture.AutoFixture.CreateMany<GameEntity>();
 
         _fixture.GameRepository.Setup(x => x.GetAll())
             .Returns(expected);

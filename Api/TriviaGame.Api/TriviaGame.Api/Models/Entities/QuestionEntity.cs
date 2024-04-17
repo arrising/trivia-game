@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TriviaGame.Api.Models;
+namespace TriviaGame.Api.Models.Entities;
 
-public class Question
+public class QuestionEntity
 {
     [Key]
     public string Id { get; set; }

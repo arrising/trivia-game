@@ -1,9 +1,9 @@
-﻿using TriviaGame.Api.Models;
+﻿using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Mediators.Interfaces;
 
 public interface IGameMediator
 {
-    Game GetById(string gameId);
-    IEnumerable<Game> GetGames();
+    GameEntity GetById(string gameId);
+    IEnumerable<GameEntity> GetGames();
 }

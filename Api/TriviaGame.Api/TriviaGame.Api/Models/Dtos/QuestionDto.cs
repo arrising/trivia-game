@@ -1,10 +1,12 @@
-﻿namespace TriviaGame.Api.Models;
+﻿using TriviaGame.Api.Models.Entities;
+
+namespace TriviaGame.Api.Models.Dtos;
 
 public class QuestionDto
 {
     public QuestionDto() { }
 
-    public QuestionDto(Question question)
+    public QuestionDto(QuestionEntity question)
     {
         Id = question.Id;
         Value = question.Value;

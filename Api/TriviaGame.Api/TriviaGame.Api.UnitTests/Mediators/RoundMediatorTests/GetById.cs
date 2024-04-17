@@ -1,6 +1,6 @@
 ﻿using TriviaGame.Api.Exceptions;
 using TriviaGame.Api.Mediators.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.UnitTests.Mediators.RoundMediatorTests;
 
@@ -22,7 +22,7 @@ public class GetById : IClassFixture<RoundMediatorFixture>
         var id = _fixture.AutoFixture.Create<string>();
 
         _fixture.RoundRepository.Setup(x => x.GetById(id))
-            .Returns((Round)null!);
+            .Returns((RoundEntity)null!);
 
         // Act
         Action action = () => _mediator.GetById(id);
@@ -37,7 +37,7 @@ public class GetById : IClassFixture<RoundMediatorFixture>
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
-        var expected = _fixture.AutoFixture.Create<Round>();
+        var expected = _fixture.AutoFixture.Create<RoundEntity>();
 
         _fixture.RoundRepository.Setup(x => x.GetById(id))
             .Returns(expected);

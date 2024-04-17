@@ -1,6 +1,6 @@
 ﻿using TriviaGame.Api.Exceptions;
 using TriviaGame.Api.Mediators.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.UnitTests.Mediators.QuestionMediatorTests;
 
@@ -9,10 +9,10 @@ public class GetByRoundId : IClassFixture<QuestionMediatorFixture>
     private readonly QuestionMediatorFixture _fixture;
     private readonly IQuestionMediator _mediator;
 
-    public static TheoryData<IEnumerable<Question>?> MissingCategoriesData = new()
+    public static TheoryData<IEnumerable<QuestionEntity>?> MissingCategoriesData = new()
     {
         null,
-        Enumerable.Empty<Question>()
+        Enumerable.Empty<QuestionEntity>()
     };
 
     public GetByRoundId(QuestionMediatorFixture fixture)
@@ -23,7 +23,7 @@ public class GetByRoundId : IClassFixture<QuestionMediatorFixture>
 
     [Theory]
     [MemberData(nameof(MissingCategoriesData))]
-    public void QuestionMediator_GetByCategoryId_IdDoesNotExist_Throws(IEnumerable<Question>? data)
+    public void QuestionMediator_GetByCategoryId_IdDoesNotExist_Throws(IEnumerable<QuestionEntity>? data)
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -44,7 +44,7 @@ public class GetByRoundId : IClassFixture<QuestionMediatorFixture>
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
-        var expected = _fixture.AutoFixture.CreateMany<Question>();
+        var expected = _fixture.AutoFixture.CreateMany<QuestionEntity>();
 
         _fixture.QuestionRepository.Setup(x => x.GetByParentId(id))
             .Returns(expected);

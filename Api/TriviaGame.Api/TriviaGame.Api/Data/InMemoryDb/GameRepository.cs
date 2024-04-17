@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TriviaGame.Api.Data.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Data.InMemoryDb;
 
-public class GameRepository : IRepository<Game>
+public class GameRepository : IRepository<GameEntity>
 {
     private readonly TriviaGameDbContext _context;
 
@@ -13,13 +13,13 @@ public class GameRepository : IRepository<Game>
         _context = context;
     }
 
-    public Game? GetById(string id) => _context.Games
+    public GameEntity? GetById(string id) => _context.Games
         .Include(x => x.Rounds)
         .FirstOrDefault(x => x.Id == id);
 
-    public IEnumerable<Game> GetAll() => _context.Games.Include(x => x.Rounds);
+    public IEnumerable<GameEntity> GetAll() => _context.Games.Include(x => x.Rounds);
 
     // Game should never have a parent object
-    public IEnumerable<Game> GetByParentId(string id) =>
+    public IEnumerable<GameEntity> GetByParentId(string id) =>
         throw new NotImplementedException("Game should never have a parent object");
 }

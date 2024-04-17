@@ -1,7 +1,7 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Exceptions;
 using TriviaGame.Api.Mediators.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Mediators;
 
@@ -10,18 +10,18 @@ namespace TriviaGame.Api.Mediators;
 /// </summary>
 public class QuestionMediator : IQuestionMediator
 {
-    private readonly IRepository<Question> _repository;
+    private readonly IRepository<QuestionEntity> _repository;
 
-    public QuestionMediator(IRepository<Question> repository)
+    public QuestionMediator(IRepository<QuestionEntity> repository)
     {
         _repository = repository;
     }
 
-    public Question GetById(string questionId) =>
+    public QuestionEntity GetById(string questionId) =>
         _repository.GetById(questionId)
         ?? throw new NotFoundException($"QuestionId '{questionId}' was not found");
 
-    public IEnumerable<Question> GetByCategoryId(string categoryId)
+    public IEnumerable<QuestionEntity> GetByCategoryId(string categoryId)
     {
         var result = _repository.GetByParentId(categoryId);
 

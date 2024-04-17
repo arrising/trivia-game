@@ -1,4 +1,4 @@
-﻿namespace TriviaGame.Api.Models;
+﻿namespace TriviaGame.Api.Models.Dtos;
 
 public class SimpleErrorDto
 {

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using TriviaGame.Api.Data.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Data.InMemoryDb.Configuration;
 
@@ -11,10 +11,10 @@ public static class InMemoryDbServiceExtensions
     public static IServiceCollection UseInMemoryDatabase(this IServiceCollection services)
     {
         services
-            .AddScoped<IRepository<Category>, CategoryRepository>()
-            .AddScoped<IRepository<Game>, GameRepository>()
-            .AddScoped<IRepository<Round>, RoundRepository>()
-            .AddScoped<IRepository<Question>, QuestionRepository>()
+            .AddScoped<IRepository<CategoryEntity>, CategoryRepository>()
+            .AddScoped<IRepository<GameEntity>, GameRepository>()
+            .AddScoped<IRepository<RoundEntity>, RoundRepository>()
+            .AddScoped<IRepository<QuestionEntity>, QuestionRepository>()
             .AddDbContext<TriviaGameDbContext>(options => { options.UseInMemoryDatabase(InMemoryDbConstants.DbName); });
 
         SeedInMemoryDb().Wait();

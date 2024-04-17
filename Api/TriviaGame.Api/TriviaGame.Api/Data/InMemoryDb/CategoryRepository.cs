@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TriviaGame.Api.Data.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Data.InMemoryDb;
 
-public class CategoryRepository : IRepository<Category>
+public class CategoryRepository : IRepository<CategoryEntity>
 {
     private readonly TriviaGameDbContext _context;
 
@@ -13,15 +13,15 @@ public class CategoryRepository : IRepository<Category>
         _context = context;
     }
 
-    public Category? GetById(string id) =>
+    public CategoryEntity? GetById(string id) =>
         _context.Categories
             .Include(x => x.Questions)
             .FirstOrDefault(x => x.Id == id);
 
-    public IEnumerable<Category> GetByParentId(string id) =>
+    public IEnumerable<CategoryEntity> GetByParentId(string id) =>
         _context.Categories
             .Include(x => x.Questions)
             .Where(x => x.RoundId == id);
 
-    public IEnumerable<Category> GetAll() => _context.Categories;
+    public IEnumerable<CategoryEntity> GetAll() => _context.Categories;
 }

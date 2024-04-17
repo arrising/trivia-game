@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TriviaGame.Api.Models;
+namespace TriviaGame.Api.Models.Entities;
 
-public class Round
+public class RoundEntity
 {
     [Key]
     public string Id { get; set; }
     public string GameId { get; set; }
     public string Type { get; set; }
-    public IEnumerable<Category> Categories { get; set; }
+    public IEnumerable<CategoryEntity> Categories { get; set; }
 }

@@ -1,10 +1,12 @@
-﻿namespace TriviaGame.Api.Models;
+﻿using TriviaGame.Api.Models.Entities;
+
+namespace TriviaGame.Api.Models.Dtos;
 
 public class GameDto
 {
     public GameDto() { }
 
-    public GameDto(Game game)
+    public GameDto(GameEntity game)
     {
         Id = game.Id;
         Name = game.Name;

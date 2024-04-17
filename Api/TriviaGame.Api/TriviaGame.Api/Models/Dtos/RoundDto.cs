@@ -1,10 +1,12 @@
-﻿namespace TriviaGame.Api.Models;
+﻿using TriviaGame.Api.Models.Entities;
+
+namespace TriviaGame.Api.Models.Dtos;
 
 public class RoundDto
 {
     public RoundDto() { }
 
-    public RoundDto(Round round)
+    public RoundDto(RoundEntity round)
     {
         Id = round.Id;
         Type = round.Type;

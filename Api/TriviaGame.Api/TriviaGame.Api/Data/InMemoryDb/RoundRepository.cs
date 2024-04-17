@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TriviaGame.Api.Data.Interfaces;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Data.InMemoryDb;
 
-public class RoundRepository : IRepository<Round>
+public class RoundRepository : IRepository<RoundEntity>
 {
     private readonly TriviaGameDbContext _context;
 
@@ -13,15 +13,15 @@ public class RoundRepository : IRepository<Round>
         _context = context;
     }
 
-    public Round? GetById(string id) =>
+    public RoundEntity? GetById(string id) =>
         _context.Rounds
             .Include(x => x.Categories)
             .FirstOrDefault(x => x.Id == id);
 
-    public IEnumerable<Round> GetByParentId(string gameId) =>
+    public IEnumerable<RoundEntity> GetByParentId(string gameId) =>
         _context.Rounds
             .Include(x => x.Categories)
             .Where(x => x.GameId == gameId);
 
-    public IEnumerable<Round> GetAll() => _context.Rounds.Include(x => x.Categories);
+    public IEnumerable<RoundEntity> GetAll() => _context.Rounds.Include(x => x.Categories);
 }

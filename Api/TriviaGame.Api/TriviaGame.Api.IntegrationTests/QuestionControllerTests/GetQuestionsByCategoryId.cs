@@ -1,5 +1,5 @@
 ﻿using TriviaGame.Api.IntegrationTests.TestHelpers;
-using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Dtos;
 
 namespace TriviaGame.Api.IntegrationTests.QuestionControllerTests;
 
