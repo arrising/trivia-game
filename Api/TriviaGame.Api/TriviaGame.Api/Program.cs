@@ -1,8 +1,8 @@
 using Microsoft.OpenApi.Models;
 using TriviaGame.Api.Converters.Configuration;
 using TriviaGame.Api.Data.InMemoryDb.Configuration;
-using TriviaGame.Api.Mediators.Configuration;
 using TriviaGame.Api.Middleware.Configuration;
+using TriviaGame.Api.Providers.Configuration;
 using TriviaGame.Api.Validators.Configuration;
 
 const string applicationCorsPolicy = "_applicationCorsPolicy";
@@ -35,7 +35,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services
     .UseInMemoryDatabase()
     .UseApplicationConverters()
-    .UseApplicationServices()
+    .UseApplicationProviders()
     .UseApplicationValidators();
 
 var app = builder.Build();

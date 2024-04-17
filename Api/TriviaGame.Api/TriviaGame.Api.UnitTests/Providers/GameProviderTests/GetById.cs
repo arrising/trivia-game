@@ -1,22 +1,22 @@
 ﻿using TriviaGame.Api.Exceptions;
-using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models.Entities;
+using TriviaGame.Api.Providers.Interfaces;
 
-namespace TriviaGame.Api.UnitTests.Mediators.GameMediatorTests;
+namespace TriviaGame.Api.UnitTests.Providers.GameProviderTests;
 
-public class GetById : IClassFixture<GameMediatorFixture>
+public class GetById : IClassFixture<GameProviderFixture>
 {
-    private readonly GameMediatorFixture _fixture;
-    private readonly IGameMediator _mediator;
+    private readonly GameProviderFixture _fixture;
+    private readonly IGameProvider _provider;
 
-    public GetById(GameMediatorFixture fixture)
+    public GetById(GameProviderFixture fixture)
     {
         _fixture = fixture;
-        _mediator = _fixture.CreateInstance();
+        _provider = _fixture.CreateInstance();
     }
 
     [Fact]
-    public void GameMediator_GetById_IdDoesNotExist_Throws()
+    public void GameProvider_GetById_IdDoesNotExist_Throws()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -25,7 +25,7 @@ public class GetById : IClassFixture<GameMediatorFixture>
             .Returns((GameEntity)null!);
 
         // Act
-        Action action = () => _mediator.GetById(id);
+        Action action = () => _provider.GetById(id);
 
         // Assert
         action.Should().Throw<NotFoundException>()
@@ -33,7 +33,7 @@ public class GetById : IClassFixture<GameMediatorFixture>
     }
 
     [Fact]
-    public void GameMediator_GetById_IdExists_Good()
+    public void GameProvider_GetById_IdExists_Good()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -43,7 +43,7 @@ public class GetById : IClassFixture<GameMediatorFixture>
             .Returns(expected);
 
         // Act
-        var actual = _mediator.GetById(id);
+        var actual = _provider.GetById(id);
 
         // Assert
         actual.Should().BeEquivalentTo(expected);

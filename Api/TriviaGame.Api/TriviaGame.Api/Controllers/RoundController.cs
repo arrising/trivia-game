@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Middleware;
 using TriviaGame.Api.Models.Dtos;
+using TriviaGame.Api.Providers.Interfaces;
 
 namespace TriviaGame.Api.Controllers;
 
@@ -10,11 +10,11 @@ namespace TriviaGame.Api.Controllers;
 [Route("api/rounds")]
 public class RoundController : Controller
 {
-    private readonly IRoundMediator _mediator;
+    private readonly IRoundProvider _provider;
 
-    public RoundController(IRoundMediator mediator)
+    public RoundController(IRoundProvider provider)
     {
-        _mediator = mediator;
+        _provider = provider;
     }
 
     [HttpGet("{roundId}", Name = "getRoundById")]
@@ -22,7 +22,7 @@ public class RoundController : Controller
     [ValidateId("roundId")]
     public IActionResult GetById(string roundId)
     {
-        var round = _mediator.GetById(roundId);
+        var round = _provider.GetById(roundId);
         var result = new RoundDto(round);
         return Ok(result);
     }
@@ -33,7 +33,7 @@ public class RoundController : Controller
     [ValidateId("gameId")]
     public IActionResult GetByGameId(string gameId)
     {
-        var rounds = _mediator.GetByGameId(gameId);
+        var rounds = _provider.GetByGameId(gameId);
         var result = rounds?.Select(x => new RoundDto(x)) ?? Enumerable.Empty<RoundDto>();
         return Ok(result);
     }

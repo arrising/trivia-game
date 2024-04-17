@@ -1,22 +1,22 @@
 ﻿using TriviaGame.Api.Exceptions;
-using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models.Entities;
+using TriviaGame.Api.Providers.Interfaces;
 
-namespace TriviaGame.Api.UnitTests.Mediators.QuestionMediatorTests;
+namespace TriviaGame.Api.UnitTests.Providers.QuestionProviderTests;
 
-public class GetById : IClassFixture<QuestionMediatorFixture>
+public class GetById : IClassFixture<QuestionProviderFixture>
 {
-    private readonly QuestionMediatorFixture _fixture;
-    private readonly IQuestionMediator _mediator;
+    private readonly QuestionProviderFixture _fixture;
+    private readonly IQuestionProvider _provider;
 
-    public GetById(QuestionMediatorFixture fixture)
+    public GetById(QuestionProviderFixture fixture)
     {
         _fixture = fixture;
-        _mediator = _fixture.CreateInstance();
+        _provider = _fixture.CreateInstance();
     }
 
     [Fact]
-    public void QuestionMediator_GetById_IdDoesNotExist_Throws()
+    public void QuestionProvider_GetById_IdDoesNotExist_Throws()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -25,7 +25,7 @@ public class GetById : IClassFixture<QuestionMediatorFixture>
             .Returns((QuestionEntity)null!);
 
         // Act
-        Action action = () => _mediator.GetById(id);
+        Action action = () => _provider.GetById(id);
 
         // Assert
         action.Should().Throw<NotFoundException>()
@@ -33,7 +33,7 @@ public class GetById : IClassFixture<QuestionMediatorFixture>
     }
 
     [Fact]
-    public void QuestionMediator_GetById_IdExists_Good()
+    public void QuestionProvider_GetById_IdExists_Good()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -43,7 +43,7 @@ public class GetById : IClassFixture<QuestionMediatorFixture>
             .Returns(expected);
 
         // Act
-        var actual = _mediator.GetById(id);
+        var actual = _provider.GetById(id);
 
         // Assert
         actual.Should().BeEquivalentTo(expected);

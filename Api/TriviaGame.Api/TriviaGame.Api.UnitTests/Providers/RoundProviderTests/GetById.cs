@@ -1,22 +1,22 @@
 ﻿using TriviaGame.Api.Exceptions;
-using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models.Entities;
+using TriviaGame.Api.Providers.Interfaces;
 
-namespace TriviaGame.Api.UnitTests.Mediators.RoundMediatorTests;
+namespace TriviaGame.Api.UnitTests.Providers.RoundProviderTests;
 
-public class GetById : IClassFixture<RoundMediatorFixture>
+public class GetById : IClassFixture<RoundProviderFixture>
 {
-    private readonly RoundMediatorFixture _fixture;
-    private readonly IRoundMediator _mediator;
+    private readonly RoundProviderFixture _fixture;
+    private readonly IRoundProvider _provider;
 
-    public GetById(RoundMediatorFixture fixture)
+    public GetById(RoundProviderFixture fixture)
     {
         _fixture = fixture;
-        _mediator = _fixture.CreateInstance();
+        _provider = _fixture.CreateInstance();
     }
 
     [Fact]
-    public void RoundMediator_GetById_IdDoesNotExist_Throws()
+    public void RoundProvider_GetById_IdDoesNotExist_Throws()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -25,7 +25,7 @@ public class GetById : IClassFixture<RoundMediatorFixture>
             .Returns((RoundEntity)null!);
 
         // Act
-        Action action = () => _mediator.GetById(id);
+        Action action = () => _provider.GetById(id);
 
         // Assert
         action.Should().Throw<NotFoundException>()
@@ -33,7 +33,7 @@ public class GetById : IClassFixture<RoundMediatorFixture>
     }
 
     [Fact]
-    public void RoundMediator_GetById_IdExists_Good()
+    public void RoundProvider_GetById_IdExists_Good()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -43,7 +43,7 @@ public class GetById : IClassFixture<RoundMediatorFixture>
             .Returns(expected);
 
         // Act
-        var actual = _mediator.GetById(id);
+        var actual = _provider.GetById(id);
 
         // Assert
         actual.Should().BeEquivalentTo(expected);

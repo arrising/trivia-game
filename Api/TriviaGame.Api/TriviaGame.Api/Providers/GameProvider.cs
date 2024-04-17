@@ -1,18 +1,18 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Exceptions;
-using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models.Entities;
+using TriviaGame.Api.Providers.Interfaces;
 
-namespace TriviaGame.Api.Mediators;
+namespace TriviaGame.Api.Providers;
 
 /// <summary>
 ///     Handles business logic regarding Game data
 /// </summary>
-public class GameMediator : IGameMediator
+public class GameProvider : IGameProvider
 {
     private readonly IRepository<GameEntity> _repository;
 
-    public GameMediator(IRepository<GameEntity> repository)
+    public GameProvider(IRepository<GameEntity> repository)
     {
         _repository = repository;
     }

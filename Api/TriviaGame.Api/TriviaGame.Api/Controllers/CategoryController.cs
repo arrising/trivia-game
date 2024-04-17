@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Middleware;
 using TriviaGame.Api.Models.Dtos;
+using TriviaGame.Api.Providers.Interfaces;
 
 namespace TriviaGame.Api.Controllers;
 
@@ -10,11 +10,11 @@ namespace TriviaGame.Api.Controllers;
 [Route("api/categories")]
 public class CategoryController : Controller
 {
-    private readonly ICategoryMediator _mediator;
+    private readonly ICategoryProvider _provider;
 
-    public CategoryController(ICategoryMediator mediator)
+    public CategoryController(ICategoryProvider provider)
     {
-        _mediator = mediator;
+        _provider = provider;
     }
 
     [HttpGet("{categoryId}", Name = "getCategoryById")]
@@ -22,7 +22,7 @@ public class CategoryController : Controller
     [ValidateId("categoryId")]
     public IActionResult GetById(string categoryId)
     {
-        var category = _mediator.GetById(categoryId);
+        var category = _provider.GetById(categoryId);
         var result = new CategoryDto(category);
         return Ok(result);
     }
@@ -32,7 +32,7 @@ public class CategoryController : Controller
     [ValidateId("roundId")]
     public IActionResult GetByRoundId(string roundId)
     {
-        var categories = _mediator.GetByRoundId(roundId);
+        var categories = _provider.GetByRoundId(roundId);
         var results = categories?.Select(x => new CategoryDto(x)) ?? Enumerable.Empty<CategoryDto>();
         return Ok(results);
     }

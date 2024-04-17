@@ -1,18 +1,18 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Exceptions;
-using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models.Entities;
+using TriviaGame.Api.Providers.Interfaces;
 
-namespace TriviaGame.Api.Mediators;
+namespace TriviaGame.Api.Providers;
 
 /// <summary>
 ///     Handles business logic regarding Round data
 /// </summary>
-public class RoundMediator : IRoundMediator
+public class RoundProvider : IRoundProvider
 {
     private readonly IRepository<RoundEntity> _repository;
 
-    public RoundMediator(IRepository<RoundEntity> repository)
+    public RoundProvider(IRepository<RoundEntity> repository)
     {
         _repository = repository;
     }

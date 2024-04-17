@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Middleware;
 using TriviaGame.Api.Models.Dtos;
+using TriviaGame.Api.Providers.Interfaces;
 
 namespace TriviaGame.Api.Controllers;
 
@@ -10,18 +10,18 @@ namespace TriviaGame.Api.Controllers;
 [Produces("application/json")]
 public class GameController : Controller
 {
-    private readonly IGameMediator _mediator;
+    private readonly IGameProvider _provider;
 
-    public GameController(IGameMediator mediator)
+    public GameController(IGameProvider provider)
     {
-        _mediator = mediator;
+        _provider = provider;
     }
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GameDto[]))]
     public IActionResult GetAllGames()
     {
-        var games = _mediator.GetGames();
+        var games = _provider.GetGames();
         var result = games?.Select(x => new GameDto(x)) ?? Enumerable.Empty<GameDto>();
         return Ok(result);
     }
@@ -31,7 +31,7 @@ public class GameController : Controller
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GameDto))]
     public IActionResult GetById(string gameId)
     {
-        var game = _mediator.GetById(gameId);
+        var game = _provider.GetById(gameId);
         var result = new GameDto(game);
         return Ok(result);
     }

@@ -1,18 +1,18 @@
 ﻿using TriviaGame.Api.Exceptions;
-using TriviaGame.Api.Mediators.Interfaces;
 using TriviaGame.Api.Models.Entities;
+using TriviaGame.Api.Providers.Interfaces;
 
-namespace TriviaGame.Api.UnitTests.Mediators.CategoryMediatorTests;
+namespace TriviaGame.Api.UnitTests.Providers.CategoryProviderTests;
 
-public class GetByRoundId : IClassFixture<CategoryMediatorFixture>
+public class GetByRoundId : IClassFixture<CategoryProviderFixture>
 {
-    private readonly CategoryMediatorFixture _fixture;
-    private readonly ICategoryMediator _mediator;
+    private readonly CategoryProviderFixture _fixture;
+    private readonly ICategoryProvider _provider;
 
-    public GetByRoundId(CategoryMediatorFixture fixture)
+    public GetByRoundId(CategoryProviderFixture fixture)
     {
         _fixture = fixture;
-        _mediator = _fixture.CreateInstance();
+        _provider = _fixture.CreateInstance();
     }
 
     public static TheoryData<IEnumerable<CategoryEntity>?> MissingCategoriesData = new()
@@ -23,7 +23,7 @@ public class GetByRoundId : IClassFixture<CategoryMediatorFixture>
 
     [Theory]
     [MemberData(nameof(MissingCategoriesData))]
-    public void CategoryMediator_GetByRoundId_IdDoesNotExist_Throws(IEnumerable<CategoryEntity>? data)
+    public void CategoryProvider_GetByRoundId_IdDoesNotExist_Throws(IEnumerable<CategoryEntity>? data)
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -32,7 +32,7 @@ public class GetByRoundId : IClassFixture<CategoryMediatorFixture>
             .Returns(data);
 
         // Act
-        Action action = () => _mediator.GetByRoundId(id);
+        Action action = () => _provider.GetByRoundId(id);
 
         // Assert
         action.Should().Throw<NotFoundException>()
@@ -40,7 +40,7 @@ public class GetByRoundId : IClassFixture<CategoryMediatorFixture>
     }
 
     [Fact]
-    public void CategoryMediator_GetByRoundId_IdExists_Good()
+    public void CategoryProvider_GetByRoundId_IdExists_Good()
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
@@ -50,7 +50,7 @@ public class GetByRoundId : IClassFixture<CategoryMediatorFixture>
             .Returns(expected);
 
         // Act
-        var actual = _mediator.GetByRoundId(id);
+        var actual = _provider.GetByRoundId(id);
 
         // Assert
         actual.Should().BeEquivalentTo(expected);
