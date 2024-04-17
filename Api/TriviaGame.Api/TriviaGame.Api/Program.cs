@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using TriviaGame.Api.Converters.Configuration;
 using TriviaGame.Api.Data.InMemoryDb.Configuration;
 using TriviaGame.Api.Mediators.Configuration;
 using TriviaGame.Api.Middleware.Configuration;
@@ -33,6 +34,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 builder.Services
     .UseInMemoryDatabase()
+    .UseApplicationConverters()
     .UseApplicationServices()
     .UseApplicationValidators();
 

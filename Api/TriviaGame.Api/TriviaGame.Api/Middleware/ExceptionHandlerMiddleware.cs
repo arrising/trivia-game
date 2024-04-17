@@ -2,6 +2,7 @@
 using System.Net;
 using TriviaGame.Api.Exceptions;
 using TriviaGame.Api.Models;
+using TriviaGame.Api.Models.Dtos;
 
 namespace TriviaGame.Api.Middleware;
 
