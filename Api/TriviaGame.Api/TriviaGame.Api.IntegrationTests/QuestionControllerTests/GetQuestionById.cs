@@ -1,20 +1,10 @@
 ﻿using TriviaGame.Api.IntegrationTests.TestHelpers;
 using TriviaGame.Api.Models;
 
-namespace TriviaGame.Api.IntegrationTests;
+namespace TriviaGame.Api.IntegrationTests.QuestionControllerTests;
 
-// Required to assure shard ApplicationFixture is only created once
-[Collection("IntegrationTests")]
-public class QuestionControllerTests
+public class GetQuestionById : QuestionControllerTestBase
 {
-    private readonly ApplicationFixture _fixture;
-    private readonly string _testUrl = "api/questions";
-
-    public QuestionControllerTests(ApplicationFixture fixture)
-    {
-        _fixture = fixture;
-    }
-
     public static TheoryData<string, string, QuestionDto> GetQuestionByIdData = new()
     {
         {
@@ -90,16 +80,18 @@ public class QuestionControllerTests
         }
     };
 
+    public GetQuestionById(ApplicationFixture fixture) : base(fixture) { }
+
     [Theory]
     [MemberData(nameof(GetQuestionByIdData))]
     public async Task GetQuestionById_Exists_Returns_Ok(string description, string id,
         QuestionDto expected)
     {
         // Arrange
-        var url = $"{_testUrl}/{id}";
+        var url = $"{TestUrl}/{id}";
 
         // Act
-        var response = await _fixture.Client.GetAsync(url);
+        var response = await Fixture.Client.GetAsync(url);
 
         // Assert
         response.Should().BeSuccessful();
@@ -113,10 +105,10 @@ public class QuestionControllerTests
     public async Task GetQuestionById_DoesNotExist_Returns_NotFound()
     {
         // Arrange
-        var url = $"{_testUrl}/{Guid.NewGuid()}";
+        var url = $"{TestUrl}/{Guid.NewGuid()}";
 
         // Act
-        var response = await _fixture.Client.GetAsync(url);
+        var response = await Fixture.Client.GetAsync(url);
 
         // Assert
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
@@ -126,92 +118,10 @@ public class QuestionControllerTests
     public async Task GetQuestionById_IdIsNotGuid_Returns_BadRequest()
     {
         // Arrange
-        var url = $"{_testUrl}/Not_A_Real_Id";
+        var url = $"{TestUrl}/Not_A_Real_Id";
 
         // Act
-        var response = await _fixture.Client.GetAsync(url);
-
-        // Assert
-        response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
-    }
-
-
-    [Fact]
-    public async Task GetQuestionsByCategoryId_Exists_Returns_Ok()
-    {
-        // Arrange
-        var url = $"{_testUrl}/byCategoryId/{TestIds.Game1_Round1_Cat2}";
-        var expected = new List<QuestionDto>
-        {
-            new()
-            {
-                Id = TestIds.Game1_Round1_Cat2_Q1,
-                Value = 100,
-                Ask = "Game One Single Category Two Question One",
-                Answer = "Game One Single Category Two Answer One"
-            },
-            new()
-            {
-                Id = TestIds.Game1_Round1_Cat2_Q2,
-                Value = 200,
-                Ask = "Game One Single Category Two Question Two",
-                Answer = "Game One Single Category Two Answer Two"
-            },
-            new()
-            {
-                Id = TestIds.Game1_Round1_Cat2_Q3,
-                Value = 300,
-                Ask = "Game One Single Category Two Question Three",
-                Answer = "Game One Single Category Two Answer Three"
-            },
-            new()
-            {
-                Id = TestIds.Game1_Round1_Cat2_Q4,
-                Value = 400,
-                Ask = "Game One Single Category Two Question Four",
-                Answer = "Game One Single Category Two Answer Four"
-            },
-            new()
-            {
-                Id = TestIds.Game1_Round1_Cat2_Q5,
-                Value = 500,
-                Ask = "Game One Single Category Two Question Five",
-                Answer = "Game One Single Category Two Answer Five"
-            }
-        };
-
-        // Act
-        var response = await _fixture.Client.GetAsync(url);
-
-        // Assert
-        response.Should().BeSuccessful();
-
-        var result = await response.DeserializeContentAsync<IEnumerable<QuestionDto>>();
-
-        result.Should().BeEquivalentTo(expected);
-    }
-
-    [Fact]
-    public async Task GetQuestionsByCategoryId_DoesNotExist_Returns_NotFound()
-    {
-        // Arrange
-        var url = $"{_testUrl}/byCategoryId/{Guid.NewGuid()}";
-
-        // Act
-        var response = await _fixture.Client.GetAsync(url);
-
-        // Assert
-        response.Should().HaveStatusCode(HttpStatusCode.NotFound);
-    }
-
-    [Fact]
-    public async Task GetQuestionsByCategoryId_IdIsNotGUID_Returns_BadRequest()
-    {
-        // Arrange
-        var url = $"{_testUrl}/byCategoryId/Not_A_Real_Id";
-
-        // Act
-        var response = await _fixture.Client.GetAsync(url);
+        var response = await Fixture.Client.GetAsync(url);
 
         // Assert
         response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
