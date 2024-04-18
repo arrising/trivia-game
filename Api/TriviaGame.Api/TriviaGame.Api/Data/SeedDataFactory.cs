@@ -1,14 +1,14 @@
 ﻿using System.Text.Json;
-using TriviaGame.Api.Data.InMemoryDb.Configuration;
+using TriviaGame.Api.Data.Configuration;
 using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Data;
 
 public class SeedDataFactory
 {
-    public SeedData BuildGameSeedData()
+    public SeedData BuildGameSeedData(string seedFilePath)
     {
-        using var fileStream = new FileStream(InMemoryDbConstants.SeedDataFile, FileMode.Open);
+        using var fileStream = new FileStream(seedFilePath, FileMode.Open);
         using var streamReader = new StreamReader(fileStream);
         var options = new JsonSerializerOptions
         {

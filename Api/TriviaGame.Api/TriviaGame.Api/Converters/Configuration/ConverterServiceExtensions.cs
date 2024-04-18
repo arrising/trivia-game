@@ -6,7 +6,7 @@ namespace TriviaGame.Api.Converters.Configuration;
 
 public static class ConverterServiceExtensions
 {
-    public static IServiceCollection UseApplicationConverters(this IServiceCollection services) =>
+    public static IServiceCollection AddApplicationConverters(this IServiceCollection services) =>
         services
             .AddScoped<IConverter<CategoryEntity, CategoryDto>, CategoryConverter>()
             .AddScoped<IConverter<GameEntity, GameDto>, GameConverter>()

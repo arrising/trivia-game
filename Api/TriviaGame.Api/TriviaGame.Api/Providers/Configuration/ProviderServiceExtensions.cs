@@ -6,7 +6,7 @@ namespace TriviaGame.Api.Providers.Configuration;
 [ExcludeFromCodeCoverage]
 public static class ProviderServiceExtensions
 {
-    public static IServiceCollection UseApplicationProviders(this IServiceCollection services) =>
+    public static IServiceCollection AddApplicationProviders(this IServiceCollection services) =>
         services
             .AddScoped<ICategoryProvider, CategoryProvider>()
             .AddScoped<IGameProvider, GameProvider>()

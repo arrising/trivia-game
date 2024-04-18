@@ -1,31 +1,27 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
-using TriviaGame.Api.Data.Interfaces;
-using TriviaGame.Api.Models.Entities;
+using TriviaGame.Api.Data.Configuration;
 
 namespace TriviaGame.Api.Data.InMemoryDb.Configuration;
 
 [ExcludeFromCodeCoverage]
 public static class InMemoryDbServiceExtensions
 {
-    public static IServiceCollection UseInMemoryDatabase(this IServiceCollection services)
+    public static IServiceCollection UseInMemoryDatabase(this IServiceCollection services,
+        DatabaseConfiguration configuration)
     {
-        services
-            .AddScoped<IRepository<CategoryEntity>, CategoryRepository>()
-            .AddScoped<IRepository<GameEntity>, GameRepository>()
-            .AddScoped<IRepository<RoundEntity>, RoundRepository>()
-            .AddScoped<IRepository<QuestionEntity>, QuestionRepository>()
-            .AddDbContext<TriviaGameDbContext>(options => { options.UseInMemoryDatabase(InMemoryDbConstants.DbName); });
+        SeedInMemoryDb(configuration).Wait();
 
-        SeedInMemoryDb().Wait();
+        services
+            .AddDbContext<TriviaGameDbContext>(options => { options.UseInMemoryDatabase(configuration.DatabaseName); });
 
         return services;
     }
 
-    public static Task SeedInMemoryDb() =>
+    public static Task SeedInMemoryDb(DatabaseConfiguration configuration) =>
         new InMemoryDbSeeder(
             new TriviaGameDbContext(
                 new DbContextOptionsBuilder<TriviaGameDbContext>()
-                    .UseInMemoryDatabase(InMemoryDbConstants.DbName).Options
-            )).Seed();
+                    .UseInMemoryDatabase(configuration.DatabaseName).Options)
+            , configuration).Seed();
 }

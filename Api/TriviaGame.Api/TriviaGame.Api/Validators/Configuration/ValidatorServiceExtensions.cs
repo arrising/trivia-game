@@ -4,7 +4,7 @@ namespace TriviaGame.Api.Validators.Configuration;
 
 public static class ValidatorServiceExtensions
 {
-    public static IServiceCollection UseApplicationValidators(this IServiceCollection services) =>
+    public static IServiceCollection AddApplicationValidators(this IServiceCollection services) =>
         services
             .AddScoped<IIdValidator, IdValidator>();
 }
