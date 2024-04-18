@@ -6,8 +6,8 @@ public class QuestionEntity
 {
     [Key]
     public string Id { get; set; }
-
     public string CategoryId { get; set; }
+    public CategoryEntity Category { get; set; }
     public int Value { get; set; }
     public string Ask { get; set; }
     public string Answer { get; set; }
