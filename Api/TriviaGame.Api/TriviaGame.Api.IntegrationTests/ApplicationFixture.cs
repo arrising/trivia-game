@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace TriviaGame.Api.IntegrationTests;
 
@@ -6,7 +7,9 @@ public class ApplicationFixture : IDisposable
 {
     public ApplicationFixture()
     {
-        var factory = new WebApplicationFactory<Program>();
+        var factory = new WebApplicationFactory<Program>()
+            .WithWebHostBuilder(builder => 
+                builder.UseEnvironment("Integration"));
         ApplicationFactory = factory;
         Client = ApplicationFactory.CreateClient();
     }

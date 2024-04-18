@@ -15,11 +15,8 @@ builder.Services.AddControllers(options => options.UseApplicationActionFilters()
 // Enable CORS for local host
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: applicationCorsPolicy,
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:4200");
-        });
+    options.AddPolicy(applicationCorsPolicy,
+        policy => { policy.WithOrigins("http://localhost:4200"); });
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -28,8 +25,8 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Version = "v1",
-        Title = "Trivia Game API"
+        Version = builder.Configuration["ApiVersion"],
+        Title = builder.Configuration["ApiName"]
     });
 });
 builder.Services
@@ -41,10 +38,10 @@ builder.Services
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (builder.Configuration.GetValue<bool>("UseSwagger"))
 {
     app.UseSwagger();
-    app.UseSwaggerUI(options => { options.DocumentTitle = "Trivia Game API"; });
+    app.UseSwaggerUI(options => { options.DocumentTitle = builder.Configuration["ApiName"]; });
 }
 
 app.UseHttpsRedirection();
@@ -57,6 +54,7 @@ app.MapControllers();
 
 app.UseApplicationMiddleware();
 
-app.Run();
+Console.Title = builder.Configuration["ApiName"] ?? builder.Environment.ApplicationName;
 
+app.Run();
 public partial class Program { }
