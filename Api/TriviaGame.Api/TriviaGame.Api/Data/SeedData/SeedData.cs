@@ -1,6 +1,6 @@
 ﻿using TriviaGame.Api.Models.Entities;
 
-namespace TriviaGame.Api.Data;
+namespace TriviaGame.Api.Data.SeedData;
 
 public class SeedData
 {

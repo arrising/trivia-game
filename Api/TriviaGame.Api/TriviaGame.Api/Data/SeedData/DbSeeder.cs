@@ -1,7 +1,7 @@
 ﻿using TriviaGame.Api.Data.Configuration;
 using TriviaGame.Api.Data.Interfaces;
 
-namespace TriviaGame.Api.Data;
+namespace TriviaGame.Api.Data.SeedData;
 
 public class DbSeeder : IDbSeeder
 {
