@@ -5,6 +5,7 @@ public class DatabaseConfiguration
     public string DatabaseName { get; set; }
     public string SeedFilePath { get; set; }
     public DatabaseType DatabaseType { get; set; }
+    public string SqlLiteDbPath { get; set; }
 
     public void Validate()
     {
@@ -15,6 +16,10 @@ public class DatabaseConfiguration
         if (string.IsNullOrWhiteSpace(SeedFilePath))
         {
             throw new ArgumentException("SeedFilePath must not be null or empty in configuration", nameof(SeedFilePath));
+        }
+        if (DatabaseType == DatabaseType.SqlLiteDb && string.IsNullOrWhiteSpace(SqlLiteDbPath))
+        {
+            throw new ArgumentException("SqlLiteDbPath must not be null or empty in configuration", nameof(SqlLiteDbPath));
         }
     }
 }

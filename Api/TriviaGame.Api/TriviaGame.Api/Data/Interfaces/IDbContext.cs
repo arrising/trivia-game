@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TriviaGame.Api.Models.Entities;
 
-namespace TriviaGame.Api.Data.InMemoryDb;
+namespace TriviaGame.Api.Data.Interfaces;
 
-public class TriviaGameDbContext : DbContext
+public interface IDbContext : IDisposable
 {
-    public TriviaGameDbContext(DbContextOptions<TriviaGameDbContext> options) : base(options) { }
     public DbSet<CategoryEntity> Categories { get; set; }
     public DbSet<GameEntity> Games { get; set; }
     public DbSet<RoundEntity> Rounds { get; set; }

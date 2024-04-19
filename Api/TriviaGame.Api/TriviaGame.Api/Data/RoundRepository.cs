@@ -2,13 +2,13 @@
 using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Models.Entities;
 
-namespace TriviaGame.Api.Data.InMemoryDb;
+namespace TriviaGame.Api.Data;
 
 public class RoundRepository : IRepository<RoundEntity>
 {
-    private readonly TriviaGameDbContext _context;
+    private readonly IDbContext _context;
 
-    public RoundRepository(TriviaGameDbContext context)
+    public RoundRepository(IDbContext context)
     {
         _context = context;
     }

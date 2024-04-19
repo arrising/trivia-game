@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using TriviaGame.Api.Data.Configuration;
+using TriviaGame.Api.Data.Interfaces;
 
 namespace TriviaGame.Api.Data.InMemoryDb.Configuration;
 
@@ -10,18 +11,17 @@ public static class InMemoryDbServiceExtensions
     public static IServiceCollection UseInMemoryDatabase(this IServiceCollection services,
         DatabaseConfiguration configuration)
     {
-        SeedInMemoryDb(configuration).Wait();
-
         services
             .AddDbContext<TriviaGameDbContext>(options => { options.UseInMemoryDatabase(configuration.DatabaseName); });
 
-        return services;
+        return services
+            .AddScoped<IDbContext>(provider => provider.GetRequiredService<TriviaGameDbContext>());
     }
 
-    public static Task SeedInMemoryDb(DatabaseConfiguration configuration) =>
-        new InMemoryDbSeeder(
-            new TriviaGameDbContext(
-                new DbContextOptionsBuilder<TriviaGameDbContext>()
-                    .UseInMemoryDatabase(configuration.DatabaseName).Options)
-            , configuration).Seed();
+    public static void SetupInMemorySeedData(this WebApplication app, DatabaseConfiguration configuration)
+    {
+        using var scope = app.Services.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<TriviaGameDbContext>();
+        new InMemoryDbSeeder(dbContext, configuration).Seed().Wait();
+    }
 }

@@ -1,7 +1,6 @@
 using Microsoft.OpenApi.Models;
 using TriviaGame.Api.Converters.Configuration;
 using TriviaGame.Api.Data.Configuration;
-using TriviaGame.Api.Data.InMemoryDb.Configuration;
 using TriviaGame.Api.Middleware.Configuration;
 using TriviaGame.Api.Providers.Configuration;
 using TriviaGame.Api.Validators.Configuration;
@@ -9,6 +8,8 @@ using TriviaGame.Api.Validators.Configuration;
 const string applicationCorsPolicy = "_applicationCorsPolicy";
 
 var builder = WebApplication.CreateBuilder(args);
+
+Console.Title = builder.Configuration["ApiName"] ?? builder.Environment.ApplicationName;
 
 // Add services to the container.
 builder.Services.AddControllers(options => options.UseApplicationActionFilters());
@@ -55,7 +56,8 @@ app.MapControllers();
 
 app.UseApplicationMiddleware();
 
-Console.Title = builder.Configuration["ApiName"] ?? builder.Environment.ApplicationName;
+app.SetupDatabaseSeedData(builder.Configuration);
 
 app.Run();
+
 public partial class Program { }

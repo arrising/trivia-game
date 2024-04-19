@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using TriviaGame.Api.Data.Configuration;
 using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Data;

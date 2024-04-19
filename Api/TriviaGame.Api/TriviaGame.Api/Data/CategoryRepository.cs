@@ -2,13 +2,13 @@
 using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Models.Entities;
 
-namespace TriviaGame.Api.Data.InMemoryDb;
+namespace TriviaGame.Api.Data;
 
 public class CategoryRepository : IRepository<CategoryEntity>
 {
-    private readonly TriviaGameDbContext _context;
+    private readonly IDbContext _context;
 
-    public CategoryRepository(TriviaGameDbContext context)
+    public CategoryRepository(IDbContext context)
     {
         _context = context;
     }
