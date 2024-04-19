@@ -9,8 +9,9 @@ public static class SqlLIteDbServiceExtensions
     public static IServiceCollection UseSqlLiteDb(this IServiceCollection services,
         DatabaseConfiguration configuration)
     {
+
         services
-            .AddDbContext<TriviaGameDbContext>(options => { options.UseSqlite(configuration.SeedFilePath); });
+            .AddDbContext<TriviaGameDbContext>(options => { options.UseSqlite($"Data Source={configuration.SqlLiteDbPath}"); });
 
         return services
             .AddScoped<IDbContext>(provider => provider.GetRequiredService<TriviaGameDbContext>());
@@ -22,6 +23,9 @@ public static class SqlLIteDbServiceExtensions
         var dbContext = scope.ServiceProvider.GetRequiredService<TriviaGameDbContext>();
 
         // Assure database always uses latest schema
+
+        var connection = dbContext.Database.GetDbConnection();
+        var test = connection.ConnectionString;
         dbContext.Database.Migrate();
         new SqlLiteDbSeeder(dbContext, configuration).Seed().Wait();
     }
