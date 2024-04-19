@@ -442,3 +442,7 @@ Thumbs.db
 # UI Project
 UI/coverage
 UI/typings
+
+# Database Files
+*.db
+*.db-*
