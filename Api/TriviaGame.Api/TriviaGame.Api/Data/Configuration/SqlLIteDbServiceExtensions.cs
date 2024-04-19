@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TriviaGame.Api.Data.Interfaces;
+using TriviaGame.Api.Data.SeedData;
 
 namespace TriviaGame.Api.Data.Configuration;
 
