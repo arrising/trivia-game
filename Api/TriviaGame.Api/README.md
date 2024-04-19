@@ -15,8 +15,10 @@ Updateing database
 1. Install the ef command line, if not already installed:
    1. `dotnet tool install --global dotnet-ef --version 7.0.9`
 1. Open a command prompt to the TriviaGame.Api project folder (trivia-game\Api\TriviaGame.Api\TriviaGame.Api)
-1. Use migrate the command *(using -v for verbose)* :
-   1. `dotnet ef migrations add {changeName} -v`  
+1. Set environment to SqlLiteMigration
+   1. `set ASPNETCORE_ENVIRONMENT=SqlLiteMigration`  
+1. Use migrate the command *[(using -v for verbose, -o to set output directory)](https://learn.microsoft.com/en-us/ef/core/cli/dotnet#common-options)* :
+   1. `dotnet ef migrations add InitialDatabase -o data/Migrations`  
 1. Wait for migration script to complete
 
 ## TriviaGame.Api.IntegrationTests
