@@ -10,6 +10,14 @@ Api code lives here
 1) Models: Data models go here, seperated by entities and Dto 
 1) Providers: Business logic for requests are applied here, connected to controllers
 1) Middleware: Global functions to run on requets
+### SqlLite Database
+Updateing database
+1. Install the ef command line, if not already installed:
+   1. `dotnet tool install --global dotnet-ef --version 7.0.9`
+1. Open a command prompt to the TriviaGame.Api project folder (trivia-game\Api\TriviaGame.Api\TriviaGame.Api)
+1. Use migrate the command *(using -v for verbose)* :
+   1. `dotnet ef migrations add {changeName} -v`  
+1. Wait for migration script to complete
 
 ## TriviaGame.Api.IntegrationTests
 Intrgration tests live here
