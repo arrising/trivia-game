@@ -1,6 +1,4 @@
-﻿using TriviaGame.Api.Data.InMemoryDb.Configuration;
-using TriviaGame.Api.Data.Interfaces;
-using TriviaGame.Api.Data.SqlLiteDb.Configuration;
+﻿using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Data.Configuration;

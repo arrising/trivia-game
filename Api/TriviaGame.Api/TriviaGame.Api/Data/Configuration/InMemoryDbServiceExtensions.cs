@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using TriviaGame.Api.Data.Configuration;
 using TriviaGame.Api.Data.Interfaces;
 
-namespace TriviaGame.Api.Data.InMemoryDb.Configuration;
+namespace TriviaGame.Api.Data.Configuration;
 
 [ExcludeFromCodeCoverage]
 public static class InMemoryDbServiceExtensions
@@ -22,6 +22,6 @@ public static class InMemoryDbServiceExtensions
     {
         using var scope = app.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<TriviaGameDbContext>();
-        new InMemoryDbSeeder(dbContext, configuration).Seed().Wait();
+        new DbSeeder(dbContext, configuration).Seed().Wait();
     }
 }

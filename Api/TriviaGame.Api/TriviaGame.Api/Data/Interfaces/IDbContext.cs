@@ -5,8 +5,10 @@ namespace TriviaGame.Api.Data.Interfaces;
 
 public interface IDbContext : IDisposable
 {
-    public DbSet<CategoryEntity> Categories { get; set; }
-    public DbSet<GameEntity> Games { get; set; }
-    public DbSet<RoundEntity> Rounds { get; set; }
-    public DbSet<QuestionEntity> Questions { get; set; }
+     DbSet<CategoryEntity> Categories { get; set; }
+     DbSet<GameEntity> Games { get; set; }
+     DbSet<RoundEntity> Rounds { get; set; }
+     DbSet<QuestionEntity> Questions { get; set; }
+
+     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

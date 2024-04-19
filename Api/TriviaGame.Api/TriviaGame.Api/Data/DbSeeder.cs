@@ -1,14 +1,14 @@
 ﻿using TriviaGame.Api.Data.Configuration;
 using TriviaGame.Api.Data.Interfaces;
 
-namespace TriviaGame.Api.Data.SqlLiteDb;
+namespace TriviaGame.Api.Data;
 
-public class SqlLiteDbSeeder : IDbSeeder
+public class DbSeeder : IDbSeeder
 {
+    private readonly IDbContext _context;
     private readonly DatabaseConfiguration _configuration;
-    private readonly TriviaGameDbContext _context;
 
-    public SqlLiteDbSeeder(TriviaGameDbContext context, DatabaseConfiguration configuration)
+    public DbSeeder(IDbContext context, DatabaseConfiguration configuration)
     {
         _context = context;
         _configuration = configuration;

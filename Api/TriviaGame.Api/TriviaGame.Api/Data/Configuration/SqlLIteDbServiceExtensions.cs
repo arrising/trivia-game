@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TriviaGame.Api.Data.Configuration;
 using TriviaGame.Api.Data.Interfaces;
 
-namespace TriviaGame.Api.Data.SqlLiteDb.Configuration;
+namespace TriviaGame.Api.Data.Configuration;
 
 public static class SqlLIteDbServiceExtensions
 {
@@ -23,10 +22,7 @@ public static class SqlLIteDbServiceExtensions
         var dbContext = scope.ServiceProvider.GetRequiredService<TriviaGameDbContext>();
 
         // Assure database always uses latest schema
-
-        var connection = dbContext.Database.GetDbConnection();
-        var test = connection.ConnectionString;
         dbContext.Database.Migrate();
-        new SqlLiteDbSeeder(dbContext, configuration).Seed().Wait();
+        new DbSeeder(dbContext, configuration).Seed().Wait();
     }
 }

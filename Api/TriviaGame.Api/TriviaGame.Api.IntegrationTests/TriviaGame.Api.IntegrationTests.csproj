@@ -27,10 +27,4 @@
     <ProjectReference Include="..\TriviaGame.Api\TriviaGame.Api.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Data\TriviaGameSeedData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
