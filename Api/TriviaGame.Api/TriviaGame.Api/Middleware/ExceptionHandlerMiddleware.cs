@@ -1,7 +1,6 @@
-﻿using Newtonsoft.Json;
-using System.Net;
+﻿using System.Net;
+using Newtonsoft.Json;
 using TriviaGame.Api.Exceptions;
-using TriviaGame.Api.Models;
 using TriviaGame.Api.Models.Dtos;
 
 namespace TriviaGame.Api.Middleware;
@@ -48,6 +47,7 @@ public class ExceptionHandlerMiddleware
         var code = exception switch
         {
             NotFoundException => HttpStatusCode.NotFound,
+            ConversionNullException => HttpStatusCode.InternalServerError,
             ArgumentException => HttpStatusCode.BadRequest,
             _ => HttpStatusCode.InternalServerError
         };

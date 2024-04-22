@@ -2,7 +2,7 @@
 
 namespace TriviaGame.Api.UnitTests;
 
-public abstract class BaseTestFixture<T> where T : class
+public abstract class BaseTestFixture
 {
     // Entity Framework parent object references to exclude
     // Used to prevent circular reference exceptions when AutoFixture is creating values.
@@ -21,6 +21,9 @@ public abstract class BaseTestFixture<T> where T : class
     }
 
     public IFixture AutoFixture { get; } = new Fixture();
+}
 
+public abstract class BaseTestFixture<T> : BaseTestFixture where T : class
+{
     public abstract T CreateInstance();
 }

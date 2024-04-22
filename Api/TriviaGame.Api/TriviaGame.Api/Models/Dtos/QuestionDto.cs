@@ -1,4 +1,5 @@
-﻿using TriviaGame.Api.Models.Entities;
+﻿using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.Models.Dtos;
 
@@ -8,6 +9,11 @@ public class QuestionDto
 
     public QuestionDto(QuestionEntity question)
     {
+        if (question == null)
+        {
+            throw new ConversionNullException(nameof(question));
+        }
+
         Id = question.Id;
         Value = question.Value;
         Ask = question.Ask;
