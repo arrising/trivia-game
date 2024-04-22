@@ -1,13 +1,31 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TriviaGame.Api.Exceptions;
 
 namespace TriviaGame.Api.Models.Entities;
 
 public class RoundEntity
 {
+    public RoundEntity() { }
+
+    public RoundEntity(RoundEntity round)
+    {
+        if (round == null)
+        {
+            throw new ConversionNullException(nameof(round));
+        }
+
+        Id = round.Id;
+        GameId = round.GameId;
+        Game = round.Game;
+        Type = round.Type;
+        Categories = round.Categories ?? new List<CategoryEntity>();
+    }
+
     [Key]
-    public string Id { get; set; }
-    public string GameId { get; set; }
-    public GameEntity Game { get; set; }
-    public string Type { get; set; }
-    public IEnumerable<CategoryEntity> Categories { get; set; }
+    public string Id { get; init; }
+
+    public string GameId { get; init; }
+    public GameEntity Game { get; init; }
+    public string Type { get; init; }
+    public IEnumerable<CategoryEntity> Categories { get; init; } = new List<CategoryEntity>();
 }

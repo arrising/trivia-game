@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Xml.Linq;
 using TriviaGame.Api.Data.Configuration;
 using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Models.Entities;
@@ -56,44 +57,68 @@ public class DbSeeder : IDbSeeder
     {
         var seedData = new SeedData();
 
-        foreach (var game in games)
+        foreach (var value in games)
         {
-            ExtractRounds(game, seedData);
+            var rounds = ExtractRounds(value, seedData);
+            var game = new GameEntity(value)
+            {
+                Rounds = rounds
+            };
             seedData.Games.Add(game);
         }
 
         return seedData;
     }
 
-    private void ExtractRounds(GameEntity game, SeedData seedData)
+    private IEnumerable<RoundEntity> ExtractRounds(GameEntity game, SeedData seedData)
     {
-        foreach (var round in game.Rounds)
+        var rounds = new List<RoundEntity>();
+        foreach (var value in game.Rounds)
         {
-            round.GameId = game.Id;
-            round.Game = game;
-            ExtractCategories(round, seedData);
+            var categories = ExtractCategories(value, seedData);
+            var round = new RoundEntity(value)
+            {
+                GameId = game.Id,
+                Game = game,
+                Categories = categories
+            };
             seedData.Rounds.Add(round);
+            rounds.Add(round);
         }
+        return rounds;
     }
 
-    private void ExtractCategories(RoundEntity round, SeedData seedData)
+    private IEnumerable<CategoryEntity> ExtractCategories(RoundEntity round, SeedData seedData)
     {
-        foreach (var category in round.Categories)
+        var categories = new List<CategoryEntity>();
+        foreach (var value in round.Categories)
         {
-            category.RoundId = round.Id;
-            category.Round = round;
-            ExtractQuestions(category, seedData);
+            var questions = ExtractQuestions(value, seedData);
+            var category = new CategoryEntity(value)
+            {
+                RoundId = round.Id,
+                Round = round,
+                Questions = questions
+            };
             seedData.Categories.Add(category);
+            categories.Add(category);
         }
+        return categories;
     }
 
-    private void ExtractQuestions(CategoryEntity category, SeedData seedData)
+    private IEnumerable<QuestionEntity> ExtractQuestions(CategoryEntity category, SeedData seedData)
     {
-        foreach (var question in category.Questions)
+        var questions = new List<QuestionEntity>();
+        foreach (var value in category.Questions)
         {
-            question.CategoryId = category.Id;
-            question.Category = category;
+            var question = new QuestionEntity(value)
+            {
+                CategoryId = category.Id,
+                Category = category
+            };
             seedData.Questions.Add(question);
+            questions.Add(question);
         }
+        return questions;
     }
 }
