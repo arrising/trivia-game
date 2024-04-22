@@ -24,14 +24,10 @@ public class Convert : IClassFixture<CategoryConverterFixture>
             Id = value.Id,
             Name = value.Name,
             Note = value.Note,
-            Questions = value.Questions.SetupTestCases(question =>
+            Questions = value.Questions.Select(question => new QuestionPointerDto
             {
-                var dto = _fixture.AutoFixture.Create<QuestionPointerDto>();
-
-                _fixture.PointerConverter.Setup(x => x.Covert(question))
-                    .Returns(dto);
-
-                return dto;
+                Id = question.Id,
+                Value = question.Value
             })
         };
 
