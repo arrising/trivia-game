@@ -4,11 +4,11 @@ using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.UnitTests.Models.Dtos.GameDtoTests;
 
-public class FromGameEntity : IClassFixture<DtoTestFixture>
+public class FromGameEntity : IClassFixture<ModelsTestFixture>
 {
-    private readonly DtoTestFixture _fixture;
+    private readonly ModelsTestFixture _fixture;
 
-    public FromGameEntity(DtoTestFixture fixture)
+    public FromGameEntity(ModelsTestFixture fixture)
     {
         _fixture = fixture;
     }
@@ -55,6 +55,6 @@ public class FromGameEntity : IClassFixture<DtoTestFixture>
         var action = () => new GameDto(null);
 
         action.Should().ThrowExactly<ConversionNullException>()
-            .WithMessage("Can not create new game from null (Parameter 'game')");
+            .WithMessage("Can not create new GameDto from null (Parameter 'game')");
     }
 }

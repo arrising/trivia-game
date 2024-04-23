@@ -13,7 +13,7 @@ public class GameEntity
     {
         if (game == null)
         {
-            throw new ConversionNullException(nameof(game));
+            throw new ConversionNullException(GetType(), nameof(game));
         }
 
         Id = game.Id;

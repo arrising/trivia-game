@@ -4,11 +4,11 @@ using TriviaGame.Api.Models.Entities;
 
 namespace TriviaGame.Api.UnitTests.Models.Dtos.RoundDtoTests;
 
-public class FromRoundEntity : IClassFixture<DtoTestFixture>
+public class FromRoundEntity : IClassFixture<ModelsTestFixture>
 {
-    private readonly DtoTestFixture _fixture;
+    private readonly ModelsTestFixture _fixture;
 
-    public FromRoundEntity(DtoTestFixture fixture)
+    public FromRoundEntity(ModelsTestFixture fixture)
     {
         _fixture = fixture;
     }
@@ -53,6 +53,6 @@ public class FromRoundEntity : IClassFixture<DtoTestFixture>
         var action = () => new RoundDto(null);
 
         action.Should().ThrowExactly<ConversionNullException>()
-            .WithMessage("Can not create new round from null (Parameter 'round')");
+            .WithMessage("Can not create new RoundDto from null (Parameter 'round')");
     }
 }

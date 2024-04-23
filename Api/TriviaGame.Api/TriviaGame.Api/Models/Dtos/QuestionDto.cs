@@ -11,7 +11,7 @@ public class QuestionDto
     {
         if (question == null)
         {
-            throw new ConversionNullException(nameof(question));
+            throw new ConversionNullException(GetType(), nameof(question));
         }
 
         Id = question.Id;

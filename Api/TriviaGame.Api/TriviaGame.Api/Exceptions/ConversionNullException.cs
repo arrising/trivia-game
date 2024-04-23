@@ -2,6 +2,6 @@
 
 public class ConversionNullException : ArgumentNullException
 {
-    public ConversionNullException(string parameterName) : base(parameterName,
-        $"Can not create new {parameterName} from null") { }
+    public ConversionNullException(Type type, string parameterName) : base(parameterName,
+        $"Can not create new {type.Name} from null") { }
 }

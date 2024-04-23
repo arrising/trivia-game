@@ -11,7 +11,7 @@ public class CategoryDto
     {
         if (category == null)
         {
-            throw new ConversionNullException(nameof(category));
+            throw new ConversionNullException(GetType(), nameof(category));
         }
 
         Id = category.Id;

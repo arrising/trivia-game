@@ -11,7 +11,7 @@ public class RoundDto
     {
         if (round == null)
         {
-            throw new ConversionNullException(nameof(round));
+            throw new ConversionNullException(GetType(), nameof(round));
         }
 
         Id = round.Id;
