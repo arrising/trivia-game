@@ -5,7 +5,7 @@ namespace TriviaGame.Api.IntegrationTests.QuestionControllerTests;
 
 public class GetQuestionById : QuestionControllerTestBase
 {
-    public static TheoryData<string, string, QuestionDto> GetQuestionByIdData = new()
+    public static TheoryData<string, string, QuestionDto> GetQuestionByIdData { get; } = new()
     {
         {
             "With One Alternative",

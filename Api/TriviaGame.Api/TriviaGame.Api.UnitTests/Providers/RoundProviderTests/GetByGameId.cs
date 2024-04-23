@@ -7,7 +7,7 @@ namespace TriviaGame.Api.UnitTests.Providers.RoundProviderTests;
 
 public class GetByGameId : IClassFixture<RoundProviderFixture>
 {
-    public static TheoryData<IEnumerable<RoundEntity>?> MissingRoundsData = new()
+    public static TheoryData<IEnumerable<RoundEntity>?> MissingRoundsData { get; } = new()
     {
         null,
         Enumerable.Empty<RoundEntity>()
