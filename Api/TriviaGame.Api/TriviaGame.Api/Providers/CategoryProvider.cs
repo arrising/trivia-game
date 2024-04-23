@@ -1,5 +1,6 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Models.Dtos;
 using TriviaGame.Api.Models.Entities;
 using TriviaGame.Api.Providers.Interfaces;
 
@@ -17,16 +18,20 @@ public class CategoryProvider : ICategoryProvider
         _repository = repository;
     }
 
-    public CategoryEntity GetById(string categoryId) =>
-        _repository.GetById(categoryId)
-        ?? throw new NotFoundException($"CategoryId '{categoryId}' was not found");
-
-    public IEnumerable<CategoryEntity> GetByRoundId(string roundId)
+    public CategoryDto GetById(string categoryId)
     {
-        var result = _repository.GetByParentId(roundId);
+        var entity = _repository.GetById(categoryId);
+        return entity != null
+            ? new CategoryDto(entity)
+            : throw new NotFoundException($"CategoryId '{categoryId}' was not found");
+    }
 
-        return result?.Any() == true
-            ? result
+    public IEnumerable<CategoryDto> GetByRoundId(string roundId)
+    {
+        var entities = _repository.GetByParentId(roundId);
+
+        return entities?.Any() == true
+            ? entities.Select(entity => new CategoryDto(entity))
             : throw new NotFoundException($"Categories for {nameof(roundId)} '{roundId}' were not found");
     }
 }

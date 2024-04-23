@@ -22,8 +22,7 @@ public class CategoryController : Controller
     [ValidateId("categoryId")]
     public IActionResult GetById(string categoryId)
     {
-        var category = _provider.GetById(categoryId);
-        var result = new CategoryDto(category);
+        var result = _provider.GetById(categoryId);
         return Ok(result);
     }
 
@@ -32,8 +31,7 @@ public class CategoryController : Controller
     [ValidateId("roundId")]
     public IActionResult GetByRoundId(string roundId)
     {
-        var categories = _provider.GetByRoundId(roundId);
-        var results = categories?.Select(x => new CategoryDto(x)) ?? Enumerable.Empty<CategoryDto>();
+        var results = _provider.GetByRoundId(roundId);
         return Ok(results);
     }
 }

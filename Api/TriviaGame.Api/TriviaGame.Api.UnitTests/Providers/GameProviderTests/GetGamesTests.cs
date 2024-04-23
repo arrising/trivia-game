@@ -1,4 +1,5 @@
-﻿using TriviaGame.Api.Models.Entities;
+﻿using TriviaGame.Api.Models.Dtos;
+using TriviaGame.Api.Models.Entities;
 using TriviaGame.Api.Providers.Interfaces;
 
 namespace TriviaGame.Api.UnitTests.Providers.GameProviderTests;
@@ -18,10 +19,11 @@ public class GetGamesTests : IClassFixture<GameProviderFixture>
     public void GameProvider_GetGames_Good()
     {
         // Arrange
-        var expected = _fixture.AutoFixture.CreateMany<GameEntity>();
+        var entities = _fixture.AutoFixture.CreateMany<GameEntity>();
+        var expected = entities.Select(entity => new GameDto(entity));
 
         _fixture.GameRepository.Setup(x => x.GetAll())
-            .Returns(expected);
+            .Returns(entities);
 
         // Act
         var actual = _provider.GetGames();

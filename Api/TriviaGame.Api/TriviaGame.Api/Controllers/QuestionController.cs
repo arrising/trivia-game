@@ -23,8 +23,7 @@ public class QuestionController : Controller
     [ValidateId("questionId")]
     public IActionResult GetById(string questionId)
     {
-        var question = _provider.GetById(questionId);
-        var result = new QuestionDto(question);
+        var result = _provider.GetById(questionId);
         return Ok(result);
     }
 
@@ -33,8 +32,7 @@ public class QuestionController : Controller
     [ValidateId("categoryId")]
     public IActionResult GetByRoundId(string categoryId)
     {
-        var questions = _provider.GetByCategoryId(categoryId);
-        var results = questions?.Select(x => new QuestionDto(x)) ?? Enumerable.Empty<QuestionDto>();
+        var results = _provider.GetByCategoryId(categoryId);
         return Ok(results);
     }
 }

@@ -1,4 +1,6 @@
-﻿using TriviaGame.Api.Exceptions;
+﻿using System.Linq;
+using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Models.Dtos;
 using TriviaGame.Api.Models.Entities;
 using TriviaGame.Api.Providers.Interfaces;
 
@@ -44,10 +46,11 @@ public class GetByRoundId : IClassFixture<QuestionProviderFixture>
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
-        var expected = _fixture.AutoFixture.CreateMany<QuestionEntity>();
+        var entities = _fixture.AutoFixture.CreateMany<QuestionEntity>();
+        var expected = entities.Select(entity => new QuestionDto(entity));
 
         _fixture.QuestionRepository.Setup(x => x.GetByParentId(id))
-            .Returns(expected);
+            .Returns(entities);
 
         // Act
         var actual = _provider.GetByCategoryId(id);

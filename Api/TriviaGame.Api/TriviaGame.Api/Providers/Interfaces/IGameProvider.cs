@@ -1,9 +1,9 @@
-﻿using TriviaGame.Api.Models.Entities;
+﻿using TriviaGame.Api.Models.Dtos;
 
 namespace TriviaGame.Api.Providers.Interfaces;
 
 public interface IGameProvider
 {
-    GameEntity GetById(string gameId);
-    IEnumerable<GameEntity> GetGames();
+    GameDto GetById(string gameId);
+    IEnumerable<GameDto> GetGames();
 }

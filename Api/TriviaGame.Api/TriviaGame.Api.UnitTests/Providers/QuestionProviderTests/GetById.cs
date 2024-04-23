@@ -1,4 +1,5 @@
 ﻿using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Models.Dtos;
 using TriviaGame.Api.Models.Entities;
 using TriviaGame.Api.Providers.Interfaces;
 
@@ -37,10 +38,11 @@ public class GetById : IClassFixture<QuestionProviderFixture>
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
-        var expected = _fixture.AutoFixture.Create<QuestionEntity>();
+        var entity = _fixture.AutoFixture.Create<QuestionEntity>();
+        var expected = new QuestionDto(entity);
 
         _fixture.QuestionRepository.Setup(x => x.GetById(id))
-            .Returns(expected);
+            .Returns(entity);
 
         // Act
         var actual = _provider.GetById(id);

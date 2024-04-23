@@ -1,5 +1,6 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Models.Dtos;
 using TriviaGame.Api.Models.Entities;
 using TriviaGame.Api.Providers.Interfaces;
 
@@ -17,16 +18,20 @@ public class RoundProvider : IRoundProvider
         _repository = repository;
     }
 
-    public RoundEntity GetById(string roundId) =>
-        _repository.GetById(roundId)
-        ?? throw new NotFoundException($"RoundId '{roundId}' was not found");
-
-    public IEnumerable<RoundEntity> GetByGameId(string gameId)
+    public RoundDto GetById(string roundId)
     {
-        var result = _repository.GetByParentId(gameId);
+        var entity = _repository.GetById(roundId);
+        return entity != null
+            ? new RoundDto(entity)
+            : throw new NotFoundException($"RoundId '{roundId}' was not found");
+    }
 
-        return result?.Any() == true
-            ? result
+    public IEnumerable<RoundDto> GetByGameId(string gameId)
+    {
+        var entities = _repository.GetByParentId(gameId);
+
+        return entities?.Any() == true
+            ? entities.Select(entity => new RoundDto(entity))
             : throw new NotFoundException($"Rounds for {nameof(gameId)} '{gameId}' were not found");
     }
 }

@@ -21,8 +21,7 @@ public class GameController : Controller
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GameDto[]))]
     public IActionResult GetAllGames()
     {
-        var games = _provider.GetGames();
-        var result = games?.Select(x => new GameDto(x)) ?? Enumerable.Empty<GameDto>();
+        var result = _provider.GetGames();
         return Ok(result);
     }
 
@@ -31,8 +30,7 @@ public class GameController : Controller
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GameDto))]
     public IActionResult GetById(string gameId)
     {
-        var game = _provider.GetById(gameId);
-        var result = new GameDto(game);
-        return Ok(result);
+        var results = _provider.GetById(gameId);
+        return Ok(results);
     }
 }

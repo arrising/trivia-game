@@ -1,9 +1,9 @@
-﻿using TriviaGame.Api.Models.Entities;
+﻿using TriviaGame.Api.Models.Dtos;
 
 namespace TriviaGame.Api.Providers.Interfaces;
 
 public interface ICategoryProvider
 {
-    CategoryEntity GetById(string categoryId);
-    IEnumerable<CategoryEntity> GetByRoundId(string roundId);
+    CategoryDto GetById(string categoryId);
+    IEnumerable<CategoryDto> GetByRoundId(string roundId);
 }

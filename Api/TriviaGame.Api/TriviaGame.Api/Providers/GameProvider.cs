@@ -1,5 +1,6 @@
 ﻿using TriviaGame.Api.Data.Interfaces;
 using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Models.Dtos;
 using TriviaGame.Api.Models.Entities;
 using TriviaGame.Api.Providers.Interfaces;
 
@@ -17,9 +18,18 @@ public class GameProvider : IGameProvider
         _repository = repository;
     }
 
-    public GameEntity GetById(string gameId) =>
-        _repository.GetById(gameId)
-        ?? throw new NotFoundException($"GameId '{gameId}' was not found");
+    public GameDto GetById(string gameId)
+    {
+        var entity = _repository.GetById(gameId);
+        return entity != null ? new GameDto(entity) : throw new NotFoundException($"GameId '{gameId}' was not found");
+    }
 
-    public IEnumerable<GameEntity> GetGames() => _repository.GetAll();
+    public IEnumerable<GameDto> GetGames()
+    {
+        var entities = _repository.GetAll();
+
+        return entities?.Any() == true
+            ? entities.Select(entity => new GameDto(entity))
+            : throw new NotFoundException("No Games  were not found");
+    }
 }

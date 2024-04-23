@@ -1,4 +1,5 @@
 ﻿using TriviaGame.Api.Exceptions;
+using TriviaGame.Api.Models.Dtos;
 using TriviaGame.Api.Models.Entities;
 using TriviaGame.Api.Providers.Interfaces;
 
@@ -6,6 +7,12 @@ namespace TriviaGame.Api.UnitTests.Providers.RoundProviderTests;
 
 public class GetByGameId : IClassFixture<RoundProviderFixture>
 {
+    public static TheoryData<IEnumerable<RoundEntity>?> MissingRoundsData = new()
+    {
+        null,
+        Enumerable.Empty<RoundEntity>()
+    };
+
     private readonly RoundProviderFixture _fixture;
     private readonly IRoundProvider _provider;
 
@@ -14,12 +21,6 @@ public class GetByGameId : IClassFixture<RoundProviderFixture>
         _fixture = fixture;
         _provider = _fixture.CreateInstance();
     }
-
-    public static TheoryData<IEnumerable<RoundEntity>?> MissingRoundsData = new()
-    {
-        null,
-        Enumerable.Empty<RoundEntity>()
-    };
 
     [Theory]
     [MemberData(nameof(MissingRoundsData))]
@@ -44,10 +45,11 @@ public class GetByGameId : IClassFixture<RoundProviderFixture>
     {
         // Arrange
         var id = _fixture.AutoFixture.Create<string>();
-        var expected = _fixture.AutoFixture.CreateMany<RoundEntity>();
+        var entities = _fixture.AutoFixture.CreateMany<RoundEntity>();
+        var expected = entities.Select(entity => new RoundDto(entity));
 
         _fixture.RoundRepository.Setup(x => x.GetByParentId(id))
-            .Returns(expected);
+            .Returns(entities);
 
         // Act
         var actual = _provider.GetByGameId(id);
