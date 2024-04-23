@@ -18,7 +18,7 @@ Updateing database
 1. Set environment to SqlLiteMigration
    1. `set ASPNETCORE_ENVIRONMENT=SqlLiteMigration`  
 1. Use migrate the command *[(using -v for verbose, -o to set output directory)](https://learn.microsoft.com/en-us/ef/core/cli/dotnet#common-options)* :
-   1. `dotnet ef migrations add InitialDatabase -o data/Migrations`  
+   1. `dotnet ef migrations add {ChangeName} -o data/Migrations`  
 1. Wait for migration script to complete
 
 ## TriviaGame.Api.IntegrationTests
