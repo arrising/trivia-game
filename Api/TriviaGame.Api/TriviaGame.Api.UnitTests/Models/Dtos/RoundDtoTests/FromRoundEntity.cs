@@ -19,9 +19,9 @@ public class FromRoundEntity : IClassFixture<ModelsTestFixture>
         var value = _fixture.AutoFixture.Create<RoundEntity>();
         var expected = new RoundDto
         {
-            Id = value.Id,
+            Id = value.Id.ToString(),
             Type = value.Type,
-            CategoryIds = value.Categories.Select(x => x.Id)
+            CategoryIds = value.Categories.Select(x => x.Id.ToString())
         };
 
         var actual = new RoundDto(value);
@@ -37,7 +37,7 @@ public class FromRoundEntity : IClassFixture<ModelsTestFixture>
             .Create();
         var expected = new RoundDto
         {
-            Id = value.Id,
+            Id = value.Id.ToString(),
             Type = value.Type,
             CategoryIds = Enumerable.Empty<string>()
         };

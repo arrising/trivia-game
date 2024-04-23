@@ -20,7 +20,8 @@ public class RoundProvider : IRoundProvider
 
     public RoundDto GetById(string roundId)
     {
-        var entity = _repository.GetById(roundId);
+        var id = Guid.Parse(roundId);
+        var entity = _repository.GetById(id);
         return entity != null
             ? new RoundDto(entity)
             : throw new NotFoundException($"RoundId '{roundId}' was not found");
@@ -28,7 +29,8 @@ public class RoundProvider : IRoundProvider
 
     public IEnumerable<RoundDto> GetByGameId(string gameId)
     {
-        var entities = _repository.GetByParentId(gameId);
+        var id = Guid.Parse(gameId);
+        var entities = _repository.GetByParentId(id);
 
         return entities?.Any() == true
             ? entities.Select(entity => new RoundDto(entity))

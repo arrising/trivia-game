@@ -19,7 +19,7 @@ public class FromQuestionEntity : IClassFixture<ModelsTestFixture>
         var value = _fixture.AutoFixture.Create<QuestionEntity>();
         var expected = new QuestionPointerDto
         {
-            Id = value.Id,
+            Id = value.Id.ToString(),
             Value = value.Value
         };
 
@@ -36,7 +36,7 @@ public class FromQuestionEntity : IClassFixture<ModelsTestFixture>
             .Create();
         var expected = new QuestionPointerDto
         {
-            Id = value.Id,
+            Id = value.Id.ToString(),
             Value = value.Value
         };
 

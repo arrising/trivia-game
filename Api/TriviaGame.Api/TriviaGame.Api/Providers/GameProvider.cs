@@ -20,7 +20,8 @@ public class GameProvider : IGameProvider
 
     public GameDto GetById(string gameId)
     {
-        var entity = _repository.GetById(gameId);
+        var id = Guid.Parse(gameId);
+        var entity = _repository.GetById(id);
         return entity != null ? new GameDto(entity) : throw new NotFoundException($"GameId '{gameId}' was not found");
     }
 

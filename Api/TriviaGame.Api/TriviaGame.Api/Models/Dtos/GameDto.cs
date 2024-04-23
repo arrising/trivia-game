@@ -14,10 +14,10 @@ public class GameDto
             throw new ConversionNullException(GetType(), nameof(game));
         }
 
-        Id = game.Id;
+        Id = game.Id.ToString();
         Name = game.Name;
         ValueSymbol = game.ValueSymbol;
-        RoundIds = game.Rounds?.Any() == true ? game.Rounds.Select(x => x.Id) : Enumerable.Empty<string>();
+        RoundIds = game.Rounds?.Any() == true ? game.Rounds.Select(x => x.Id.ToString()) : Enumerable.Empty<string>();
     }
 
     public string Id { get; set; }

@@ -27,9 +27,10 @@ public class GetByRoundId : IClassFixture<CategoryProviderFixture>
     public void CategoryProvider_GetByRoundId_IdDoesNotExist_Throws(IEnumerable<CategoryEntity>? data)
     {
         // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
+        var guid = Guid.NewGuid();
+        var id = guid.ToString();
 
-        _fixture.CategoryRepository.Setup(x => x.GetByParentId(id))
+        _fixture.CategoryRepository.Setup(x => x.GetByParentId(guid))
             .Returns(data);
 
         // Act
@@ -44,11 +45,12 @@ public class GetByRoundId : IClassFixture<CategoryProviderFixture>
     public void CategoryProvider_GetByRoundId_IdExists_Good()
     {
         // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
+        var guid = Guid.NewGuid();
+        var id = guid.ToString();
         var entities = _fixture.AutoFixture.CreateMany<CategoryEntity>();
         var expected = entities.Select(entity => new CategoryDto(entity));
 
-        _fixture.CategoryRepository.Setup(x => x.GetByParentId(id))
+        _fixture.CategoryRepository.Setup(x => x.GetByParentId(guid))
             .Returns(entities);
 
         // Act

@@ -25,8 +25,8 @@ public class QuestionEntity
     }
 
     [Key]
-    public string Id { get; set; }
-    public string CategoryId { get; set; }
+    public Guid Id { get; set; } = Guid.Empty;
+    public Guid CategoryId { get; set; } = Guid.Empty;
     public CategoryEntity Category { get; set; }
     public int Value { get; set; }
     public string Ask { get; set; }

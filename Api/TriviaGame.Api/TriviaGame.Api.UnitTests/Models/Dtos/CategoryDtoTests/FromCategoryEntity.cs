@@ -19,12 +19,12 @@ public class FromCategoryEntity : IClassFixture<ModelsTestFixture>
         var value = _fixture.AutoFixture.Create<CategoryEntity>();
         var expected = new CategoryDto
         {
-            Id = value.Id,
+            Id = value.Id.ToString(),
             Name = value.Name,
             Note = value.Note,
             Questions = value.Questions.Select(question => new QuestionPointerDto
             {
-                Id = question.Id,
+                Id = question.Id.ToString(),
                 Value = question.Value
             })
         };
@@ -43,7 +43,7 @@ public class FromCategoryEntity : IClassFixture<ModelsTestFixture>
 
         var expected = new CategoryDto
         {
-            Id = value.Id,
+            Id = value.Id.ToString(),
             Name = value.Name,
             Note = value.Note,
             Questions = Enumerable.Empty<QuestionPointerDto>()

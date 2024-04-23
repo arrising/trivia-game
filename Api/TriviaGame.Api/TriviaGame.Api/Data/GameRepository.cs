@@ -13,13 +13,13 @@ public class GameRepository : IRepository<GameEntity>
         _context = context;
     }
 
-    public GameEntity? GetById(string id) => _context.Games
+    public GameEntity? GetById(Guid id) => _context.Games
         .Include(x => x.Rounds)
         .FirstOrDefault(x => x.Id == id);
 
     public IEnumerable<GameEntity> GetAll() => _context.Games.Include(x => x.Rounds);
 
     // Game should never have a parent object
-    public IEnumerable<GameEntity> GetByParentId(string id) =>
+    public IEnumerable<GameEntity> GetByParentId(Guid id) =>
         throw new NotImplementedException("Game should never have a parent object");
 }

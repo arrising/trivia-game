@@ -20,7 +20,8 @@ public class QuestionProvider : IQuestionProvider
 
     public QuestionDto GetById(string questionId)
     {
-        var entity = _repository.GetById(questionId);
+        var id = Guid.Parse(questionId);
+        var entity = _repository.GetById(id);
         return entity != null
             ? new QuestionDto(entity)
             : throw new NotFoundException($"QuestionId '{questionId}' was not found");
@@ -28,7 +29,8 @@ public class QuestionProvider : IQuestionProvider
 
     public IEnumerable<QuestionDto> GetByCategoryId(string categoryId)
     {
-        var entities = _repository.GetByParentId(categoryId);
+        var id = Guid.Parse(categoryId);
+        var entities = _repository.GetByParentId(id);
 
         return entities?.Any() == true
             ? entities.Select(entity => new QuestionDto(entity))

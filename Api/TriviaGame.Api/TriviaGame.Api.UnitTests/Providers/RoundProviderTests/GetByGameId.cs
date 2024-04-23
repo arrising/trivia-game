@@ -27,9 +27,10 @@ public class GetByGameId : IClassFixture<RoundProviderFixture>
     public void RoundProvider_GetByGameId_IdDoesNotExist_Throws(IEnumerable<RoundEntity>? data)
     {
         // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
+        var guid = Guid.NewGuid();
+        var id = guid.ToString();
 
-        _fixture.RoundRepository.Setup(x => x.GetByParentId(id))
+        _fixture.RoundRepository.Setup(x => x.GetByParentId(guid))
             .Returns(data);
 
         // Act
@@ -44,11 +45,12 @@ public class GetByGameId : IClassFixture<RoundProviderFixture>
     public void RoundProvider_GetByGameId_IdExists_Good()
     {
         // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
+        var guid = Guid.NewGuid();
+        var id = guid.ToString();
         var entities = _fixture.AutoFixture.CreateMany<RoundEntity>();
         var expected = entities.Select(entity => new RoundDto(entity));
 
-        _fixture.RoundRepository.Setup(x => x.GetByParentId(id))
+        _fixture.RoundRepository.Setup(x => x.GetByParentId(guid))
             .Returns(entities);
 
         // Act

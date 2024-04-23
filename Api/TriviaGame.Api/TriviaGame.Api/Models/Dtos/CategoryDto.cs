@@ -14,7 +14,7 @@ public class CategoryDto
             throw new ConversionNullException(GetType(), nameof(category));
         }
 
-        Id = category.Id;
+        Id = category.Id.ToString();
         Name = category.Name;
         Note = category.Note;
         Questions = category.Questions?.Select(x => new QuestionPointerDto(x)) ??

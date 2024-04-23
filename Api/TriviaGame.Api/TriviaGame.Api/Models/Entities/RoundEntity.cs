@@ -22,9 +22,9 @@ public class RoundEntity
     }
 
     [Key]
-    public string Id { get; init; }
+    public Guid Id { get; init; } = Guid.Empty;
 
-    public string GameId { get; init; }
+    public Guid GameId { get; init; } = Guid.Empty;
     public GameEntity Game { get; init; }
     public string Type { get; init; }
     public IEnumerable<CategoryEntity> Categories { get; init; } = new List<CategoryEntity>();

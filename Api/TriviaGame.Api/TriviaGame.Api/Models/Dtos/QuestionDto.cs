@@ -14,7 +14,7 @@ public class QuestionDto
             throw new ConversionNullException(GetType(), nameof(question));
         }
 
-        Id = question.Id;
+        Id = question.Id.ToString();
         Value = question.Value;
         Ask = question.Ask;
         Answer = question.Answer;

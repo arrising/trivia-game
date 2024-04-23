@@ -13,12 +13,12 @@ public class CategoryRepository : IRepository<CategoryEntity>
         _context = context;
     }
 
-    public CategoryEntity? GetById(string id) =>
+    public CategoryEntity? GetById(Guid id) =>
         _context.Categories
             .Include(x => x.Questions)
             .FirstOrDefault(x => x.Id == id);
 
-    public IEnumerable<CategoryEntity> GetByParentId(string id) =>
+    public IEnumerable<CategoryEntity> GetByParentId(Guid id) =>
         _context.Categories
             .Include(x => x.Questions)
             .Where(x => x.RoundId == id);

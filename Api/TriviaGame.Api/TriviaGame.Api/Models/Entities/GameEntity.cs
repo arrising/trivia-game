@@ -23,7 +23,7 @@ public class GameEntity
     }
 
     [Key]
-    public string Id { get; init; }
+    public Guid Id { get; init; } = Guid.Empty;
 
     public string Name { get; init; }
     public string ValueSymbol { get; init; }

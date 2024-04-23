@@ -23,9 +23,9 @@ public class CategoryEntity
     }
 
     [Key]
-    public string Id { get; set; }
+    public Guid Id { get; set; } = Guid.Empty;
 
-    public string RoundId { get; set; }
+    public Guid RoundId { get; set; } = Guid.Empty;
     public RoundEntity Round { get; set; }
     public string Name { get; set; }
     public string? Note { get; set; }

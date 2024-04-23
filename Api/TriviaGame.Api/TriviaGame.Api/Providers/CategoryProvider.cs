@@ -20,7 +20,8 @@ public class CategoryProvider : ICategoryProvider
 
     public CategoryDto GetById(string categoryId)
     {
-        var entity = _repository.GetById(categoryId);
+        var id = Guid.Parse(categoryId);
+        var entity = _repository.GetById(id);
         return entity != null
             ? new CategoryDto(entity)
             : throw new NotFoundException($"CategoryId '{categoryId}' was not found");
@@ -28,7 +29,8 @@ public class CategoryProvider : ICategoryProvider
 
     public IEnumerable<CategoryDto> GetByRoundId(string roundId)
     {
-        var entities = _repository.GetByParentId(roundId);
+        var id = Guid.Parse(roundId);
+        var entities = _repository.GetByParentId(id);
 
         return entities?.Any() == true
             ? entities.Select(entity => new CategoryDto(entity))

@@ -20,9 +20,10 @@ public class GetById : IClassFixture<QuestionProviderFixture>
     public void QuestionProvider_GetById_IdDoesNotExist_Throws()
     {
         // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
+        var guid = Guid.NewGuid();
+        var id = guid.ToString();
 
-        _fixture.QuestionRepository.Setup(x => x.GetById(id))
+        _fixture.QuestionRepository.Setup(x => x.GetById(guid))
             .Returns((QuestionEntity)null!);
 
         // Act
@@ -37,11 +38,12 @@ public class GetById : IClassFixture<QuestionProviderFixture>
     public void QuestionProvider_GetById_IdExists_Good()
     {
         // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
+        var guid = Guid.NewGuid();
+        var id = guid.ToString();
         var entity = _fixture.AutoFixture.Create<QuestionEntity>();
         var expected = new QuestionDto(entity);
 
-        _fixture.QuestionRepository.Setup(x => x.GetById(id))
+        _fixture.QuestionRepository.Setup(x => x.GetById(guid))
             .Returns(entity);
 
         // Act

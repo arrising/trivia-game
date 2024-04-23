@@ -20,9 +20,10 @@ public class GetById : IClassFixture<CategoryProviderFixture>
     public void CategoryProvider_GetById_IdDoesNotExist_Throws()
     {
         // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
+        var guid = Guid.NewGuid();
+        var id = guid.ToString();
 
-        _fixture.CategoryRepository.Setup(x => x.GetById(id))
+        _fixture.CategoryRepository.Setup(x => x.GetById(guid))
             .Returns((CategoryEntity)null!);
 
         // Act
@@ -37,11 +38,12 @@ public class GetById : IClassFixture<CategoryProviderFixture>
     public void CategoryMediator_GetById_IdExists_Good()
     {
         // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
+        var guid = Guid.NewGuid();
+        var id = guid.ToString();
         var entity = _fixture.AutoFixture.Create<CategoryEntity>();
         var expected = new CategoryDto(entity);
 
-        _fixture.CategoryRepository.Setup(x => x.GetById(id))
+        _fixture.CategoryRepository.Setup(x => x.GetById(guid))
             .Returns(entity);
 
         // Act

@@ -20,9 +20,10 @@ public class GetById : IClassFixture<RoundProviderFixture>
     public void RoundProvider_GetById_IdDoesNotExist_Throws()
     {
         // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
+        var guid = Guid.NewGuid();
+        var id = guid.ToString();
 
-        _fixture.RoundRepository.Setup(x => x.GetById(id))
+        _fixture.RoundRepository.Setup(x => x.GetById(guid))
             .Returns((RoundEntity)null!);
 
         // Act
@@ -37,11 +38,12 @@ public class GetById : IClassFixture<RoundProviderFixture>
     public void RoundProvider_GetById_IdExists_Good()
     {
         // Arrange
-        var id = _fixture.AutoFixture.Create<string>();
+        var guid = Guid.NewGuid();
+        var id = guid.ToString();
         var entity = _fixture.AutoFixture.Create<RoundEntity>();
         var expected = new RoundDto(entity);
 
-        _fixture.RoundRepository.Setup(x => x.GetById(id))
+        _fixture.RoundRepository.Setup(x => x.GetById(guid))
             .Returns(entity);
 
         // Act

@@ -14,9 +14,9 @@ public class RoundDto
             throw new ConversionNullException(GetType(), nameof(round));
         }
 
-        Id = round.Id;
+        Id = round.Id.ToString();
         Type = round.Type;
-        CategoryIds = round.Categories?.Select(x => x.Id) ?? Enumerable.Empty<string>();
+        CategoryIds = round.Categories?.Select(x => x.Id.ToString()) ?? Enumerable.Empty<string>();
     }
 
     public string Id { get; set; }

@@ -13,12 +13,12 @@ public class RoundRepository : IRepository<RoundEntity>
         _context = context;
     }
 
-    public RoundEntity? GetById(string id) =>
+    public RoundEntity? GetById(Guid id) =>
         _context.Rounds
             .Include(x => x.Categories)
             .FirstOrDefault(x => x.Id == id);
 
-    public IEnumerable<RoundEntity> GetByParentId(string gameId) =>
+    public IEnumerable<RoundEntity> GetByParentId(Guid gameId) =>
         _context.Rounds
             .Include(x => x.Categories)
             .Where(x => x.GameId == gameId);

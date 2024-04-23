@@ -2,7 +2,7 @@
 
 public interface IRepository<out T>
 {
-    public T? GetById(string id);
-    public IEnumerable<T> GetByParentId(string id);
+    public T? GetById(Guid id);
+    public IEnumerable<T> GetByParentId(Guid id);
     public IEnumerable<T> GetAll();
 }

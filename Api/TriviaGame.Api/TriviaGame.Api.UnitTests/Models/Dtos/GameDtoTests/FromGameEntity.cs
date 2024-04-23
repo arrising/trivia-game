@@ -19,10 +19,10 @@ public class FromGameEntity : IClassFixture<ModelsTestFixture>
         var value = _fixture.AutoFixture.Create<GameEntity>();
         var expected = new GameDto
         {
-            Id = value.Id,
+            Id = value.Id.ToString(),
             Name = value.Name,
             ValueSymbol = value.ValueSymbol,
-            RoundIds = value.Rounds.Select(x => x.Id)
+            RoundIds = value.Rounds.Select(x => x.Id.ToString())
         };
 
         var actual = new GameDto(value);
@@ -38,7 +38,7 @@ public class FromGameEntity : IClassFixture<ModelsTestFixture>
             .Create();
         var expected = new GameDto
         {
-            Id = value.Id,
+            Id = value.Id.ToString(),
             Name = value.Name,
             ValueSymbol = value.ValueSymbol,
             RoundIds = Enumerable.Empty<string>()
