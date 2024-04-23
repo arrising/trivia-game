@@ -1,5 +1,6 @@
 ﻿namespace TriviaGame.Api.Data.Configuration;
 
+#nullable disable
 public class DatabaseConfiguration
 {
     public string DatabaseName { get; set; }

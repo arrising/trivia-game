@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
 using TriviaGame.Api.Exceptions;
 
 namespace TriviaGame.Api.Models.Entities;
 
-[ExcludeFromCodeCoverage]
 public class GameEntity
 {
     public GameEntity() { }

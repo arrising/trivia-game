@@ -98,7 +98,7 @@ public class GetQuestionById : QuestionControllerTestBase
 
         var result = await response.DeserializeContentAsync<QuestionDto>();
 
-        result.Should().BeEquivalentTo(expected);
+        result.Should().BeEquivalentTo(expected, description);
     }
 
     [Fact]
