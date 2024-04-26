@@ -30,12 +30,12 @@ namespace TriviaGame.Api.data.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("RoundId")
+                    b.Property<Guid>("RoundNumber")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoundId");
+                    b.HasIndex("RoundNumber");
 
                     b.ToTable("Categories");
                 });
@@ -109,14 +109,14 @@ namespace TriviaGame.Api.data.Migrations
 
                     b.HasIndex("GameId");
 
-                    b.ToTable("Rounds");
+                    b.ToTable("RoundsPerGame");
                 });
 
             modelBuilder.Entity("TriviaGame.Api.Models.Entities.CategoryEntity", b =>
                 {
                     b.HasOne("TriviaGame.Api.Models.Entities.RoundEntity", "Round")
                         .WithMany("Categories")
-                        .HasForeignKey("RoundId")
+                        .HasForeignKey("RoundNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -137,7 +137,7 @@ namespace TriviaGame.Api.data.Migrations
             modelBuilder.Entity("TriviaGame.Api.Models.Entities.RoundEntity", b =>
                 {
                     b.HasOne("TriviaGame.Api.Models.Entities.GameEntity", "Game")
-                        .WithMany("Rounds")
+                        .WithMany("RoundsPerGame")
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -152,7 +152,7 @@ namespace TriviaGame.Api.data.Migrations
 
             modelBuilder.Entity("TriviaGame.Api.Models.Entities.GameEntity", b =>
                 {
-                    b.Navigation("Rounds");
+                    b.Navigation("RoundsPerGame");
                 });
 
             modelBuilder.Entity("TriviaGame.Api.Models.Entities.RoundEntity", b =>

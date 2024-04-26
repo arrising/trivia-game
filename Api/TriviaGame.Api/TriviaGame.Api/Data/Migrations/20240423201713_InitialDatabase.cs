@@ -89,7 +89,7 @@ namespace TriviaGame.Api.data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_RoundId",
                 table: "Categories",
-                column: "RoundId");
+                column: "RoundNumber");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Questions_CategoryId",

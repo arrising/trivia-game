@@ -24,7 +24,7 @@ public class RoundProvider : IRoundProvider
         var entity = _repository.GetById(id);
         return entity != null
             ? new RoundDto(entity)
-            : throw new NotFoundException($"RoundId '{roundId}' was not found");
+            : throw new NotFoundException($"RoundNumber '{roundId}' was not found");
     }
 
     public IEnumerable<RoundDto> GetByGameId(string gameId)

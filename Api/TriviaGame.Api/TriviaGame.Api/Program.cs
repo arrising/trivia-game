@@ -1,5 +1,6 @@
 using Microsoft.OpenApi.Models;
 using TriviaGame.Api.Data.Configuration;
+using TriviaGame.Api.Factories.Configuration;
 using TriviaGame.Api.Middleware.Configuration;
 using TriviaGame.Api.Providers.Configuration;
 using TriviaGame.Api.Validators.Configuration;
@@ -30,8 +31,10 @@ builder.Services.AddSwaggerGen(options =>
         Title = builder.Configuration["ApiName"]
     });
 });
+
 builder.Services
     .AddApplicationDataServices(builder.Configuration)
+    .AddApplicationFactories()
     .AddApplicationProviders()
     .AddApplicationValidators();
 

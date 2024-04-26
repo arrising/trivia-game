@@ -31,7 +31,7 @@ public class GetById : IClassFixture<RoundProviderFixture>
 
         // Assert
         action.Should().Throw<NotFoundException>()
-            .WithMessage($"RoundId '{id}' was not found");
+            .WithMessage($"RoundNumber '{id}' was not found");
     }
 
     [Fact]
