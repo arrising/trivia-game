@@ -5,6 +5,9 @@ namespace TriviaGame.Api.Models.Requests;
 public class CreateGameRequest
 {
     [MinLength(1)]
+    public string GameName { get; set; }
+
+    [MinLength(1)]
     [MaxLength(10)]
     public string ValueSymbol { get; init; }
 

@@ -12,6 +12,8 @@ public class QuestionRepository : IRepository<QuestionEntity>
         _context = context;
     }
 
+    public Task<QuestionEntity> Add(QuestionEntity value, CancellationToken token) => throw new NotImplementedException();
+
     public QuestionEntity? GetById(Guid id) =>
         _context.Questions.FirstOrDefault(x => x.Id == id);
 

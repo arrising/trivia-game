@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TriviaGame.Api.Middleware;
 using TriviaGame.Api.Models.Dtos;
+using TriviaGame.Api.Models.Requests;
 using TriviaGame.Api.Providers.Interfaces;
 
 namespace TriviaGame.Api.Controllers;
@@ -15,6 +16,15 @@ public class GameController : Controller
     public GameController(IGameProvider provider)
     {
         _provider = provider;
+    }
+
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GameDto[]))]
+    public async Task<IActionResult> CreateGame([FromBody]CreateGameRequest request, CancellationToken token)
+    {
+        var result = await _provider.Create(request, token);
+        var uri = $"{HttpContext.Request.PathBase}/api/games/{result.Id}";
+        return Created(uri, result);
     }
 
     [HttpGet]

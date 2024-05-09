@@ -13,6 +13,8 @@ public class RoundRepository : IRepository<RoundEntity>
         _context = context;
     }
 
+    public Task<RoundEntity> Add(RoundEntity value, CancellationToken token) => throw new NotImplementedException();
+
     public RoundEntity? GetById(Guid id) =>
         _context.Rounds
             .Include(x => x.Categories)

@@ -3,10 +3,8 @@ using TriviaGame.Api.Models.Dtos;
 
 namespace TriviaGame.Api.IntegrationTests.GameControllerTests;
 
-public class GetGameById : GameControllerTestBase, IClassFixture<ApplicationFixture>
+public partial class GameControllerTests
 {
-    public GetGameById(ApplicationFixture fixture) : base(fixture) { }
-
     [Fact]
     public async Task GetGameById_Exists_Returns_Ok()
     {

@@ -2,6 +2,7 @@
 
 // Required to assure shard ApplicationFixture is only created once
 [Collection("IntegrationTests")]
+[TestCaseOrderer("TriviaGame.Api.IntegrationTests.PriorityOrderer", "TriviaGame.Api.IntegrationTests")]
 public abstract class IntegrationTestBase
 {
     protected IntegrationTestBase(ApplicationFixture fixture)

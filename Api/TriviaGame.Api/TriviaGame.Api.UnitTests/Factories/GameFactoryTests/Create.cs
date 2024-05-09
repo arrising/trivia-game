@@ -19,12 +19,11 @@ public class Create : IClassFixture<GameFactoryFixture>
     public void GameFactory_Create_Good()
     {
         var request = _fixture.AutoFixture.Create<CreateGameRequest>();
-        var name = "New Game";
         var rounds = Enumerable.Range(1, request.RoundsPerGame).ToList().SetupTestCases(roundNumber =>
         {
             var roundRequest = new CreateRoundRequest
             {
-                GameName = name,
+                GameName = request.GameName,
                 RoundNumber = roundNumber,
                 CategoriesPerRound = request.CategoriesPerRound,
                 QuestionsPerCategory = request.QuestionsPerCategory,
@@ -43,7 +42,7 @@ public class Create : IClassFixture<GameFactoryFixture>
         var expected = new GameEntity
         {
             ValueSymbol = request.ValueSymbol,
-            Name = name,
+            Name = request.GameName,
             Rounds = rounds
         };
 

@@ -16,13 +16,13 @@ public class GameFactory : IFactory<CreateGameRequest, GameEntity>
     public GameEntity Create(CreateGameRequest options)
     {
         var gameId = Guid.NewGuid();
-        var gameName = "New Game";
+        var childName = options.GameName.Replace(" ", "_");
         var rounds = Enumerable.Range(1, options.RoundsPerGame).ToList().Select(number =>
         {
             var roundRequest = new CreateRoundRequest
             {
                 GameId = gameId,
-                GameName = gameName,
+                GameName = childName,
                 RoundNumber = number,
                 QuestionBaseValue = options.QuestionBaseValue * number,
                 CategoriesPerRound = options.CategoriesPerRound,
@@ -34,7 +34,7 @@ public class GameFactory : IFactory<CreateGameRequest, GameEntity>
         return new GameEntity
         {
             Id = gameId,
-            Name = gameName,
+            Name = options.GameName,
             ValueSymbol = options.ValueSymbol,
             Rounds = rounds
         };
