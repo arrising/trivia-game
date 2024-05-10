@@ -13,12 +13,17 @@ namespace TriviaGame.Api.Providers;
 /// </summary>
 public class GameProvider : IGameProvider
 {
+    private readonly IComplexEntityRepository<GameEntity> _complexRepository;
     private readonly IFactory<CreateGameRequest, GameEntity> _factory;
     private readonly IRepository<GameEntity> _repository;
 
-    public GameProvider(IFactory<CreateGameRequest, GameEntity> factory, IRepository<GameEntity> repository)
+    public GameProvider(
+        IFactory<CreateGameRequest, GameEntity> factory,
+        IRepository<GameEntity> repository,
+        IComplexEntityRepository<GameEntity> complexRepository)
     {
         _repository = repository;
+        _complexRepository = complexRepository;
         _factory = factory;
     }
 
@@ -26,7 +31,7 @@ public class GameProvider : IGameProvider
     {
         //TODO: Should Provider or repository be responsible for creating IDs
         var entity = _factory.Create(request);
-        var saved = await _repository.Add(entity, token);
+        var saved = await _complexRepository.Add(entity, token);
         return new GameDto(saved);
     }
 

@@ -27,7 +27,7 @@ public class CreateTests : IClassFixture<GameProviderFixture>
 
         _fixture.GameFactory.Setup(x => x.Create(request))
             .Returns(entity);
-        _fixture.GameRepository.Setup(x => x.Add(entity, token))
+        _fixture.ComplexEntityRepository.Setup(x => x.Add(entity, token))
             .ReturnsAsync(saveResponse);
 
         var actual = await _provider.Create(request, token);

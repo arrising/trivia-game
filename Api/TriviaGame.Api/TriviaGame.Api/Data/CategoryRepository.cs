@@ -13,8 +13,6 @@ public class CategoryRepository : IRepository<CategoryEntity>
         _context = context;
     }
 
-    public Task<CategoryEntity> Add(CategoryEntity value, CancellationToken token) => throw new NotImplementedException();
-
     public CategoryEntity? GetById(Guid id) =>
         _context.Categories
             .Include(x => x.Questions)

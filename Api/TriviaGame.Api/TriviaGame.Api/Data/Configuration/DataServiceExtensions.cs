@@ -15,7 +15,8 @@ public static class DataServiceExtensions
             .AddScoped<IRepository<CategoryEntity>, CategoryRepository>()
             .AddScoped<IRepository<GameEntity>, GameRepository>()
             .AddScoped<IRepository<RoundEntity>, RoundRepository>()
-            .AddScoped<IRepository<QuestionEntity>, QuestionRepository>();
+            .AddScoped<IRepository<QuestionEntity>, QuestionRepository>()
+            .AddScoped<IComplexEntityRepository<GameEntity>, GameCreateRepository>();
 
         return databaseConfig.DatabaseType switch
         {
