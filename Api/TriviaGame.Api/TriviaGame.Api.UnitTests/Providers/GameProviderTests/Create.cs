@@ -5,12 +5,12 @@ using TriviaGame.Api.Providers.Interfaces;
 
 namespace TriviaGame.Api.UnitTests.Providers.GameProviderTests;
 
-public class CreateTests : IClassFixture<GameProviderFixture>
+public class Create : IClassFixture<GameProviderFixture>
 {
     private readonly GameProviderFixture _fixture;
     private readonly IGameProvider _provider;
 
-    public CreateTests(GameProviderFixture fixture)
+    public Create(GameProviderFixture fixture)
     {
         _fixture = fixture;
         _provider = _fixture.CreateInstance();

@@ -24,4 +24,5 @@ public class RoundRepository : IRepository<RoundEntity>
             .Where(x => x.GameId == gameId);
 
     public IEnumerable<RoundEntity> GetAll() => _context.Rounds.Include(x => x.Categories);
+    public Task Update(RoundEntity value) => throw new NotImplementedException();
 }

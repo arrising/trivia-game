@@ -20,7 +20,7 @@ public class GameController : Controller
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GameDto[]))]
-    public async Task<IActionResult> CreateGame([FromBody]CreateGameRequest request, CancellationToken token)
+    public async Task<IActionResult> CreateGame([FromBody] CreateGameRequest request, CancellationToken token)
     {
         var result = await _provider.Create(request, token);
         var uri = $"{HttpContext.Request.PathBase}/api/games/{result.Id}";
@@ -42,5 +42,13 @@ public class GameController : Controller
     {
         var results = _provider.GetById(gameId);
         return Ok(results);
+    }
+
+    [HttpPatch("{gameId}", Name = "updateGameById")]
+    [ValidateId("gameId")]
+    public async Task<IActionResult> Update([FromRoute] string gameId, [FromBody] UpdateGameRequest value)
+    {
+        var result = await _provider.Update(gameId, value);
+        return Ok(result);
     }
 }

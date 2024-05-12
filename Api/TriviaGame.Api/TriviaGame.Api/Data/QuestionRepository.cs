@@ -19,4 +19,5 @@ public class QuestionRepository : IRepository<QuestionEntity>
         _context.Questions.Where(x => x.CategoryId == id);
 
     public IEnumerable<QuestionEntity> GetAll() => _context.Questions;
+    public Task Update(QuestionEntity value) => throw new NotImplementedException();
 }

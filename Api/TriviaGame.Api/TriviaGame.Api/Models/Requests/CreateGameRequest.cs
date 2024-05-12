@@ -8,7 +8,7 @@ public class CreateGameRequest
     public string GameName { get; set; }
 
     [MinLength(1)]
-    [MaxLength(10)]
+    [MaxLength(5)]
     public string ValueSymbol { get; init; }
 
     [Range(1, 1000)]

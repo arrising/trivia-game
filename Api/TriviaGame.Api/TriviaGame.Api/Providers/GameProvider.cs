@@ -37,9 +37,8 @@ public class GameProvider : IGameProvider
 
     public GameDto GetById(string gameId)
     {
-        var id = Guid.Parse(gameId);
-        var entity = _repository.GetById(id);
-        return entity != null ? new GameDto(entity) : throw new NotFoundException($"GameId '{gameId}' was not found");
+        var entity = GetByIdInternal(gameId);
+        return new GameDto(entity);
     }
 
     public IEnumerable<GameDto> GetGames()
@@ -49,5 +48,25 @@ public class GameProvider : IGameProvider
         return entities?.Any() == true
             ? entities.Select(entity => new GameDto(entity))
             : throw new NotFoundException("No Games  were not found");
+    }
+
+    public async Task<GameDto> Update(string gameId, UpdateGameRequest update)
+    {
+        var source = GetByIdInternal(gameId);
+        var value = new GameEntity(source, update);
+        await _repository.Update(value);
+
+        return new GameDto(value);
+    }
+
+    private GameEntity GetByIdInternal(string gameId)
+    {
+        if (Guid.TryParse(gameId, out var id))
+        {
+            var source = _repository.GetById(id);
+            return source ?? throw new NotFoundException($"GameId '{gameId}' was not found");
+        }
+
+        throw new ArgumentException($"Invalid gameId \"{gameId}\"", nameof(gameId));
     }
 }

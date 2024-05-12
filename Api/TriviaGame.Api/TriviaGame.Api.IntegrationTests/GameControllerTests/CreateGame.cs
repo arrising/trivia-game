@@ -1,6 +1,4 @@
-﻿using System.Text;
-using Newtonsoft.Json;
-using TriviaGame.Api.IntegrationTests.TestHelpers;
+﻿using TriviaGame.Api.IntegrationTests.TestHelpers;
 using TriviaGame.Api.Models.Dtos;
 using TriviaGame.Api.Models.Requests;
 
@@ -11,7 +9,7 @@ namespace TriviaGame.Api.IntegrationTests.GameControllerTests;
 /// </summary>
 public partial class GameControllerTests
 {
-    public static CreateGameRequest CreateRequest => new()
+    private static CreateGameRequest CreateGameRequest => new()
     {
         GameName = "New Test Game",
         ValueSymbol = "#",
@@ -20,9 +18,6 @@ public partial class GameControllerTests
         QuestionsPerCategory = 3,
         QuestionBaseValue = 100
     };
-
-    public static HttpContent CreateRequestContent => new StringContent(JsonConvert.SerializeObject(CreateRequest),
-        Encoding.UTF8, "application/json");
 
     [Fact]
     [TestPriority(2)]
@@ -42,10 +37,10 @@ public partial class GameControllerTests
         };
 
         // Act
-        var response = await Fixture.Client.PostAsync(TestUrl, CreateRequestContent);
+        var response = await Fixture.Client.PostAsync(TestUrl, CreateContent(CreateGameRequest));
 
         // Assert
-        response.Should().BeSuccessful();
+        response.Should().HaveStatusCode(HttpStatusCode.Created);
 
         var actual = await response.DeserializeContentAsync<GameDto>();
 
@@ -80,7 +75,7 @@ public partial class GameControllerTests
         };
 
         // - Setup new Game
-        var createResponse = await Fixture.Client.PostAsync(TestUrl, CreateRequestContent);
+        var createResponse = await Fixture.Client.PostAsync(TestUrl, CreateContent(CreateGameRequest));
         createResponse.Should().BeSuccessful();
         var game = await createResponse.DeserializeContentAsync<GameDto>();
         var gameId = game.Id;
@@ -178,7 +173,7 @@ public partial class GameControllerTests
         };
 
         // - Setup new Game
-        var createResponse = await Fixture.Client.PostAsync(TestUrl, CreateRequestContent);
+        var createResponse = await Fixture.Client.PostAsync(TestUrl, CreateContent(CreateGameRequest));
         createResponse.Should().BeSuccessful();
         var game = await createResponse.DeserializeContentAsync<GameDto>();
         var gameId = game.Id;
@@ -282,7 +277,7 @@ public partial class GameControllerTests
         };
 
         // - Setup new Game
-        var createResponse = await Fixture.Client.PostAsync(TestUrl, CreateRequestContent);
+        var createResponse = await Fixture.Client.PostAsync(TestUrl, CreateContent(CreateGameRequest));
         createResponse.Should().BeSuccessful();
         var game = await createResponse.DeserializeContentAsync<GameDto>();
         var gameId = game.Id;

@@ -8,4 +8,5 @@ public interface IGameProvider
     Task<GameDto> Create(CreateGameRequest request, CancellationToken token);
     GameDto GetById(string gameId);
     IEnumerable<GameDto> GetGames();
+    Task<GameDto> Update(string gameId, UpdateGameRequest update);
 }

@@ -52,4 +52,17 @@ public class GetById : IClassFixture<GameProviderFixture>
         // Assert
         actual.Should().BeEquivalentTo(expected);
     }
+
+    [Theory]
+    [MemberData(nameof(TestData.InvalidIds), MemberType = typeof(TestData))]
+    public void GameProvider_GetById_Throws(string? id)
+    {
+        //Act
+        var action = () => _provider.GetById(id);
+
+        // Assert
+        action.Should().ThrowExactly<ArgumentException>()
+            .WithMessage($"Invalid gameId \"{id}\"*")
+            .WithParameterName("gameId");
+    }
 }

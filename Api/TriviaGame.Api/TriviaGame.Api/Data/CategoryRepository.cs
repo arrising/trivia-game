@@ -24,4 +24,5 @@ public class CategoryRepository : IRepository<CategoryEntity>
             .Where(x => x.RoundId == id);
 
     public IEnumerable<CategoryEntity> GetAll() => _context.Categories;
+    public Task Update(CategoryEntity value) => throw new NotImplementedException();
 }

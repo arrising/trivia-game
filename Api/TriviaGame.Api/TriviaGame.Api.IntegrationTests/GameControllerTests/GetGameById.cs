@@ -47,7 +47,7 @@ public partial class GameControllerTests
     }
 
     [Fact]
-    public async Task GetGameByIdIdIsNotGUId_Returns_BadRequest()
+    public async Task GetGameById_IdIsNotGUId_Returns_BadRequest()
     {
         // Arrange
         var url = $"{TestUrl}/Not_A_Real_Id";
