@@ -20,6 +20,8 @@ Updateing database
 1. Use migrate the command *[(using -v for verbose, -o to set output directory)](https://learn.microsoft.com/en-us/ef/core/cli/dotnet#common-options)* :
    1. `dotnet ef migrations add {ChangeName} -o data/Migrations`  
 1. Wait for migration script to complete
+1. **Note**: application will automatically run all migrations at startup to assure db is up to date. If you need to manually update, you can use the command:
+   1. `dotnet ef database update`
 
 ## TriviaGame.Api.IntegrationTests
 Intrgration tests live here
